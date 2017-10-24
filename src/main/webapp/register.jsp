@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 11873
+  Date: 2017/10/24
+  Time: 17:12
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,40 +32,59 @@
     </style>
 </head>
 <body>
-<!--
-    基础知识：
-    网格系统:通过行和列布局
-    行必须放在container内
-    手机用col-xs-*
-    平板用col-sm-*
-    笔记本或普通台式电脑用col-md-*
-    大型设备台式电脑用col-lg-*
-    为了兼容多个设备，可以用多个col-*-*来控制；
 
- <div class="btn-group" role="group" aria-label="...">
-    <button type="button" class="btn btn-default">登录</button>
-    <button type="button" class="btn btn-default">注册</button>
-</div>
-<nav class="navbar navbar-default navbar-fixed-top">
 
-<ul id = “myTab" class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#">登录</a></li>
-    <li role="presentation"><a href="#">注册</a></li>
-
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+        <a href="#home" data-toggle="tab">
+            登录
+        </a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">
+            注册
+        </a>
+    </li>
 </ul>
-</nav>
--->
-
-
-<div class="container">
-        <div class="form row">
-            <form class="form-horizontal col-sm-offset-2 col-md-offset-2" id="register_form">
-                <h3 class="form-title">个人信息修改</h3>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id = "home">
+        <div class = "form row">
+            <form class="form-horizontal col-sm-offset-2 col-md-offset-2" id="login_form" role="form">
+                <h3 class="form-title">用户登录</h3>
                 <div class="col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label  class="col-sm-4 control-label">用户名</label>
+                        <label for="username" class="col-sm-3 control-label">用户名</label>
+                        <!-- <i class="fa fa-user fa-lg"></i>-->
+                        <div class="col-sm-8">
+                            <input class="form-control required" type="text" id="username" placeholder="Username" name="username" autofocus="autofocus" maxlength="20"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">密码</label>
+                        <!-- <i class="fa fa-lock fa-lg"></i>-->
+                        <div class="col-sm-8">
+                            <input  class="form-control required"  type="password" id = "password" placeholder="Password" name="password" maxlength="8"/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success pull-right" value="Login "/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id = "ios">
+        <div class="form row">
+            <form class="form-horizontal col-sm-offset-2 col-md-offset-2" id="register_form">
+                <h3 class="form-title">用户注册</h3>
+                <div class="col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-4 control-label">用户名</label>
                         <div class="col-sm-7">
-                            <label class="form-control required" >1150310604</label>
+                            <input class="form-control required" type="text" id="username" placeholder="Username" name="username" autofocus="autofocus"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -80,11 +107,21 @@
                     </div>
                     <div class="form-group">
                         <label   class="col-sm-4 control-label">性别</label>
-                         <label  class="col-sm-7">女</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 男
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2"> 女
+                        </label>
                     </div>
                     <div class="form-group">
                         <label   class="col-sm-4 control-label">身份</label>
-                        <label   class="col-sm-7">学生</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 教师
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2">学生
+                        </label>
                     </div>
                     <div class="form-group">
                         <label for="eamil" class="col-sm-4 control-label">邮箱</label>
@@ -109,14 +146,13 @@
                         <textarea class="form-control" rows="3"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-success pull-right" value="提交"/>
-                        <!--<input type="submit" class="btn btn-info pull-left" id="back_btn" value="Back"/>-->
+                        <input type="submit" class="btn btn-success pull-right" value="Sign Up "/>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-
+</div>
 <script type="text/javascript" src="js/main.js" ></script>
 </body>
 </html>
