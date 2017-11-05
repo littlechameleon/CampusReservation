@@ -8,10 +8,6 @@ public class RegisterAction extends ActionSupport {
     private String password;
     private String id;
     private String email;
-    private String college;
-    private String contact;
-    private String detail;
-    private Boolean sex;
     private Boolean type;
 
     public String execute() throws SQLException{
@@ -29,7 +25,7 @@ public class RegisterAction extends ActionSupport {
                 return ERROR;
             }
             else{
-                sql = "insert into campuereservation.users values('"+id+"','"+name+"','"+password+"','"+email+"','"+college+"','"+contact+"','"+detail+"',"+sex+","+type+")";
+                sql = "insert into campuereservation.users values('"+id+"','"+name+"','"+password+"','"+email+"',"+type+")";
                 try{
                     SQLCon.getConnection().createStatement().execute(sql);
                 }catch (SQLException e){
@@ -41,12 +37,7 @@ public class RegisterAction extends ActionSupport {
             e.printStackTrace();
             return ERROR;
         }
-        if (type == true){
-            return "successTea";
-        }
-        else{
-            return "successStu";
-        }
+        return SUCCESS;
     }
 
     public String getName() {
@@ -65,24 +56,8 @@ public class RegisterAction extends ActionSupport {
         return password;
     }
 
-    public Boolean getSex() {
-        return sex;
-    }
-
-    public String getCollege() {
-        return college;
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
     public Boolean getType() {
         return type;
-    }
-
-    public String getContact() {
-        return contact;
     }
 
     public void setId(String id) {
@@ -95,22 +70,6 @@ public class RegisterAction extends ActionSupport {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setCollege(String college) {
-        this.college = college;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
-
-    public void setSex(Boolean sex) {
-        this.sex = sex;
     }
 
     public void setType(Boolean type) {
