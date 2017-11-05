@@ -7,152 +7,153 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>校园预约系统</title>
-    <!--用百度的静态资源库的cdn安装bootstrap环境-->
-    <!-- Bootstrap 核心 CSS 文件 -->
-    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!--font-awesome 核心我CSS 文件-->
-    <link href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>登录/注册</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="static/css/main.css" type="text/css" rel="stylesheet">
 
-    <!-- 在bootstrap.min.js 之前引入 -->
-    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
-    <!-- Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <!--jquery.validate-->
-    <script type="text/javascript" src="js/jquery.validate.min.js" ></script>
-    <script type="text/javascript" src="js/message.js" ></script>
-    <style type="text/css">
-        body{background: url(2.jpg) no-repeat;background-size:cover;font-size: 16px;}
-        .form{background: rgba(255,255,255,0.2);width:400px;margin:100px auto;}
-        .fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
-        input[type="text"],input[type="password"]{padding-left:26px;}
-    </style>
 </head>
-<body>
+<body background="static/image/681662.jpg">
 
-
-<ul id="myTab" class="nav nav-tabs">
-    <li class="active">
-        <a href="#home" data-toggle="tab">
-            登录
-        </a>
-    </li>
-    <li>
-        <a href="#ios" data-toggle="tab">
-            注册
-        </a>
-    </li>
-</ul>
-<div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade in active" id = "home">
-        <div class = "form row">
-            <form class="form-horizontal col-sm-offset-2 col-md-offset-2" id="login_form" role="form">
-                <h3 class="form-title">用户登录</h3>
-                <div class="col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="username" class="col-sm-3 control-label">用户名</label>
-                        <!-- <i class="fa fa-user fa-lg"></i>-->
-                        <div class="col-sm-8">
-                            <input class="form-control required" type="text" id="username" placeholder="Username" name="username" autofocus="autofocus" maxlength="20"/>
+<div class="container">
+    <div class="center-block">
+        <div id="tabs" class="">
+            <ul id="login_signup" class="nav nav-tabs">
+                <li class="active"><a href="#login" data-toggle="tab">登录</a></li>
+                <li><a href="#signup" data-toggle="tab">注册</a></li>
+            </ul>
+            <div class="login_signup_tabs tab-content">
+                <div id="login" class="tab-pane fade in active ">
+                    <form action="" class="col-lg-4 col-lg-offset-0">
+                        <div class="form-group" id="username">
+                            <input required class="form-control input" id="login_username" placeholder="学号/教工号"
+                                   type="text" maxlength="20">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-sm-3 control-label">密码</label>
-                        <!-- <i class="fa fa-lock fa-lg"></i>-->
-                        <div class="col-sm-8">
-                            <input  class="form-control required"  type="password" id = "password" placeholder="Password" name="password" maxlength="8"/>
+                        <div class="form-group" id="password">
+                            <input required type="password" class="form-control input" id="login_password"
+                                   placeholder="密码">
+                            <a href="#" id="forget_password" class="pull-right">忘记密码</a>
                         </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success pull-right" value="Login "/>
+                        <div class="submit-block">
+                            &nbsp;
+                            <button type="submit" class="btn btn-default center-block" id="login_submit">提交</button>
+                        </div>
+                    </form>
+                    <div class="col-lg-7">
+                        <img src="static/image/relax.jpeg" class="img-rounded" width="100%" height="100%">
                     </div>
                 </div>
-            </form>
+                <div id="signup" class="tab-pane fade">
+                    <form action="" class="col-lg-5 col-lg-offset-3">
+                        <div class="form-group">
+                            <input required class="form-control input" id="signup_username" placeholder="姓名"
+                                   type="text" maxlength="20">
+                        </div>
+                        <div class="form-group">
+                            <input required class="form-control input" id="signup_number" placeholder="学号/教工号"
+                                   type="text" maxlength="20">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-inline">
+                                <input required type="password" class="form-control input" id="signup_password1"
+                                       placeholder="密码">
+                                <span class="glyphicon glyphicon-eye-open" id="eye"></span>
+                            </div>
+                            <span class="hidden important" id="password_message">请输入至少六位密码</span>
+                            <div id="level" class="pw-strength hidden">
+                                <div class="pw-bar"></div>
+                                <div class="pw-bar-on"></div>
+                                <div class="pw-txt">
+                                    <span>弱</span>
+                                    <span>中</span>
+                                    <span>强</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input required class="form-control input" type="email" id="signup_email"
+                                   placeholder="邮箱" maxlength="20">
+                        </div>
+                        <div class="form-group" id="identity">
+                            <label class="radio-inline col-lg-5 text-center">
+                                <input type="radio" name="identity" id="student" value="student" checked="checked">学生
+                            </label>
+                            <label class="radio-inline col-lg-5 text-center">
+                                <input type="radio" name="identity" id="teacher" value="teacher">教师
+                            </label>
+                        </div><br/>
+                        <div class="submit-block">
+                            &nbsp;
+                            <button type="submit" class="btn btn-default center-block" id="signup_submit">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="tab-pane fade" id = "ios">
-        <div class="form row">
-            <form class="form-horizontal col-sm-offset-2 col-md-offset-2" id="register_form">
-                <h3 class="form-title">用户注册</h3>
-                <div class="col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="username" class="col-sm-4 control-label">用户名</label>
-                        <div class="col-sm-7">
-                            <input class="form-control required" type="text" id="username" placeholder="Username" name="username" autofocus="autofocus"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="register_password" class="col-sm-4 control-label">密码</label>
-                        <div class="col-sm-7">
-                            <input class="form-control required" type="password" placeholder=" Password" id="register_password" name="password"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="rpassword" class="col-sm-4 control-label">确认密码</label>
-                        <div class="col-sm-7">
-                            <input class="form-control required" type="password" id="rpassword" placeholder="Re-type Password" name="rpassword"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">姓名</label>
-                        <div class="col-sm-7">
-                            <input class="form-control name" type="text" id="name" placeholder="Name" name="name"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label   class="col-sm-4 control-label">性别</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 男
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2"> 女
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label   class="col-sm-4 control-label">身份</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 教师
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2">学生
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label for="eamil" class="col-sm-4 control-label">邮箱</label>
-                        <div class="col-sm-7">
-                            <input class="form-control required" type="text" id="eamil" placeholder=" Email" name="email"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="institu" class="col-sm-4 control-label">学院</label>
-                        <div class="col-sm-7">
-                            <input class="form-control required" type="text" id="institu" placeholder="Institu" name="institu"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone" class="col-sm-4 control-label">电话</label>
-                        <div class="col-sm-7">
-                            <input class="form-control required" type="text" id="phone" placeholder="Phone" name="phone"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">个人简介</label>
-                        <textarea class="form-control" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success pull-right" value="Sign Up "/>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
-<script type="text/javascript" src="js/main.js" ></script>
+<script src="static/js/jquery-3.1.1.min.js"></script>
+<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $("#signup_password1").blur(function(){
+        if($(this).val().length<6){
+            $("#password_message").removeClass("hidden");
+        }
+        else{
+            $("#password_message").addClass("hidden");
+        }
+        $("#level").addClass("hidden");
+    });
+    $("#signup_password1").focus(function(){
+        $("#level").removeClass("hidden");
+    });
+    $(function(){
+        $('#signup_password1').keyup(function () {
+            var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+            var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+            var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+
+            var level=$("#level");
+            if (false == enoughRegex.test($(this).val())) {
+                level.removeClass('pw-weak');
+                level.removeClass('pw-medium');
+                level.removeClass('pw-strong');
+                level.addClass(' pw-defule');
+                $("#signup_submit").attr({"disabled":"disabled"});
+                //密码小于六位的时候，密码强度图片都为灰色
+            }
+            else if (strongRegex.test($(this).val())) {
+                level.removeClass('pw-weak');
+                level.removeClass('pw-medium');
+                level.removeClass('pw-strong');
+                level.addClass(' pw-strong');
+                $("#signup_submit").removeAttr("disabled");
+                //密码为八位及以上并且字母数字特殊字符三项都包括,强度最强
+            }
+            else if (mediumRegex.test($(this).val())) {
+                level.removeClass('pw-weak');
+                level.removeClass('pw-medium');
+                level.removeClass('pw-strong');
+                level.addClass(' pw-medium');
+                $("#signup_submit").removeAttr("disabled");
+                //密码为七位及以上并且字母、数字、特殊字符三项中有两项，强度是中等
+            }
+            else {
+                level.removeClass('pw-weak');
+                level.removeClass('pw-medium');
+                level.removeClass('pw-strong');
+                level.addClass('pw-weak');
+                $("#signup_submit").removeAttr("disabled");
+                //如果密码为6为及以下，就算字母、数字、特殊字符三项都包括，强度也是弱的
+            }
+            return true;
+        });
+    });
+</script>
 </body>
 </html>

@@ -6,7 +6,7 @@ public class SQLCon {
     private static Connection conn = null;
     public SQLCon() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://xmalthiodmoe.mysql.sae.sina.com.cn:10639/bookdb?characterEncoding=utf-8", "root", "hbh828hbh");
+        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/campusreservation?characterEncoding=utf-8", "root", "hbh828hbh");
     }
 
     //获得连接对象
