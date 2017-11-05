@@ -25,8 +25,9 @@ public class RegisterAction extends ActionSupport {
                 return ERROR;
             }
             else{
-                sql = "insert into campuereservation.users values('"+id+"','"+name+"','"+password+"','"+email+"',"+type+")";
+                sql = "insert into campusreservation.users(id, name, password, email, type) values('"+id+"','"+name+"','"+password+"','"+email+"',"+type+")";
                 try{
+                    System.out.println(sql);
                     SQLCon.getConnection().createStatement().execute(sql);
                 }catch (SQLException e){
                     e.printStackTrace();
@@ -36,6 +37,8 @@ public class RegisterAction extends ActionSupport {
         }catch (SQLException e){
             e.printStackTrace();
             return ERROR;
+        }finally {
+            SQLCon.CloseCon();
         }
         return SUCCESS;
     }

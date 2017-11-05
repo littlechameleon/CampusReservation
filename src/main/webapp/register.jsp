@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: 11873
   Date: 2017/11/5
-  Time: 12:33
+  Time: 13:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -48,18 +48,18 @@
                     </div>
                 </div>
                 <div id="signup" class="tab-pane fade">
-                    <form action="" class="col-lg-5 col-lg-offset-3">
+                    <form action="RegisterAction" class="col-lg-5 col-lg-offset-3">
                         <div class="form-group">
-                            <input required class="form-control input" id="signup_username" placeholder="姓名"
+                            <input required class="form-control input" name="name" id="signup_username" placeholder="姓名"
                                    type="text" maxlength="20">
                         </div>
                         <div class="form-group">
-                            <input required class="form-control input" id="signup_number" placeholder="学号/教工号"
+                            <input required class="form-control input" name="id" id="signup_number" placeholder="学号/教工号"
                                    type="text" maxlength="20">
                         </div>
                         <div class="form-group">
                             <div class="form-inline">
-                                <input required type="password" class="form-control input" id="signup_password1"
+                                <input required type="password" class="form-control input" name="password" id="signup_password1"
                                        placeholder="密码">
                                 <span class="glyphicon glyphicon-eye-open" id="eye"></span>
                             </div>
@@ -75,15 +75,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input required class="form-control input" type="email" id="signup_email"
+                            <input required class="form-control input" name="email" type="email" id="signup_email"
                                    placeholder="邮箱" maxlength="20">
                         </div>
-                        <div class="form-group" id="identity">
+                        <div class="form-group" id="type">
                             <label class="radio-inline col-lg-5 text-center">
-                                <input type="radio" name="identity" id="student" value="student" checked="checked">学生
+                                <input type="radio" name="type" id="student" value="0" checked="checked">学生
                             </label>
                             <label class="radio-inline col-lg-5 text-center">
-                                <input type="radio" name="identity" id="teacher" value="teacher">教师
+                                <input type="radio" name="type" id="teacher" value="1">教师
                             </label>
                         </div><br/>
                         <div class="submit-block">
