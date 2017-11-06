@@ -1,4 +1,4 @@
-package sqlHelper;
+package Entity;
 
 import javax.persistence.*;
 
@@ -17,8 +17,6 @@ public class UsersEntity {
     private String answer;
     private String detail;
     private Integer score;
-
-    public UsersEntity(){}
 
     @Id
     @Column(name = "id")

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entity.UsersEntity" table="users" schema="campusreservation">
+        <id name="id" column="id"/>
+        <property name="name" column="name"/>
+        <property name="type" column="type"/>
+        <property name="sex" column="sex"/>
+        <property name="password" column="password"/>
+        <property name="college" column="college"/>
+        <property name="contact" column="contact"/>
+        <property name="email" column="email"/>
+        <property name="question" column="question"/>
+        <property name="answer" column="answer"/>
+        <property name="detail" column="detail"/>
+        <property name="score" column="score"/>
+    </class>
+</hibernate-mapping>

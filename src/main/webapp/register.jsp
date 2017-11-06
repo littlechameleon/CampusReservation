@@ -28,13 +28,13 @@
             </ul>
             <div class="login_signup_tabs tab-content">
                 <div id="login" class="tab-pane fade in active ">
-                    <form action="" class="col-lg-4 col-lg-offset-0">
+                    <form action="LoginAction" class="col-lg-4 col-lg-offset-0">
                         <div class="form-group" id="username">
-                            <input required class="form-control input" id="login_username" placeholder="学号/教工号"
+                            <input required class="form-control input" name="id" id="login_username" placeholder="学号/教工号"
                                    type="text" maxlength="20">
                         </div>
                         <div class="form-group" id="password">
-                            <input required type="password" class="form-control input" id="login_password"
+                            <input required type="password" name="password" class="form-control input" id="login_password"
                                    placeholder="密码">
                             <a href="#" id="forget_password" class="pull-right">忘记密码</a>
                         </div>
