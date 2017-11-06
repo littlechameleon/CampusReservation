@@ -18,17 +18,16 @@ public class RegisterAction extends ActionSupport {
             return ERROR;
         }
         ResultSet rs = null;
-        String sql = "select * from campusreservation.users where id=" + id;
+        String sql = "select * from campusreservation.users where id='" + id+ "'";
         try {
             rs = SQLCon.getConnection().createStatement().executeQuery(sql);
             if (rs.next()){
                 return ERROR;
-            }
-            else{
+            } else{
                 sql = "insert into campusreservation.users(id, name, password, email, type) values('"+id+"','"+name+"','"+password+"','"+email+"',"+type+")";
                 try{
-                    System.out.println(sql);
                     SQLCon.getConnection().createStatement().execute(sql);
+                    return SUCCESS;
                 }catch (SQLException e){
                     e.printStackTrace();
                     return ERROR;
@@ -40,7 +39,6 @@ public class RegisterAction extends ActionSupport {
         }finally {
             SQLCon.CloseCon();
         }
-        return SUCCESS;
     }
 
     public String getName() {

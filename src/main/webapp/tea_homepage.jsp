@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 11873
+  Date: 2017/11/6
+  Time: 10:30
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,83 +125,83 @@
 
             </div>
             <div id="2">
-            <table class="table table-striped table-hover" >
-                <caption class="text-center">已经预约</caption>
-                <thead style="display:block;border-bottom:1px solid #eee;">
-                <tr>
-                    <th>日期</th>
-                    <th>时间段</th>
-                    <th>学生</th>
-                    <th>状态</th>
-                    <th>地点</th>
-                    <th>主题</th>
-                    <th>操作</th>
-                    <th>详情</th>
-                </tr>
-                </thead>
-                <tbody style="display:block; max-height:200px;overflow-y: scroll;">
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td><a href="self_page.html" target="_blank">张三</a></td>
-                    <td>已接受</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                    <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                    <td><button class="md-trigger btn btn-default" data-modal="modal-1">详情</button></td>
-                </tr>
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td>张三</td>
-                    <td>已接受</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                    <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                    <td><button class="md-trigger btn btn-default" data-modal="modal-2">详情</button></td>
-                </tr>
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td>张三</td>
-                    <td>已接受</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                    <td><button class="btn btn-default">拒绝</button><button class="btn btn-default">拒绝</button></td>
-                    <td><button class="md-trigger btn btn-default" data-modal="modal-3">详情</button></td>
-                </tr>
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td>张三</td>
-                    <td>已接受</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                    <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                    <td><button class="md-trigger btn btn-default" data-modal="modal-4">详情</button></td>
-                </tr>
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td>张三</td>
-                    <td>已接受</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                    <td><button class="btn btn-default">拒绝</button><button class="btn btn-default">拒绝</button></td>
-                    <td><button class="md-trigger btn btn-default" data-modal="modal-5">详情</button></td>
-                </tr>
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td>张三</td>
-                    <td>已接受</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                    <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                    <td><button class="md-trigger btn btn-default" data-modal="modal-6">详情</button></td>
-                </tr>
-                </tbody>
-            </table>
+                <table class="table table-striped table-hover" >
+                    <caption class="text-center">已经预约</caption>
+                    <thead style="display:block;border-bottom:1px solid #eee;">
+                    <tr>
+                        <th>日期</th>
+                        <th>时间段</th>
+                        <th>学生</th>
+                        <th>状态</th>
+                        <th>地点</th>
+                        <th>主题</th>
+                        <th>操作</th>
+                        <th>详情</th>
+                    </tr>
+                    </thead>
+                    <tbody style="display:block; max-height:200px;overflow-y: scroll;">
+                    <tr>
+                        <td>2002-01-12</td>
+                        <td>13:00-13:30</td>
+                        <td><a href="self_page.html" target="_blank">张三</a></td>
+                        <td>已接受</td>
+                        <td>综合楼</td>
+                        <td>机器学习</td>
+                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
+                        <td><button class="md-trigger btn btn-default" data-modal="modal-1">详情</button></td>
+                    </tr>
+                    <tr>
+                        <td>2002-01-12</td>
+                        <td>13:00-13:30</td>
+                        <td>张三</td>
+                        <td>已接受</td>
+                        <td>综合楼</td>
+                        <td>机器学习</td>
+                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
+                        <td><button class="md-trigger btn btn-default" data-modal="modal-2">详情</button></td>
+                    </tr>
+                    <tr>
+                        <td>2002-01-12</td>
+                        <td>13:00-13:30</td>
+                        <td>张三</td>
+                        <td>已接受</td>
+                        <td>综合楼</td>
+                        <td>机器学习</td>
+                        <td><button class="btn btn-default">拒绝</button><button class="btn btn-default">拒绝</button></td>
+                        <td><button class="md-trigger btn btn-default" data-modal="modal-3">详情</button></td>
+                    </tr>
+                    <tr>
+                        <td>2002-01-12</td>
+                        <td>13:00-13:30</td>
+                        <td>张三</td>
+                        <td>已接受</td>
+                        <td>综合楼</td>
+                        <td>机器学习</td>
+                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
+                        <td><button class="md-trigger btn btn-default" data-modal="modal-4">详情</button></td>
+                    </tr>
+                    <tr>
+                        <td>2002-01-12</td>
+                        <td>13:00-13:30</td>
+                        <td>张三</td>
+                        <td>已接受</td>
+                        <td>综合楼</td>
+                        <td>机器学习</td>
+                        <td><button class="btn btn-default">拒绝</button><button class="btn btn-default">拒绝</button></td>
+                        <td><button class="md-trigger btn btn-default" data-modal="modal-5">详情</button></td>
+                    </tr>
+                    <tr>
+                        <td>2002-01-12</td>
+                        <td>13:00-13:30</td>
+                        <td>张三</td>
+                        <td>已接受</td>
+                        <td>综合楼</td>
+                        <td>机器学习</td>
+                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
+                        <td><button class="md-trigger btn btn-default" data-modal="modal-6">详情</button></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <table class="table table-striped table-hover" >
                 <caption align="center">已发布预约</caption>
@@ -206,24 +214,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>综合楼</td>
-                    </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>综合楼</td>
-                    </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>综合楼</td>
-                    </tr>
+                <tr>
+                    <td>2002-01-12</td>
+                    <td>13:00-13:30</td>
+                    <td>张三</td>
+                    <td>综合楼</td>
+                </tr>
+                <tr>
+                    <td>2002-01-12</td>
+                    <td>13:00-13:30</td>
+                    <td>张三</td>
+                    <td>综合楼</td>
+                </tr>
+                <tr>
+                    <td>2002-01-12</td>
+                    <td>13:00-13:30</td>
+                    <td>张三</td>
+                    <td>综合楼</td>
+                </tr>
                 </tbody>
             </table>
             <table class="table table-striped table-hover" >
@@ -239,35 +247,35 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>李四</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                    </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>李四</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                    </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>李四</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                    </tr>
+                <tr>
+                    <td>2002-01-12</td>
+                    <td>13:00-13:30</td>
+                    <td>张三</td>
+                    <td>李四</td>
+                    <td>综合楼</td>
+                    <td>机器学习</td>
+                </tr>
+                <tr>
+                    <td>2002-01-12</td>
+                    <td>13:00-13:30</td>
+                    <td>张三</td>
+                    <td>李四</td>
+                    <td>综合楼</td>
+                    <td>机器学习</td>
+                </tr>
+                <tr>
+                    <td>2002-01-12</td>
+                    <td>13:00-13:30</td>
+                    <td>张三</td>
+                    <td>李四</td>
+                    <td>综合楼</td>
+                    <td>机器学习</td>
+                </tr>
                 </tbody>
             </table>
         </div>
-        </div>
     </div>
+</div>
 <div class="md-overlay"></div>
 <!--jquery bootstrap jquery-ui js文件引入-->
 <script src="static/js/jquery-3.1.1.min.js"></script>

@@ -7,7 +7,7 @@
 <struts>
     <constant value="/static/.*?" name="struts.action.excludePattern"/>
     <package name="websystem" namespace="/" extends="struts-default">
-        <action name="SignAction" class="maincode.SignAction">
+        <action name="LoginAction" class="maincode.LoginAction">
             <result name="successStu">stu_homepage.jsp</result>
             <result name="successTea">tea_homepage.jsp</result>
             <result name="error">register.jsp</result>
@@ -16,8 +16,10 @@
             <result name="success">modify.jsp</result>
             <result name="error">register.jsp</result>
         </action>
-        <action name="EnterRelease" class="maincode.EnterRelease">
-            <result name="success">release_time.jsp</result>
+        <action name="ModifyAction" class="maincode.ModifyAction">
+            <result name="successStu">stu_homepage.jsp</result>
+            <result name="successTea">tea_homepage.jsp</result>
+            <result name="error">modify.jsp</result>
         </action>
     </package>
 </struts>
