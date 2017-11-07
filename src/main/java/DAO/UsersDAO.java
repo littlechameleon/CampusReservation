@@ -14,7 +14,10 @@ public class UsersDAO {
         Session session = SQLCon.currentSession();
         try{
             tx = session.beginTransaction();
+            System.out.println(user.getName());
             session.save(user);
+            System.out.println(user.getId());
+            System.out.println(user.getPassword());
             session.flush();
             tx.commit();
         }catch (Exception e){

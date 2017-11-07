@@ -15,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
-
 </head>
 <body background="static/image/681662.jpg">
 

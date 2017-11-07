@@ -5,11 +5,15 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class RegisterAction extends ActionSupport {
     private String password;
+    private String name;
+    private String email;
     private String id;
     public String execute() throws Exception{
         UsersDAO userdao = new UsersDAO();
         UsersEntity user = new UsersEntity();
         user.setId(id);
+        user.setName(name);
+        user.setEmail(email);
         user.setPassword(password);
         if(!userdao.find(id)){
             userdao.create(user);
@@ -26,5 +30,13 @@ public class RegisterAction extends ActionSupport {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
