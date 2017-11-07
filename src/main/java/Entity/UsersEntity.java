@@ -13,10 +13,10 @@ public class UsersEntity {
     private String college;
     private String contact;
     private String email;
-    private Integer question;
+    private String question;
     private String answer;
     private String detail;
-    private Integer score;
+    private int score;
 
     @Id
     @Column(name = "id")
@@ -100,11 +100,11 @@ public class UsersEntity {
 
     @Basic
     @Column(name = "question")
-    public Integer getQuestion() {
+    public String getQuestion() {
         return question;
     }
 
-    public void setQuestion(Integer question) {
+    public void setQuestion(String question) {
         this.question = question;
     }
 
@@ -130,11 +130,11 @@ public class UsersEntity {
 
     @Basic
     @Column(name = "score")
-    public Integer getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(Integer score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
@@ -147,6 +147,7 @@ public class UsersEntity {
 
         if (type != that.type) return false;
         if (sex != that.sex) return false;
+        if (score != that.score) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
@@ -156,7 +157,6 @@ public class UsersEntity {
         if (question != null ? !question.equals(that.question) : that.question != null) return false;
         if (answer != null ? !answer.equals(that.answer) : that.answer != null) return false;
         if (detail != null ? !detail.equals(that.detail) : that.detail != null) return false;
-        if (score != null ? !score.equals(that.score) : that.score != null) return false;
 
         return true;
     }
@@ -174,7 +174,7 @@ public class UsersEntity {
         result = 31 * result + (question != null ? question.hashCode() : 0);
         result = 31 * result + (answer != null ? answer.hashCode() : 0);
         result = 31 * result + (detail != null ? detail.hashCode() : 0);
-        result = 31 * result + (score != null ? score.hashCode() : 0);
+        result = 31 * result + score;
         return result;
     }
 }

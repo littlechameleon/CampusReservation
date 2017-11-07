@@ -8,34 +8,38 @@ import org.hibernate.cfg.Configuration;
 
 public class SQLCon {
     public static final SessionFactory sessionFactory;
+    public static final ThreadLocal<Session> session = new ThreadLocal<Session>();
+
     static {
-        try{
+        try {
             sessionFactory = new Configuration().configure().buildSessionFactory();
-        }catch (Throwable ex){
+        } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
     }
-    public static final ThreadLocal<Session> session = new ThreadLocal<Session>();
-    public static Session currentSession() throws HibernateException{
+
+    public static Session currentSession() throws HibernateException {
         Session s = session.get();
-        if(s == null || !s.isOpen()){
+        if (s == null || !s.isOpen()) {
             s = sessionFactory.openSession();
             session.set(s);
         }
         return s;
     }
-    public static void rollback(Transaction tx){
-        try{
-            if(tx != null){
+
+    public static void rollback(Transaction tx) {
+        try {
+            if (tx != null) {
                 tx.rollback();
             }
-        }catch (HibernateException e){
-            System.out.println("rollback faild."+e);
+        } catch (HibernateException e) {
+            System.out.println("rollback faild." + e);
         }
     }
-    public static void closeSession() throws HibernateException{
+
+    public static void closeSession() throws HibernateException {
         Session s = session.get();
-        if(s != null){
+        if (s != null) {
             s.close();
         }
         session.set(null);

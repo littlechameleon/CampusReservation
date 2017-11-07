@@ -29,11 +29,13 @@
                 <div id="login" class="tab-pane fade in active ">
                     <form action="LoginAction" class="col-lg-4 col-lg-offset-0">
                         <div class="form-group" id="username">
-                            <input required class="form-control input" name="id" id="login_username" placeholder="学号/教工号"
+                            <input required class="form-control input" name="id" id="login_username"
+                                   placeholder="学号/教工号"
                                    type="text" maxlength="20">
                         </div>
                         <div class="form-group" id="password">
-                            <input required type="password" name="password" class="form-control input" id="login_password"
+                            <input required type="password" name="password" class="form-control input"
+                                   id="login_password"
                                    placeholder="密码">
                             <a href="#" id="forget_password" class="pull-right">忘记密码</a>
                         </div>
@@ -58,7 +60,8 @@
                         </div>
                         <div class="form-group">
                             <div class="form-inline">
-                                <input required type="password" class="form-control input" name="password" id="signup_password1"
+                                <input required type="password" class="form-control input" name="password"
+                                       id="signup_password1"
                                        placeholder="密码">
                                 <span class="glyphicon glyphicon-eye-open" id="eye"></span>
                             </div>
@@ -84,7 +87,8 @@
                             <label class="radio-inline col-lg-5 text-center">
                                 <input type="radio" name="type" id="teacher" value="1">教师
                             </label>
-                        </div><br/>
+                        </div>
+                        <br/>
                         <div class="submit-block">
                             &nbsp;
                             <button type="submit" class="btn btn-default center-block" id="signup_submit">提交</button>
@@ -99,31 +103,31 @@
 <script src="static/js/jquery-3.1.1.min.js"></script>
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
 <script>
-    $("#signup_password1").blur(function(){
-        if($(this).val().length<6){
+    $("#signup_password1").blur(function () {
+        if ($(this).val().length < 6) {
             $("#password_message").removeClass("hidden");
         }
-        else{
+        else {
             $("#password_message").addClass("hidden");
         }
         $("#level").addClass("hidden");
     });
-    $("#signup_password1").focus(function(){
+    $("#signup_password1").focus(function () {
         $("#level").removeClass("hidden");
     });
-    $(function(){
+    $(function () {
         $('#signup_password1').keyup(function () {
             var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
             var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
             var enoughRegex = new RegExp("(?=.{6,}).*", "g");
 
-            var level=$("#level");
+            var level = $("#level");
             if (false == enoughRegex.test($(this).val())) {
                 level.removeClass('pw-weak');
                 level.removeClass('pw-medium');
                 level.removeClass('pw-strong');
                 level.addClass(' pw-defule');
-                $("#signup_submit").attr({"disabled":"disabled"});
+                $("#signup_submit").attr({"disabled": "disabled"});
                 //密码小于六位的时候，密码强度图片都为灰色
             }
             else if (strongRegex.test($(this).val())) {

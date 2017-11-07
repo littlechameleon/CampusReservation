@@ -1,4 +1,5 @@
 package maincode;
+
 import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
@@ -8,20 +9,19 @@ public class LoginAction extends ActionSupport {
     private String id;
     private Boolean type;
 
-    public String execute() throws Exception{
+    public String execute() throws Exception {
         UsersDAO userdao = new UsersDAO();
         UsersEntity user = new UsersEntity();
         user.setId(id);
         user.setPassword(password);
-        if(userdao.login(user)){
-            if(userdao.get(id).getType() == '1'){
+        if (userdao.login(user)) {
+            user = userdao.get(id);
+            if (user.getType() == '1') {
                 return "successTea";
-            }
-            else {
+            } else {
                 return "successStu";
             }
-        }
-        else {
+        } else {
             return ERROR;
         }
     }

@@ -20,16 +20,16 @@
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
 
     <!--nifty 动态弹出框引入-->
-    <link rel="stylesheet" type="text/css" href="static/niftyModal/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="static/niftyModal/css/component.css"/>
     <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
     <!--临时css设置-->
     <style>
-        #left{
+        #left {
             position: fixed;
-            margin-left:-7%;
-            padding-top:40px;
-            padding-bottom:40px;
+            margin-left: -7%;
+            padding-top: 40px;
+            padding-bottom: 40px;
         }
     </style>
 </head>
@@ -41,8 +41,12 @@
         <div>
             <p>This is a modal window. You can do the following things with it:</p>
             <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
+                    read what they say.
+                </li>
+                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
+                    appreciate its presence.
+                </li>
                 <li><strong>Close:</strong> click on the button below to close the modal.</li>
             </ul>
             <button class="md-close btn btn-default">确认</button>
@@ -55,8 +59,12 @@
         <div>
             <p>This is a modal window. You can do the following things with it:</p>
             <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
+                    read what they say.
+                </li>
+                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
+                    appreciate its presence.
+                </li>
                 <li><strong>Close:</strong> click on the button below to close the modal.</li>
             </ul>
             <button class="md-close btn btn-default">确认</button>
@@ -69,8 +77,12 @@
         <div>
             <p>This is a modal window. You can do the following things with it:</p>
             <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
+                    read what they say.
+                </li>
+                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
+                    appreciate its presence.
+                </li>
                 <li><strong>Close:</strong> click on the button below to close the modal.</li>
             </ul>
             <button class="md-close btn btn-default">确认</button>
@@ -83,8 +95,12 @@
         <div>
             <p>This is a modal window. You can do the following things with it:</p>
             <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
+                    read what they say.
+                </li>
+                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
+                    appreciate its presence.
+                </li>
                 <li><strong>Close:</strong> click on the button below to close the modal.</li>
             </ul>
             <button class="md-close btn btn-default">确认</button>
@@ -97,8 +113,12 @@
         <div>
             <p>This is a modal window. You can do the following things with it:</p>
             <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
+                    read what they say.
+                </li>
+                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
+                    appreciate its presence.
+                </li>
                 <li><strong>Close:</strong> click on the button below to close the modal.</li>
             </ul>
             <button class="md-close btn btn-default">确认</button>
@@ -125,7 +145,7 @@
 
             </div>
             <div id="2">
-                <table class="table table-striped table-hover" >
+                <table class="table table-striped table-hover">
                     <caption class="text-center">已经预约</caption>
                     <thead style="display:block;border-bottom:1px solid #eee;">
                     <tr>
@@ -147,8 +167,13 @@
                         <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
-                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-1">详情</button></td>
+                        <td>
+                            <button class="btn btn-default">接受</button>
+                            <button class="btn btn-default">拒绝</button>
+                        </td>
+                        <td>
+                            <button class="md-trigger btn btn-default" data-modal="modal-1">详情</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>2002-01-12</td>
@@ -157,8 +182,13 @@
                         <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
-                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-2">详情</button></td>
+                        <td>
+                            <button class="btn btn-default">接受</button>
+                            <button class="btn btn-default">拒绝</button>
+                        </td>
+                        <td>
+                            <button class="md-trigger btn btn-default" data-modal="modal-2">详情</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>2002-01-12</td>
@@ -167,8 +197,13 @@
                         <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
-                        <td><button class="btn btn-default">拒绝</button><button class="btn btn-default">拒绝</button></td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-3">详情</button></td>
+                        <td>
+                            <button class="btn btn-default">拒绝</button>
+                            <button class="btn btn-default">拒绝</button>
+                        </td>
+                        <td>
+                            <button class="md-trigger btn btn-default" data-modal="modal-3">详情</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>2002-01-12</td>
@@ -177,8 +212,13 @@
                         <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
-                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-4">详情</button></td>
+                        <td>
+                            <button class="btn btn-default">接受</button>
+                            <button class="btn btn-default">拒绝</button>
+                        </td>
+                        <td>
+                            <button class="md-trigger btn btn-default" data-modal="modal-4">详情</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>2002-01-12</td>
@@ -187,8 +227,13 @@
                         <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
-                        <td><button class="btn btn-default">拒绝</button><button class="btn btn-default">拒绝</button></td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-5">详情</button></td>
+                        <td>
+                            <button class="btn btn-default">拒绝</button>
+                            <button class="btn btn-default">拒绝</button>
+                        </td>
+                        <td>
+                            <button class="md-trigger btn btn-default" data-modal="modal-5">详情</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>2002-01-12</td>
@@ -197,13 +242,18 @@
                         <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
-                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-6">详情</button></td>
+                        <td>
+                            <button class="btn btn-default">接受</button>
+                            <button class="btn btn-default">拒绝</button>
+                        </td>
+                        <td>
+                            <button class="md-trigger btn btn-default" data-modal="modal-6">详情</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <table class="table table-striped table-hover" >
+            <table class="table table-striped table-hover">
                 <caption align="center">已发布预约</caption>
                 <thead>
                 <tr>
@@ -234,7 +284,7 @@
                 </tr>
                 </tbody>
             </table>
-            <table class="table table-striped table-hover" >
+            <table class="table table-striped table-hover">
                 <caption align="center">已完成预约</caption>
                 <thead>
                 <tr>
@@ -290,26 +340,26 @@
 <script src="static/niftyModal/js/css-filters-polyfill.js"></script>
 <!--自己的js-->
 <script>
-    $(document).ready(function(){
-        var _width=$('#2').width();
-        var table_th=$("#2 th");
-        var table_td=$("#2 td");
-        table_th.eq(0).width(_width*0.15);
-        table_td.eq(0).width(_width*0.15);
-        table_th.eq(1).width(_width*0.15);
-        table_td.eq(1).width(_width*0.15);
-        table_th.eq(2).width(_width*0.05);
-        table_td.eq(2).width(_width*0.05);
-        table_th.eq(3).width(_width*0.08);
-        table_td.eq(3).width(_width*0.08);
-        table_th.eq(4).width(_width*0.1);
-        table_td.eq(4).width(_width*0.1);
-        table_th.eq(5).width(_width*0.25);
-        table_td.eq(5).width(_width*0.25);
-        table_th.eq(6).width(_width*0.12);
-        table_td.eq(6).width(_width*0.12);
-        table_th.eq(7).width(_width*0.05);
-        table_td.eq(7).width(_width*0.05);
+    $(document).ready(function () {
+        var _width = $('#2').width();
+        var table_th = $("#2 th");
+        var table_td = $("#2 td");
+        table_th.eq(0).width(_width * 0.15);
+        table_td.eq(0).width(_width * 0.15);
+        table_th.eq(1).width(_width * 0.15);
+        table_td.eq(1).width(_width * 0.15);
+        table_th.eq(2).width(_width * 0.05);
+        table_td.eq(2).width(_width * 0.05);
+        table_th.eq(3).width(_width * 0.08);
+        table_td.eq(3).width(_width * 0.08);
+        table_th.eq(4).width(_width * 0.1);
+        table_td.eq(4).width(_width * 0.1);
+        table_th.eq(5).width(_width * 0.25);
+        table_td.eq(5).width(_width * 0.25);
+        table_th.eq(6).width(_width * 0.12);
+        table_td.eq(6).width(_width * 0.12);
+        table_th.eq(7).width(_width * 0.05);
+        table_td.eq(7).width(_width * 0.05);
     })
 </script>
 </body>

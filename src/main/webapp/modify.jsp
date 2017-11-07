@@ -50,7 +50,8 @@
                 </div>
                 <div class="form-group">
                     <label for="indi_resume" class="control-label">个人简介</label>
-                    <textarea class="form-control" name="detail" rows="5" maxlength="300" id="indi_resume" placeholder="请输入个人简介.最多300个字符"></textarea>
+                    <textarea class="form-control" name="detail" rows="5" maxlength="300" id="indi_resume"
+                              placeholder="请输入个人简介.最多300个字符"></textarea>
                 </div>
                 <div class="form-group " id="sex">
                     <label class="control-label col-lg-2" id="sex_label">性别</label>
@@ -74,10 +75,10 @@ s
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
 <script>
-    $(function(){
-        var institutes=["计算机科学与技术学院","能源学院","经济管理学院"];
+    $(function () {
+        var institutes = ["计算机科学与技术学院", "能源学院", "经济管理学院"];
         $("#institute").autocomplete({
-            source:institutes
+            source: institutes
         });
     });
 </script>

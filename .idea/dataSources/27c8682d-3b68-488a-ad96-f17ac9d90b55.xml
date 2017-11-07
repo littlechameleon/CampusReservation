@@ -30,13 +30,13 @@
       <Position>3</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="14" parent="10" name="sex">
       <Position>4</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="15" parent="10" name="password">
       <Position>5</Position>
@@ -58,11 +58,15 @@
     </column>
     <column id="19" parent="10" name="question">
       <Position>9</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;你的名字是什么？&apos;</DefaultExpression>
     </column>
     <column id="20" parent="10" name="answer">
       <Position>10</Position>
       <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;用户&apos;</DefaultExpression>
     </column>
     <column id="21" parent="10" name="detail">
       <Position>11</Position>
@@ -71,6 +75,8 @@
     <column id="22" parent="10" name="score">
       <Position>12</Position>
       <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;100&apos;</DefaultExpression>
     </column>
     <key id="23" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

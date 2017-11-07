@@ -11,7 +11,7 @@ perspective effects (not including the modals and the overlay).
     overflow: hidden;
 }
 
-.md-perspective body  {
+.md-perspective body {
     background: #222;
     -webkit-perspective: 600px;
     -moz-perspective: 600px;
@@ -55,7 +55,7 @@ perspective effects (not including the modals and the overlay).
     left: 0;
     z-index: 1000;
     opacity: 0;
-    background: rgba(143,27,15,0.8);
+    background: rgba(143, 27, 15, 0.8);
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
@@ -82,7 +82,7 @@ perspective effects (not including the modals and the overlay).
     font-size: 2.4em;
     font-weight: 300;
     opacity: 0.8;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 3px 3px 0 0;
 }
 
