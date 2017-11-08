@@ -16,6 +16,7 @@ public class ModifyAction extends ActionSupport {
     private String answer;
 
     public String execute() throws Exception {
+        System.out.println(id);
         UsersDAO userdao = new UsersDAO();
         UsersEntity user = new UsersEntity();
         user.setId(id);

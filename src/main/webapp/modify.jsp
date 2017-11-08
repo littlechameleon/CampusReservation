@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: 11873
@@ -10,7 +11,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>修改个人信息</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
@@ -22,15 +26,15 @@
     </div>
     <div class="center-block">
         <div id="signup">
-            <form action="ModifyAction" class=" col-lg-6 col-lg-offset-3">
+            <form action="ModifyAction" class=" col-lg-6 col-lg-offset-3" method="post">
                 <div class="form-group">
                     <label for="confirm_username" class="control-label">姓名<span class="important">*</span></label>
-                    <input required class="form-control input" id="confirm_username" value="张三" type="text"
+                    <input required class="form-control input" id="confirm_username" value="<s:property value='user.name'/>" type="text"
                            name="name" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="number" class="control-label">学号/教工号</label>
-                    <input class="form-control input" id="number" value="1150310601" type="text"
+                    <input class="form-control input" id="number" value="<s:property value='user.id'/>" type="text"
                            name="id" readonly="readonly">
                 </div>
                 <div class="form-group">
@@ -45,8 +49,18 @@
                 </div>
                 <div class="form-group">
                     <label for="confirm_email" class="control-label">邮箱<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="confirm_email" value="1471585088@qq.com"
+                    <input required class="form-control input" type="tel" id="confirm_email" value="<s:property value='user.email'/>"
                            name="email" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="pass_ques" class="control-label">密保问题<span class="important">*</span></label>
+                    <input required class="form-control input" type="tel" id="pass_ques"
+                           maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="ans_pass_ques" class="control-label">密保问题答案<span class="important">*</span></label>
+                    <input required class="form-control input" type="tel" id="ans_pass_ques"
+                           maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="indi_resume" class="control-label">个人简介</label>
