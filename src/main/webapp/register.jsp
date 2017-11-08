@@ -27,7 +27,7 @@
             </ul>
             <div class="login_signup_tabs tab-content">
                 <div id="login" class="tab-pane fade in active ">
-                    <form action="LoginAction" class="col-lg-4 col-lg-offset-0">
+                    <form action="LoginAction" class="col-lg-4 col-lg-offset-0" method="post">
                         <div class="form-group" id="username">
                             <input required class="form-control input" name="id" id="login_username"
                                    placeholder="学号/教工号"
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div id="signup" class="tab-pane fade">
-                    <form action="RegisterAction" class="col-lg-5 col-lg-offset-3">
+                    <form action="RegisterAction" class="col-lg-5 col-lg-offset-3" method="post">
                         <div class="form-group">
                             <input required class="form-control input" name="name" id="signup_username" placeholder="姓名"
                                    type="text" maxlength="20">

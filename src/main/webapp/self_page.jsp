@@ -1,3 +1,12 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: giligiliai
+  Date: 2017/11/8
+  Time: 19:59
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en" xmlns:s="http://www.w3.org/1999/html">
 <head>
@@ -19,13 +28,13 @@
     <div class="col-lg-7 col-lg-offset-2" id="self-page">
         <table class="table table-strip table-hover">
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">姓名：</span><span class="col-lg-5"></span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">姓名：</span><span class="col-lg-5"><s:property value="user.name"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">学号/教工号：</span><span class="col-lg-5">1150310608</span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">学号/教工号：</span><span class="col-lg-5"><s:property value="user.id"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">性别：</span><span class="col-lg-5">李志琛</span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">性别：</span><span class="col-lg-5"></span></td>
             </tr>
             <tr>
                 <td><span class="col-lg-4 col-lg-offset-2">学院：</span><span class="col-lg-5">计算机科学与技术学院</span></td>

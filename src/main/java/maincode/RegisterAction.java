@@ -11,9 +11,11 @@ public class RegisterAction extends ActionSupport {
     private String id;
     private byte type;
 
+    private UsersEntity user;
+
     public String execute() throws Exception {
         UsersDAO userdao = new UsersDAO();
-        UsersEntity user = new UsersEntity();
+        user = new UsersEntity();
         user.setId(id);
         user.setName(name);
         user.setEmail(email);
@@ -39,12 +41,19 @@ public class RegisterAction extends ActionSupport {
         this.name = name;
     }
 
-
     public void setType(byte type) {
         this.type = type;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
     }
 }
