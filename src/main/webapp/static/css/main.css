@@ -85,8 +85,10 @@
 }
 
 #left {
-    padding-top: 100px;
     position: fixed;
+    margin-left: -7%;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 #self-page {

@@ -7,7 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,8 +21,13 @@
 <body background="static/image/681662.jpg">
 <div class="container">
     <div class="text-center">
-        <h3>***老师/学生，您好，请确认并完善个人信息</h3>
-    </div>
+        <s:if test="user.type==1">
+            <h2><s:property value="user.name"/> 老师，您好，请确认并完善个人信息</h2>
+        </s:if>
+        <s:else>
+            <h2><s:property value="user.name"/> 同学，你好，请确认并完善个人信息</h2>
+        </s:else>
+    </div><br/><br/>
     <div class="center-block">
         <div id="signup">
             <form action="ModifyAction" class=" col-lg-6 col-lg-offset-3" method="post">
