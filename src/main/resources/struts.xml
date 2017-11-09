@@ -7,16 +7,16 @@
 <struts>
     <constant value="/static/.*?" name="struts.action.excludePattern"/>
     <package name="websystem" namespace="/" extends="struts-default">
-        <action name="LoginAction" class="maincode.LoginAction">
+        <action name="LoginAction" class="Action.LoginAction">
             <result name="successStu">stu_homepage.jsp</result>
             <result name="successTea">tea_homepage.jsp</result>
             <result name="error">register.jsp</result>
         </action>
-        <action name="RegisterAction" class="maincode.RegisterAction">
+        <action name="RegisterAction" class="Action.RegisterAction">
             <result name="success">modify.jsp</result>
             <result name="error">register.jsp</result>
         </action>
-        <action name="ModifyAction" class="maincode.ModifyAction">
+        <action name="ModifyAction" class="Action.ModifyAction">
             <result name="successStu">stu_homepage.jsp</result>
             <result name="successTea">tea_homepage.jsp</result>
             <result name="error">modify.jsp</result>

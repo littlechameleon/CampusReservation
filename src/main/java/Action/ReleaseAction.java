@@ -1,4 +1,4 @@
-package maincode;
+package Action;
 
 public class ReleaseAction {
 }

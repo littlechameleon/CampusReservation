@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entity.SreservationEntity" table="sreservation" schema="campusreservation">
+        <id name="sorder" column="Sorder"/>
+        <property name="studentId" column="StudentID"/>
+        <property name="theme" column="theme"/>
+        <property name="sstate" column="Sstate"/>
+        <property name="torder" column="Torder"/>
+        <property name="teacherId" column="TeacherID"/>
+    </class>
+</hibernate-mapping>

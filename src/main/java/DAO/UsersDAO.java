@@ -4,6 +4,7 @@ import Entity.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import sqlHelper.SQLCon;
 
 import java.util.List;
 
@@ -13,14 +14,11 @@ public class UsersDAO {
     public UsersDAO() {
     }
 
-    public void create(UsersEntity user) throws RuntimeException {   //
+    public void create(UsersEntity user) throws RuntimeException {   //新增用户
         Session session = SQLCon.currentSession();
         try {
             tx = session.beginTransaction();
-            System.out.println(user.getName());
             session.save(user);
-            System.out.println(user.getId());
-            System.out.println(user.getPassword());
             session.flush();
             tx.commit();
         } catch (Exception e) {

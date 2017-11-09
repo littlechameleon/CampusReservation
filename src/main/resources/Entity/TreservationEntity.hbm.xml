@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entity.TreservationEntity" table="treservation" schema="campusreservation">
+        <id name="torder" column="Torder"/>
+        <property name="teacherId" column="TeacherID"/>
+        <property name="date" column="date"/>
+        <property name="time" column="time"/>
+        <property name="place" column="place"/>
+        <property name="tstate" column="Tstate"/>
+        <property name="sorder" column="Sorder"/>
+    </class>
+</hibernate-mapping>

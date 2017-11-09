@@ -11,7 +11,7 @@
         <property name="connection.username">root</property>
 
         <!-- <property name="connection.password"/> -->
-        <property name="connection.password">helloworld</property>
+        <property name="connection.password">hbh828hbh</property>
 
         <!-- DB schema will be updated if needed -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
@@ -22,5 +22,9 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping class="Entity.UsersEntity"/>
         <mapping resource="Entity/UsersEntity.hbm.xml"/>
+        <mapping class="Entity.SreservationEntity"/>
+        <mapping resource="Entity/SreservationEntity.hbm.xml"/>
+        <mapping class="Entity.TreservationEntity"/>
+        <mapping resource="Entity/TreservationEntity.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
