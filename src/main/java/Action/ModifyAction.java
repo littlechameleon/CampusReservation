@@ -1,8 +1,11 @@
-package maincode;
+package Action;
 
 import DAO.UsersDAO;
 import Entity.UsersEntity;
+import Helper.Mapping;
 import com.opensymphony.xwork2.ActionSupport;
+
+import java.util.Map;
 
 public class ModifyAction extends ActionSupport {
     private String name;
@@ -14,11 +17,14 @@ public class ModifyAction extends ActionSupport {
     private String detail;
     private String question;
     private String answer;
+    private UsersEntity user;
+    private Map map;
 
     public String execute() throws Exception {
         System.out.println(id);
-        UsersDAO userdao = new UsersDAO();
-        UsersEntity user = new UsersEntity();
+        UsersDAO usersDAO = new UsersDAO();
+        Mapping mapping = new Mapping();
+        user = new UsersEntity();
         user.setId(id);
         user.setName(name);
         user.setEmail(email);
@@ -28,8 +34,9 @@ public class ModifyAction extends ActionSupport {
         user.setDetail(detail);
         user.setAnswer(answer);
         user.setQuestion(question);
-        userdao.update(user);
-        user = userdao.get(id);
+        usersDAO.update(user);
+        user = usersDAO.get(id);
+        map = mapping.reservationMap(id);
         if (user.getType() == '1') {
             return "successTea";
         } else {
@@ -38,16 +45,28 @@ public class ModifyAction extends ActionSupport {
 
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public void setCollege(String college) {
@@ -62,11 +81,15 @@ public class ModifyAction extends ActionSupport {
         this.detail = detail;
     }
 
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
     public void setQuestion(String question) {
         this.question = question;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

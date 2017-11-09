@@ -11,6 +11,7 @@ public class UsersEntity {
     private byte sex;
     private String password;
     private String college;
+    private String workplace;
     private String contact;
     private String email;
     private String question;
@@ -76,6 +77,16 @@ public class UsersEntity {
 
     public void setCollege(String college) {
         this.college = college;
+    }
+
+    @Basic
+    @Column(name = "workplace")
+    public String getWorkplace() {
+        return workplace;
+    }
+
+    public void setWorkplace(String workplace) {
+        this.workplace = workplace;
     }
 
     @Basic
@@ -152,6 +163,7 @@ public class UsersEntity {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (college != null ? !college.equals(that.college) : that.college != null) return false;
+        if (workplace != null ? !workplace.equals(that.workplace) : that.workplace != null) return false;
         if (contact != null ? !contact.equals(that.contact) : that.contact != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (question != null ? !question.equals(that.question) : that.question != null) return false;
@@ -169,6 +181,7 @@ public class UsersEntity {
         result = 31 * result + (int) sex;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (college != null ? college.hashCode() : 0);
+        result = 31 * result + (workplace != null ? workplace.hashCode() : 0);
         result = 31 * result + (contact != null ? contact.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (question != null ? question.hashCode() : 0);

@@ -1,21 +1,29 @@
-package maincode;
+package Action;
 
+import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import Entity.UsersEntity;
+import Helper.Mapping;
 import com.opensymphony.xwork2.ActionSupport;
+
+import java.util.List;
+import java.util.Map;
 
 public class LoginAction extends ActionSupport {
     private String password;
     private String id;
-    private Boolean type;
+    private UsersEntity user;
+    private Map map;
 
     public String execute() throws Exception {
-        UsersDAO userdao = new UsersDAO();
-        UsersEntity user = new UsersEntity();
+        UsersDAO usersDAO = new UsersDAO();
+        Mapping mapping = new Mapping();
+        user = new UsersEntity();
         user.setId(id);
         user.setPassword(password);
-        if (userdao.login(user)) {
-            user = userdao.get(id);
+        if (usersDAO.login(user)) {
+            user = usersDAO.get(id);
+            map = mapping.reservationMap(id);
             if (user.getType() == '1') {
                 return "successTea";
             } else {
@@ -26,19 +34,23 @@ public class LoginAction extends ActionSupport {
         }
     }
 
-    public Boolean getType() {
-        return type;
-    }
-
-    public void setType(Boolean type) {
-        this.type = type;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UsersEntity user) {
+        this.user = user;
+    }
+
+    public Map getMap() {
+        return map;
     }
 }
