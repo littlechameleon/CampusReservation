@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: giligiliai
+  Date: 2017/11/9
+  Time: 18:33
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,14 +26,6 @@
     <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
     <!--临时css设置-->
-    <style>
-        #left{
-            position: fixed;
-            margin-left:-7%;
-            padding-top:40px;
-            padding-bottom:40px;
-        }
-    </style>
 </head>
 <body>
 <div class="md-modal md-effect-1" id="modal-0">
@@ -36,7 +36,7 @@
             <div id="publishing">
 
             </div>
-            <a class="btn btn-default" href="#">确认</a>
+            <a class="btn btn-default" id="confirm_submit">确认</a>
             <a class="md-close btn btn-default">取消</a>
         </div>
     </div>
@@ -107,7 +107,7 @@
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
             <div class="col-lg-4 col-lg-offset-3 input-group">
-                <input type="date" class="form-control input-lg" placeholder="请选择时间"/><span class="input-group-btn">
+                <input type="date" class="form-control input-lg" value="<s:date format="yyyy-MM-dd" name='date'/>"/><span class="input-group-btn">
                 <button class="btn btn-default" type="button" id="date_button">确认</button>
             </span>
             </div>
@@ -301,11 +301,22 @@
         no_publish_td.eq(2).width(_width*0.2);
         no_publish_th.eq(2).width(_width*0.2);
     });
+    var order;
     $("#publish").click(function(){
+        order=[];
+        $("#publishing").empty();
         $('tr:has([name=publish_items]:checkbox:checked)').each(function(){
-            var contain="<p>时间为："+$(this).children().eq(0).html()+"地点为："+$(this).children().eq(1).children().val()+"</p>";
+            var time=$(this).children().eq(0).html();
+            var place=$(this).children().eq(1).children().val();
+            order.push([time.split('-')[0],place]);
+            var contain="<p>时间为："+time+"地点为："+place+"</p>";
             $("#publishing").append(contain);
         });
+    });
+    $("#confirm_submit").click(function(){
+        $.post("#",{
+            order:order
+        },window.location.reload())
     });
 
 </script>
