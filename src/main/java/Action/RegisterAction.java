@@ -1,4 +1,4 @@
-package maincode;
+package Action;
 
 import DAO.UsersDAO;
 import Entity.UsersEntity;
@@ -10,19 +10,18 @@ public class RegisterAction extends ActionSupport {
     private String email;
     private String id;
     private byte type;
-
     private UsersEntity user;
 
     public String execute() throws Exception {
-        UsersDAO userdao = new UsersDAO();
+        UsersDAO usersDAO = new UsersDAO();
         user = new UsersEntity();
         user.setId(id);
         user.setName(name);
         user.setEmail(email);
         user.setPassword(password);
         user.setType(type);
-        if (!userdao.find(id)) {
-            userdao.create(user);
+        if (!usersDAO.find(id)) {
+            usersDAO.create(user);
             return SUCCESS;
         } else {
             return ERROR;

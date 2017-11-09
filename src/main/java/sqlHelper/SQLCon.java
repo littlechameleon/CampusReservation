@@ -1,24 +1,47 @@
 package sqlHelper;
 
-import java.sql.*;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 public class SQLCon {
+    public static final SessionFactory sessionFactory;
+    public static final ThreadLocal<Session> session = new ThreadLocal<Session>();
 
-    // 连接实例
-    private static Connection conn = null;
-
-    public SQLCon() throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/campusreservation?characterEncoding=utf-8", "root", "hbh828hbh");
+    static {
+        try {
+            sessionFactory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            throw new ExceptionInInitializerError(ex);
+        }
     }
 
-    //获得连接对象
-    public static Connection getConnection() {
-        return conn;
+    public static Session currentSession() throws HibernateException {
+        Session s = session.get();
+        if (s == null || !s.isOpen()) {
+            s = sessionFactory.openSession();
+            session.set(s);
+        }
+        return s;
     }
 
-    //关闭连接
-    public static void CloseCon() throws SQLException {
-        conn.close();
+    public static void rollback(Transaction tx) {
+        try {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } catch (HibernateException e) {
+            System.out.println("rollback faild." + e);
+        }
+    }
+
+    public static void closeSession() throws HibernateException {
+        Session s = session.get();
+        if (s != null) {
+            s.close();
+        }
+        session.set(null);
     }
 }
