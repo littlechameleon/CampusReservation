@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: 11873
@@ -23,15 +24,6 @@
     <link rel="stylesheet" type="text/css" href="static/niftyModal/css/component.css"/>
     <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
-    <!--临时css设置-->
-    <style>
-        #left {
-            position: fixed;
-            margin-left: -7%;
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-    </style>
 </head>
 <body background="static/image/681662.jpg">
 <!--弹出框-->
@@ -130,13 +122,19 @@
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
-            <span>你好，张三</span><br/>
-            <span>1150310604</span><br/>
-            <span>女</span><br/>
-            <span>计算机科学与技术学院</span><br/>
-            <span>1171163631@qq.com</span><br/>
-            <span>155044661873</span><br/>
-            <a class="pull-right" href="modify.html">编辑</a>
+            <span>你好，<s:property value="user.name"/></span><br/>
+            <span><s:property value="user.id"/></span><br/>
+            <s:if test="sex==0">
+                <span>女</span>
+            </s:if>
+            <s:else>
+                <span>男</span>
+            </s:else>
+            <br/>
+            <span><s:property value="user.college"/></span><br/>
+            <span><s:property value="user.email"/></span><br/>
+            <span><s:property value="user.contact"/> </span><br/>
+            <a class="pull-right" href="ModifyAction">编辑</a>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>

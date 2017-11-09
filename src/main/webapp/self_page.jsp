@@ -2,13 +2,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: giligiliai
-  Date: 2017/11/8
-  Time: 19:59
+  Date: 2017/11/9
+  Time: 13:43
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en" xmlns:s="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -23,32 +22,36 @@
 <body background="static/image/681662.jpg">
 <div class="container">
     <div class="text-center">
-        <h1>***老师/同学主页</h1>
-    </div>
+        <s:if test="user.type==1">
+            <h2><s:property value="user.name"/> 老师主页</h2>
+        </s:if>
+        <s:else>
+            <h2><s:property value="user.name"/> 同学主页</h2>
+        </s:else>    </div>
     <div class="col-lg-7 col-lg-offset-2" id="self-page">
         <table class="table table-strip table-hover">
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">姓名：</span><span class="col-lg-5"><s:property value="user.name"/></span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">姓名：</span><span class="col-lg-5"><s:property value="user.id"></s:property> </span></td>
             </tr>
             <tr>
                 <td><span class="col-lg-4 col-lg-offset-2">学号/教工号：</span><span class="col-lg-5"><s:property value="user.id"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">性别：</span><span class="col-lg-5"></span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">性别：</span><span class="col-lg-5"><s:property value="user.sex"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">学院：</span><span class="col-lg-5">计算机科学与技术学院</span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">学院：</span><span class="col-lg-5"><s:property value="user.college"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">邮箱：</span><span class="col-lg-5">1471585088@qq.com</span>
+                <td><span class="col-lg-4 col-lg-offset-2">邮箱：</span><span class="col-lg-5"><s:property value="user.email"/></span>
                 </td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">联系方式：</span><span class="col-lg-5">18845897065</span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">联系方式：</span><span class="col-lg-5"><s:property value="user.contact"/> </span></td>
             </tr>
 
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">个人简介：</span><span class="col-lg-5">我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛我是李志琛</span>
+                <td><span class="col-lg-4 col-lg-offset-2">个人简介：</span><span class="col-lg-5"><s:property value="user.detail"/></span>
                 </td>
             </tr>
         </table>
@@ -59,12 +62,6 @@
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
 <script>
-    $(function () {
-        var institutes = ["计算机科学与技术学院", "能源学院", "经济管理学院"];
-        $("#institute").autocomplete({
-            source: institutes
-        });
-    });
 </script>
 </body>
 </html>
