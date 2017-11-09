@@ -21,23 +21,21 @@ public class ModifyAction extends ActionSupport {
     private Map map;
 
     public String execute() throws Exception {
-        System.out.println(id);
         UsersDAO usersDAO = new UsersDAO();
         Mapping mapping = new Mapping();
-        user = new UsersEntity();
-        user.setId(id);
+
+        user = usersDAO.get(id);
         user.setName(name);
         user.setEmail(email);
-        user.setPassword(college);
+        user.setCollege(college);
         user.setContact(contact);
         user.setSex(sex);
         user.setDetail(detail);
         user.setAnswer(answer);
         user.setQuestion(question);
         usersDAO.update(user);
-        user = usersDAO.get(id);
         map = mapping.reservationMap(id);
-        if (user.getType() == '1') {
+        if (user.getType() == 1) {
             return "successTea";
         } else {
             return "successStu";
@@ -59,10 +57,6 @@ public class ModifyAction extends ActionSupport {
 
     public Map getMap() {
         return map;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void setContact(String contact) {
@@ -91,5 +85,9 @@ public class ModifyAction extends ActionSupport {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

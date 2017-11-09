@@ -7,6 +7,7 @@ import Entity.SreservationEntity;
 import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -24,18 +25,13 @@ public class Mapping {
         TreservationEntity treservationEntity;
         UsersEntity usersEntity;
         Map<Object, Object> teacherMap = new HashMap<>();
-        List list = sreservationDAO.get(id);
-        while (true){
-            sreservationEntity = (SreservationEntity) list.iterator().next();
-            if(sreservationEntity != null){
-                treservationEntity = treservationDAO.get(sreservationEntity.getTorder());
-                usersEntity = usersDAO.get(sreservationEntity.getStudentId());
-                teacherMap.put(sreservationEntity, treservationEntity);
-                teacherMap.put(sreservationEntity, usersEntity);
-            }
-            else {
-                break;
-            }
+        Iterator iterator = sreservationDAO.get(id).iterator();
+        while (iterator.hasNext()){
+            sreservationEntity = (SreservationEntity) iterator.next();
+            treservationEntity = treservationDAO.get(sreservationEntity.getTorder());
+            usersEntity = usersDAO.get(sreservationEntity.getStudentId());
+            teacherMap.put(sreservationEntity, treservationEntity);
+            teacherMap.put(sreservationEntity, usersEntity);
         }
         return teacherMap;
     }

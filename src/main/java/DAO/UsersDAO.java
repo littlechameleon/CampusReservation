@@ -46,15 +46,12 @@ public class UsersDAO {
     public Boolean find(String id) {                         //判断用户存在
         Session session = SQLCon.currentSession();
         try {
-            tx = session.beginTransaction();
             String hql = "from UsersEntity where id='" + id + "'";
             Query query = session.createQuery(hql);
             if (!query.list().isEmpty()) {
-                tx.commit();
                 return true;
             }
         } catch (Exception e) {
-            SQLCon.rollback(tx);
             e.printStackTrace();
         } finally {
             SQLCon.closeSession();
@@ -65,7 +62,6 @@ public class UsersDAO {
     public Boolean login(UsersEntity user) {       //登录验证
         Session session = SQLCon.currentSession();
         try {
-            tx = session.beginTransaction();
             String hql = "select password from UsersEntity where id='" + user.getId() + "'";
             List list = session.createQuery(hql).list();
             if (!list.isEmpty()) {
@@ -73,9 +69,7 @@ public class UsersDAO {
                     return true;
                 }
             }
-            tx.commit();
         } catch (Exception e) {
-            SQLCon.rollback(tx);
             e.printStackTrace();
         } finally {
             SQLCon.closeSession();
@@ -86,14 +80,10 @@ public class UsersDAO {
     public UsersEntity get(String id) {                      //获取用户信息
         Session session = SQLCon.currentSession();
         try {
-            tx = session.beginTransaction();
             String hql = "from UsersEntity where id='" + id + "'";
             List list = session.createQuery(hql).list();
-            UsersEntity user = (UsersEntity) list.iterator().next();
-            tx.commit();
-            return user;
+            return (UsersEntity) list.iterator().next();
         } catch (Exception e) {
-            SQLCon.rollback(tx);
             e.printStackTrace();
         } finally {
             SQLCon.closeSession();
@@ -101,17 +91,19 @@ public class UsersDAO {
         return null;
     }
 
-    public void delete(UsersEntity user) {                   //删除用户信息
+    public Boolean delete(UsersEntity user) {                   //删除用户信息
         Session session = SQLCon.currentSession();
         try {
             tx = session.beginTransaction();
             session.delete(user);
             tx.commit();
+            return true;
         } catch (Exception e) {
             SQLCon.rollback(tx);
             e.printStackTrace();
         } finally {
             SQLCon.closeSession();
         }
+        return false;
     }
 }

@@ -24,7 +24,7 @@ public class LoginAction extends ActionSupport {
         if (usersDAO.login(user)) {
             user = usersDAO.get(id);
             map = mapping.reservationMap(id);
-            if (user.getType() == '1') {
+            if (user.getType() == 1) {
                 return "successTea";
             } else {
                 return "successStu";
