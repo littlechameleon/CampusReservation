@@ -10,9 +10,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录/注册</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录/注册</title>
+    <link rel="shortcut icon" href="static/image/favicon.ico">
+
     <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
 </head>
@@ -118,17 +120,22 @@
         $("#level").removeClass("hidden");
     });
     $("#signup_number").blur(function(){
-        $("#load_img").removeClass("hidden");
-        $.post("VerifyIdAction",{
-            password:$("#signup_number").val()
-        },function(data,textStatus){
-            if(data==1){
-                $("#has_id").toggleClass("hidden");
-            }else if(data==0){
-                $("#has_id").toggleClass("hidden");
-            }
-            $("#load_img").addClass("hidden");
-        })
+        if($(this).val()!=''){
+            $("#load_img").removeClass("hidden");
+            $.post("VerifyIdAction",{
+                password:$("#signup_number").val()
+            },function(data,textStatus){
+                if(data==1){
+                    $("#has_id").toggleClass("hidden");
+                }else if(data==0){
+                    $("#has_id").toggleClass("hidden");
+                }
+                $("#load_img").addClass("hidden");
+            })
+        }
+        else{
+            $("#load_img").addClass("hidden")
+        }
     });
     $(function () {
         $('#signup_password1').keyup(function () {
