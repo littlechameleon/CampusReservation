@@ -1,32 +1,42 @@
 package Action;
 
+import DAO.ReservationDA0;
 import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import Entity.UsersEntity;
-import Helper.Mapping;
 import com.opensymphony.xwork2.ActionSupport;
-
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class LoginAction extends ActionSupport {
     private String password;
     private String id;
     private UsersEntity user;
-    private Map map;
+    private ArrayList unjudgedList;
+    private ArrayList judgedList;
+    private ArrayList unconfirmedList;
+    private ArrayList confirmedList;
+    private ArrayList refusedList;
+    private List nullList;
 
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
-        Mapping mapping = new Mapping();
+        ReservationDA0 reservationDA0 = new ReservationDA0();
+        TreservationDAO treservationDAO = new TreservationDAO();
         user = new UsersEntity();
         user.setId(id);
         user.setPassword(password);
         if (usersDAO.login(user)) {
             user = usersDAO.get(id);
-            map = mapping.reservationMap(id);
+            unconfirmedList = reservationDA0.get(id, 0);
+            confirmedList = reservationDA0.get(id, 1);
+            unjudgedList = reservationDA0.get(id, 2);
+            judgedList = reservationDA0.get(id, 3);
             if (user.getType() == 1) {
+                nullList = treservationDAO.getNullList(id);
                 return "successTea";
             } else {
+                refusedList = reservationDA0.get(id, 4);
                 return "successStu";
             }
         } else {
@@ -46,11 +56,27 @@ public class LoginAction extends ActionSupport {
         return user;
     }
 
-    public void setUser(UsersEntity user) {
-        this.user = user;
+    public ArrayList getUnjudgedList() {
+        return unjudgedList;
     }
 
-    public Map getMap() {
-        return map;
+    public ArrayList getJudgedList() {
+        return judgedList;
+    }
+
+    public ArrayList getUnconfirmedList() {
+        return unconfirmedList;
+    }
+
+    public ArrayList getConfirmedList() {
+        return confirmedList;
+    }
+
+    public ArrayList getRefusedList() {
+        return refusedList;
+    }
+
+    public List getNullList() {
+        return nullList;
     }
 }

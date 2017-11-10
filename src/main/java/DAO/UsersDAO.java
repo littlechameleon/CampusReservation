@@ -4,7 +4,7 @@ import Entity.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import sqlHelper.SQLCon;
+import SessionHelper.SessionCon;
 
 import java.util.List;
 
@@ -15,36 +15,36 @@ public class UsersDAO {
     }
 
     public void create(UsersEntity user) throws RuntimeException {   //新增用户
-        Session session = SQLCon.currentSession();
+        Session session = SessionCon.currentSession();
         try {
             tx = session.beginTransaction();
             session.save(user);
             session.flush();
             tx.commit();
         } catch (Exception e) {
-            SQLCon.rollback(tx);
+            SessionCon.rollback(tx);
             e.printStackTrace();
         } finally {
-            SQLCon.closeSession();
+            SessionCon.closeSession();
         }
     }
 
     public void update(UsersEntity user) {                   //更新用户信息
-        Session session = SQLCon.currentSession();
+        Session session = SessionCon.currentSession();
         try {
             tx = session.beginTransaction();
             session.update(user);
             tx.commit();
         } catch (Exception e) {
-            SQLCon.rollback(tx);
+            SessionCon.rollback(tx);
             e.printStackTrace();
         } finally {
-            SQLCon.closeSession();
+            SessionCon.closeSession();
         }
     }
 
     public Boolean find(String id) {                         //判断用户存在
-        Session session = SQLCon.currentSession();
+        Session session = SessionCon.currentSession();
         try {
             String hql = "from UsersEntity where id='" + id + "'";
             Query query = session.createQuery(hql);
@@ -54,13 +54,13 @@ public class UsersDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            SQLCon.closeSession();
+            SessionCon.closeSession();
         }
         return false;
     }
 
     public Boolean login(UsersEntity user) {       //登录验证
-        Session session = SQLCon.currentSession();
+        Session session = SessionCon.currentSession();
         try {
             String hql = "select password from UsersEntity where id='" + user.getId() + "'";
             List list = session.createQuery(hql).list();
@@ -72,13 +72,13 @@ public class UsersDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            SQLCon.closeSession();
+            SessionCon.closeSession();
         }
         return false;
     }
 
     public UsersEntity get(String id) {                      //获取用户信息
-        Session session = SQLCon.currentSession();
+        Session session = SessionCon.currentSession();
         try {
             String hql = "from UsersEntity where id='" + id + "'";
             List list = session.createQuery(hql).list();
@@ -86,23 +86,23 @@ public class UsersDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            SQLCon.closeSession();
+            SessionCon.closeSession();
         }
         return null;
     }
 
     public Boolean delete(UsersEntity user) {                   //删除用户信息
-        Session session = SQLCon.currentSession();
+        Session session = SessionCon.currentSession();
         try {
             tx = session.beginTransaction();
             session.delete(user);
             tx.commit();
             return true;
         } catch (Exception e) {
-            SQLCon.rollback(tx);
+            SessionCon.rollback(tx);
             e.printStackTrace();
         } finally {
-            SQLCon.closeSession();
+            SessionCon.closeSession();
         }
         return false;
     }

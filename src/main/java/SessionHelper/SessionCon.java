@@ -1,4 +1,4 @@
-package sqlHelper;
+package SessionHelper;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class SQLCon {
+public class SessionCon {
     public static final SessionFactory sessionFactory;
     public static final ThreadLocal<Session> session = new ThreadLocal<Session>();
 

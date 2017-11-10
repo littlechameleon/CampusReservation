@@ -20,6 +20,7 @@ public class RegisterAction extends ActionSupport {
         user.setEmail(email);
         user.setPassword(password);
         user.setType(type);
+        user.setScore(100);
         if (!usersDAO.find(id)) {
             usersDAO.create(user);
             return SUCCESS;
@@ -48,11 +49,12 @@ public class RegisterAction extends ActionSupport {
         this.email = email;
     }
 
+    public void setUser(UsersEntity user) {
+        this.user = user;
+    }
+
     public UsersEntity getUser() {
         return user;
     }
 
-    public void setUser(UsersEntity user) {
-        this.user = user;
-    }
 }

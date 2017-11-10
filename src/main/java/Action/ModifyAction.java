@@ -1,11 +1,13 @@
 package Action;
 
+import DAO.ReservationDA0;
+import DAO.TreservationDAO;
 import DAO.UsersDAO;
+import Entity.TreservationEntity;
 import Entity.UsersEntity;
-import Helper.Mapping;
 import com.opensymphony.xwork2.ActionSupport;
-
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModifyAction extends ActionSupport {
     private String name;
@@ -18,12 +20,18 @@ public class ModifyAction extends ActionSupport {
     private String question;
     private String answer;
     private UsersEntity user;
-    private Map map;
+    private ArrayList unjudgedList;
+    private ArrayList judgedList;
+    private ArrayList unconfirmedList;
+    private ArrayList confirmedList;
+    private ArrayList refusedList;
+    private List nullList;
+
 
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
-        Mapping mapping = new Mapping();
-
+        ReservationDA0 reservationDA0 = new ReservationDA0();
+        TreservationDAO treservationDAO = new TreservationDAO();
         user = usersDAO.get(id);
         user.setName(name);
         user.setEmail(email);
@@ -34,10 +42,15 @@ public class ModifyAction extends ActionSupport {
         user.setAnswer(answer);
         user.setQuestion(question);
         usersDAO.update(user);
-        map = mapping.reservationMap(id);
+        unconfirmedList = reservationDA0.get(id, 0);
+        confirmedList = reservationDA0.get(id, 1);
+        unjudgedList = reservationDA0.get(id, 2);
+        judgedList = reservationDA0.get(id, 3);
         if (user.getType() == 1) {
+            nullList = treservationDAO.getNullList(id);
             return "successTea";
         } else {
+            refusedList = reservationDA0.get(id, 4);
             return "successStu";
         }
 
@@ -45,18 +58,6 @@ public class ModifyAction extends ActionSupport {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public UsersEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UsersEntity user) {
-        this.user = user;
-    }
-
-    public Map getMap() {
-        return map;
     }
 
     public void setContact(String contact) {
@@ -89,5 +90,33 @@ public class ModifyAction extends ActionSupport {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public UsersEntity getUser() {
+        return user;
+    }
+
+    public ArrayList getUnjudgedList() {
+        return unjudgedList;
+    }
+
+    public ArrayList getJudgedList() {
+        return judgedList;
+    }
+
+    public ArrayList getUnconfirmedList() {
+        return unconfirmedList;
+    }
+
+    public ArrayList getConfirmedList() {
+        return confirmedList;
+    }
+
+    public ArrayList getRefusedList() {
+        return refusedList;
+    }
+
+    public List getNullList() {
+        return nullList;
     }
 }

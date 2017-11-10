@@ -21,5 +21,9 @@
             <result name="successTea">tea_homepage.jsp</result>
             <result name="error">modify.jsp</result>
         </action>
+        <action name="ReleaseAction" class="Action.ReleaseAction">
+            <result name="success">publish_order.jsp</result>
+            <result name="error">tea_homepage.jsp</result>
+        </action>
     </package>
 </struts>

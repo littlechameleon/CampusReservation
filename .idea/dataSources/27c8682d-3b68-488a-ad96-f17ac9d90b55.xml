@@ -149,7 +149,7 @@
       <Position>13</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;80&apos;</DefaultExpression>
+      <DefaultExpression>&apos;100&apos;</DefaultExpression>
     </column>
     <key id="41" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
