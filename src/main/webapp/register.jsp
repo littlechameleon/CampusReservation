@@ -57,6 +57,8 @@
                         <div class="form-group">
                             <input required class="form-control input" name="id" id="signup_number" placeholder="学号/教工号"
                                    type="text" maxlength="20">
+                            <img src="static/image/load.gif" id="load_img" class="hidden">
+                            <span class="hidden important" id="has_id">学号或教工号已存在</span>
                         </div>
                         <div class="form-group">
                             <div class="form-inline">
@@ -114,6 +116,19 @@
     });
     $("#signup_password1").focus(function () {
         $("#level").removeClass("hidden");
+    });
+    $("#signup_number").blur(function(){
+        $("#load_img").removeClass("hidden");
+        $.post("VerifyIdAction",{
+            password:$("#signup_number").val()
+        },function(data,textStatus){
+            if(data==1){
+                $("#has_id").toggleClass("hidden");
+            }else if(data==0){
+                $("#has_id").toggleClass("hidden");
+            }
+            $("#load_img").addClass("hidden");
+        })
     });
     $(function () {
         $('#signup_password1').keyup(function () {
