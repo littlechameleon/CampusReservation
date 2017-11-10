@@ -41,13 +41,11 @@
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="20" parent="12" name="Torder">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="21" parent="12" name="TeacherID">
       <Position>6</Position>
@@ -88,13 +86,10 @@
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="29" parent="13" name="Sorder">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <key id="30" parent="13" name="PRIMARY">
       <ColNames>Torder</ColNames>
@@ -104,25 +99,20 @@
       <Position>1</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;XXXXXXXXXX&apos;</DefaultExpression>
     </column>
     <column id="32" parent="14" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;用户&apos;</DefaultExpression>
+      <DefaultExpression>&apos;user&apos;</DefaultExpression>
     </column>
     <column id="33" parent="14" name="type">
       <Position>3</Position>
       <DataType>tinyint(1)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="34" parent="14" name="sex">
       <Position>4</Position>
       <DataType>tinyint(1)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="35" parent="14" name="password">
       <Position>5</Position>
@@ -149,14 +139,10 @@
     <column id="40" parent="14" name="question">
       <Position>10</Position>
       <DataType>varchar(20)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;你的名字是什么？&apos;</DefaultExpression>
     </column>
     <column id="41" parent="14" name="answer">
       <Position>11</Position>
       <DataType>varchar(20)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;用户&apos;</DefaultExpression>
     </column>
     <column id="42" parent="14" name="detail">
       <Position>12</Position>
@@ -166,7 +152,7 @@
       <Position>13</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;100&apos;</DefaultExpression>
+      <DefaultExpression>&apos;80&apos;</DefaultExpression>
     </column>
     <key id="44" parent="14" name="PRIMARY">
       <ColNames>id</ColNames>

@@ -46,14 +46,10 @@ public class TreservationDAO {
     public TreservationEntity get(int Torder){           //获取教授某条预约信息(教授部分)
         Session session = SQLCon.currentSession();
         try{
-            tx = session.beginTransaction();
             String hql = "from TreservationEntity where torder'" +Torder+ "'";
             List list = session.createQuery(hql).list();
-            TreservationEntity Treservation = (TreservationEntity) list.iterator().next();
-            tx.commit();
-            return Treservation;
+            return (TreservationEntity) list.iterator().next();
         }catch (Exception e){
-            SQLCon.rollback(tx);
             e.printStackTrace();
         }finally {
             SQLCon.closeSession();

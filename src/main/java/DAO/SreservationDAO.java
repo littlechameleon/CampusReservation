@@ -33,21 +33,19 @@ public class SreservationDAO {
     public List get(String id){           //获取某教授或学生全部请求预约信息(学生部分信息)
         Session session = SQLCon.currentSession();
         try{
-            tx = session.beginTransaction();
-            UsersDAO usersDAO = new UsersDAO();
-            UsersEntity usersEntity = usersDAO.get(id);
-            String hql;
-            if(usersEntity.getType() == '1') {
+            String hql = "from UsersEntity where id='" + id + "'";
+            List list = session.createQuery(hql).list();
+            UsersEntity usersEntity = (UsersEntity) list.iterator().next();
+            if(usersEntity.getType() == 1) {
                 hql = "from SreservationEntity where teacherId='" + id + "'";
             }
             else {
+                System.out.println(id);
                 hql = "from SreservationEntity where studentId='" + id + "'";
             }
-            List list = session.createQuery(hql).list();
-            tx.commit();
-            return list;
+            list = session.createQuery(hql).list();
+            return  list;
         }catch (Exception e){
-            SQLCon.rollback(tx);
             e.printStackTrace();
         }finally {
             SQLCon.closeSession();
