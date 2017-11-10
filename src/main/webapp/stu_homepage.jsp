@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人主页</title>
+    <%--网页图标--%>
+    <link rel="shortcut icon" href="static/image/favicon.ico">
 
     <!--bootstrap 和 jquery,jquery-ui 引入-->
     <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -23,15 +25,6 @@
     <link rel="stylesheet" type="text/css" href="static/niftyModal/css/component.css"/>
     <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
-    <!--临时css设置-->
-    <style>
-        #left {
-            position: fixed;
-            margin-left: -7%;
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-    </style>
 </head>
 <body background="static/image/681662.jpg">
 <!--弹出框-->

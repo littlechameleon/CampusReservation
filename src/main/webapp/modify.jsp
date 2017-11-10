@@ -14,6 +14,9 @@
     <title>修改个人信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="static/image/favicon.ico">
+
     <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
