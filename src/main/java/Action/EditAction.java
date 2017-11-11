@@ -8,9 +8,10 @@ public class EditAction extends ActionSupport {
     private UsersEntity usersEntity;
     private String id;
 
-    public String excute() throws Exception{
+    public String execute() throws Exception{
         UsersDAO usersDAO = new UsersDAO();
         usersEntity = usersDAO.get(id);
+        System.out.println(usersEntity.getName());
         return SUCCESS;
     }
 

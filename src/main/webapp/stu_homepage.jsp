@@ -26,7 +26,7 @@
     <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
 </head>
-<body background="static/image/681662.jpg">
+<body>
 <!--弹出框-->
 <div class="md-modal md-effect-1" id="modal-1">
     <div class="md-content">

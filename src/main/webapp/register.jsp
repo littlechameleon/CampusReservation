@@ -18,7 +18,7 @@
     <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
 </head>
-<body background="static/image/681662.jpg">
+<body>
 
 <div class="container">
     <div class="center-block">
@@ -123,14 +123,13 @@
         if($(this).val()!=''){
             $("#load_img").removeClass("hidden");
             $.post("VerifyIdAction",{
-                id:$("#signup_number").val()
+                Id:$("#signup_number").val()
             },function(data,textStatus){
-                if(data[0].VerifyId==1){
-                    alert("1"+data[0].VerifyId);
+                if(data.verifyId==0){
                     $("#has_id").addClass("hidden");
                 }else{
-                    alert("0"+data);
                     $("#has_id").removeClass("hidden");
+                    $("#signup_submit").attr({"disabled": "disabled"});
                 }
                 $("#load_img").addClass("hidden");
             })
