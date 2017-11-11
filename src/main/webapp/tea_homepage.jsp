@@ -7,7 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -148,16 +147,18 @@
                         <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
                         <td><button class="md-trigger btn btn-default" data-modal="modal-1">详情</button></td>
                     </tr>
+                    <s:iterator value="unconfirmedList">
                     <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
+                        <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
+                        <td><s:property value="treservationEntity.time"/></td>
+                        <td><s:property value="usersEntity.name"/></td>
                         <td>未接受</td>
-                        <td>综合楼</td>
+                        <td><s:property value="treservationEntity.place"/></td>
                         <td>机器学习</td>
                         <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
                         <td><button class="md-trigger btn btn-default" data-modal="modal-2">详情</button></td>
                     </tr>
+                    </s:iterator>
                     </tbody>
                 </table>
             </div>
@@ -178,22 +179,24 @@
                     <tbody style="display:block; max-height:200px;overflow-y: scroll;">
                     <tr>
                         <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td><a href="self_page.html" target="_blank">张三</a></td>
+                        <td>19:00:00</td>
+                        <td><a href="self_page.html" target="_blank"><s:property value="userEntity.name"/> </a></td>
                         <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
                         <td><button class="md-trigger btn btn-default" data-modal="modal-1">详情</button></td>
                     </tr>
+                    <s:iterator value="confirmedList">
                     <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
+                        <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                        <td><s:property value="treservationEntity.time"/> </td>
+                        <td><a href="#" target="_blank"><s:property value="userEntity.name"/> </a></td>
                         <td>已接受</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-2">详情</button></td>
+                        <td><s:property value="treservationEntity.place"/> </td>
+                        <td><s:property value="sreservation.theme"/> </td>
+                        <td><button class="md-trigger btn btn-default" data-modal="modal-<s:property value='sreservation.Sorder'/>">详情</button></td>
                     </tr>
+                    </s:iterator>
                     </tbody>
                 </table>
             </div>
@@ -217,20 +220,15 @@
                         <td>综合楼</td>
                         <td><a class="btn btn-default">取消预约</a></td>
                     </tr>
+                    <s:iterator value="nullList">
                     <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>综合楼</td>
+                        <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                        <td><s:property value="treservationEntity.time"/> </td>
+                        <td><a href="#" target="_blank"><s:property value="userEntity.name"/> </a></td>
+                        <td><s:property value="treservationEntity.place"/> </td>
                         <td><a class="btn btn-default">取消预约</a></td>
                     </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>综合楼</td>
-                        <td><a class="btn btn-default">取消预约</a></td>
-                    </tr>
+                    </s:iterator>
                     </tbody>
                 </table>
             </div>
@@ -251,8 +249,7 @@
                     <tr>
                         <td>2002-01-12</td>
                         <td>13:00-13:30</td>
-                        <td>李四</td>
-                        <td>综合楼</td>
+                        <td>李四</td>+
                         <td>机器学习</td>
                         <td><div class="br-wrapper br-theme-fontawesome-stars">
                             <select class="example">
@@ -263,36 +260,40 @@
                             </select>
                         </div> </td>
                     </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>李四</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                        <td><div class="br-wrapper br-theme-fontawesome-stars">
-                            <select class="example">
-                                <option value="1" data-html="未到">1</option>
-                                <option value="2" data-html="迟到">2</option>
-                                <option value="3" data-html="准时">3</option>
-                                <option value="4" data-html="提前">4</option>
-                            </select>
-                        </div> </td>
-                    </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>李四</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                        <td><div class="br-wrapper br-theme-fontawesome-stars">
-                            <select class="example">
-                                <option value="1" data-html="未到">1</option>
-                                <option value="2" data-html="迟到">2</option>
-                                <option value="3" data-html="准时">3</option>
-                                <option value="4" data-html="提前">4</option>
-                            </select>
-                        </div> </td>
-                    </tr>
+                    <s:iterator value="unjudgedList">
+                        <tr>
+                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.time"/></td>
+                            <td><a href="#" target="_blank"><s:property value="userEntity.name"/> </a></td>
+                            <td><s:property value="treservationEntity.place"/> </td>
+                            <td><s:property value="treservationEntity.place"/> </td>
+                            <td><div class="br-wrapper br-theme-fontawesomeff-stars">
+                                <select class="example">
+                                    <option value="1" data-html="未到">1</option>
+                                    <option value="2" data-html="迟到">2</option>
+                                    <option value="3" data-html="准时">3</option>
+                                    <option value="4" data-html="提前">4</option>
+                                </select>
+                            </div> </td>
+                        </tr>
+                    </s:iterator>
+                    <s:iterator value="judgedList">
+                        <tr>
+                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.time"/></td>
+                            <td><a href="#" target="_blank"><s:property value="userEntity.name"/> </a></td>
+                            <td><s:property value="treservationEntity.place"/> </td>
+                            <td><s:property value="treservationEntity.place"/> </td>
+                            <td><div class="br-wrapper br-theme-fontawesome-stars">
+                                <select class="example">
+                                    <option value="1" data-html="未到">1</option>
+                                    <option value="2" data-html="迟到">2</option>
+                                    <option value="3" data-html="准时">3</option>
+                                    <option value="4" data-html="提前">4</option>
+                                </select>
+                            </div> </td>
+                        </tr>
+                    </s:iterator>
                     </tbody>
                 </table>
             </div>
