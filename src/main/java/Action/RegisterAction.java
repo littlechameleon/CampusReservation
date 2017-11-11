@@ -10,19 +10,19 @@ public class RegisterAction extends ActionSupport {
     private String email;
     private String id;
     private byte type;
-    private UsersEntity user;
+    private UsersEntity usersEntity;
 
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
-        user = new UsersEntity();
-        user.setId(id);
-        user.setName(name);
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setType(type);
-        user.setScore(100);
+        usersEntity = new UsersEntity();
+        usersEntity.setId(id);
+        usersEntity.setName(name);
+        usersEntity.setEmail(email);
+        usersEntity.setPassword(password);
+        usersEntity.setType(type);
+        usersEntity.setScore(100);
         if (!usersDAO.find(id)) {
-            usersDAO.create(user);
+            usersDAO.create(usersEntity);
             return SUCCESS;
         } else {
             return ERROR;
@@ -49,12 +49,8 @@ public class RegisterAction extends ActionSupport {
         this.email = email;
     }
 
-    public void setUser(UsersEntity user) {
-        this.user = user;
-    }
-
-    public UsersEntity getUser() {
-        return user;
+    public UsersEntity getUsersEntity() {
+        return usersEntity;
     }
 
 }

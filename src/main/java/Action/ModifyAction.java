@@ -18,7 +18,7 @@ public class ModifyAction extends ActionSupport {
     private String detail;
     private String question;
     private String answer;
-    private UsersEntity user;
+    private UsersEntity usersEntity;
     private ArrayList unjudgedList;
     private ArrayList judgedList;
     private ArrayList unconfirmedList;
@@ -31,21 +31,21 @@ public class ModifyAction extends ActionSupport {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
-        user = usersDAO.get(id);
-        user.setName(name);
-        user.setEmail(email);
-        user.setCollege(college);
-        user.setContact(contact);
-        user.setSex(sex);
-        user.setDetail(detail);
-        user.setAnswer(answer);
-        user.setQuestion(question);
-        usersDAO.update(user);
+        usersEntity = usersDAO.get(id);
+        usersEntity.setName(name);
+        usersEntity.setEmail(email);
+        usersEntity.setCollege(college);
+        usersEntity.setContact(contact);
+        usersEntity.setSex(sex);
+        usersEntity.setDetail(detail);
+        usersEntity.setAnswer(answer);
+        usersEntity.setQuestion(question);
+        usersDAO.update(usersEntity);
         unconfirmedList = reservationDA0.get(id, 0);
         confirmedList = reservationDA0.get(id, 1);
         unjudgedList = reservationDA0.get(id, 2);
         judgedList = reservationDA0.get(id, 3);
-        if (user.getType() == 1) {
+        if (usersEntity.getType() == 1) {
             nullList = treservationDAO.getNullList(id);
             return "successTea";
         } else {
@@ -91,8 +91,8 @@ public class ModifyAction extends ActionSupport {
         this.id = id;
     }
 
-    public UsersEntity getUser() {
-        return user;
+    public UsersEntity getUsersEntity() {
+        return usersEntity;
     }
 
     public ArrayList getUnjudgedList() {

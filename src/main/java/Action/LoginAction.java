@@ -11,7 +11,7 @@ import java.util.List;
 public class LoginAction extends ActionSupport {
     private String password;
     private String id;
-    private UsersEntity user;
+    private UsersEntity usersEntity;
     private ArrayList unjudgedList;
     private ArrayList judgedList;
     private ArrayList unconfirmedList;
@@ -23,16 +23,16 @@ public class LoginAction extends ActionSupport {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
-        user = new UsersEntity();
-        user.setId(id);
-        user.setPassword(password);
-        if (usersDAO.login(user)) {
-            user = usersDAO.get(id);
+        usersEntity = new UsersEntity();
+        usersEntity.setId(id);
+        usersEntity.setPassword(password);
+        if (usersDAO.login(usersEntity)) {
+            usersEntity = usersDAO.get(id);
             unconfirmedList = reservationDA0.get(id, 0);
             confirmedList = reservationDA0.get(id, 1);
             unjudgedList = reservationDA0.get(id, 2);
             judgedList = reservationDA0.get(id, 3);
-            if (user.getType() == 1) {
+            if (usersEntity.getType() == 1) {
                 nullList = treservationDAO.getNullList(id);
                 return "successTea";
             } else {
@@ -52,8 +52,8 @@ public class LoginAction extends ActionSupport {
         this.id = id;
     }
 
-    public UsersEntity getUser() {
-        return user;
+    public UsersEntity getUsersEntity() {
+        return usersEntity;
     }
 
     public ArrayList getUnjudgedList() {
