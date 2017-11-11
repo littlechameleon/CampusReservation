@@ -123,12 +123,14 @@
         if($(this).val()!=''){
             $("#load_img").removeClass("hidden");
             $.post("VerifyIdAction",{
-                password:$("#signup_number").val()
+                id:$("#signup_number").val()
             },function(data,textStatus){
-                if(data==1){
-                    $("#has_id").toggleClass("hidden");
-                }else if(data==0){
-                    $("#has_id").toggleClass("hidden");
+                if(data[0].VerifyId==1){
+                    alert("1"+data[0].VerifyId);
+                    $("#has_id").addClass("hidden");
+                }else{
+                    alert("0"+data);
+                    $("#has_id").removeClass("hidden");
                 }
                 $("#load_img").addClass("hidden");
             })

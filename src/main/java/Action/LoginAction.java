@@ -26,14 +26,12 @@ public class LoginAction extends ActionSupport {
         user = new UsersEntity();
         user.setId(id);
         user.setPassword(password);
-        System.out.println(password);
         if (usersDAO.login(user)) {
             user = usersDAO.get(id);
             unconfirmedList = reservationDA0.get(id, 0);
             confirmedList = reservationDA0.get(id, 1);
             unjudgedList = reservationDA0.get(id, 2);
             judgedList = reservationDA0.get(id, 3);
-            System.out.println(judgedList);
             if (user.getType() == 1) {
                 nullList = treservationDAO.getNullList(id);
                 return "successTea";

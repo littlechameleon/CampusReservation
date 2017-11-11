@@ -69,11 +69,9 @@ public class SreservationDAO {
                 hql = "from SreservationEntity where teacherId='" + id + "'";
             }
             else {
-                System.out.println(id);
                 hql = "from SreservationEntity where studentId='" + id + "'";
             }
             list = session.createQuery(hql).list();
-            System.out.println(((SreservationEntity) list.iterator().next()).getTheme());
             return  list;
         }catch (Exception e){
             e.printStackTrace();

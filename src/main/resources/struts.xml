@@ -7,6 +7,7 @@
 <struts>
     <constant value="/static/.*?" name="struts.action.excludePattern"/>
     <package name="websystem" namespace="/" extends="struts-default">
+        <!--Action-->
         <action name="LoginAction" class="Action.LoginAction">
             <result name="successStu">stu_homepage.jsp</result>
             <result name="successTea">tea_homepage.jsp</result>
@@ -23,7 +24,20 @@
         </action>
         <action name="ReleaseAction" class="Action.ReleaseAction">
             <result name="success">publish_order.jsp</result>
-            <result name="error">tea_homepage.jsp</result>
+        </action>
+
+        <!--JumpAction-->
+        <action name="EditAction" class="Action.EditAction">
+            <result name="success">modify.jsp</result>
+        </action>
+        <action name="EnterRelease" class="Action.EnterRelease">
+            <result name="success">publish_order.jsp</result>
+        </action>
+    </package>
+
+    <package name="Ajax" namespace="/" extends="json-default">
+        <action name="VerifyIdAction" class="Ajax.VerifyIdAction">
+            <result name="success" type="json"> </result>
         </action>
     </package>
 </struts>
