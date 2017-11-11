@@ -27,13 +27,9 @@ public class SreservationDAO {
             Sreservation.setTeacherId(treservationEntity.getTeacherId());
             session.save(Sreservation);
             session.flush();
-            System.out.println("========================");
-            System.out.println(Sreservation.getSorder());
             tx.commit();
                                             //不确定flush是否可以得到自增id
             tx = session.beginTransaction();
-            System.out.println("------------------------");
-            System.out.println(Sreservation.getSorder());
             treservationEntity.setSorder(Sreservation.getSorder());
             if(treservationEntity.getTstate() == 4){
                 treservationEntity.setTstate(0);
@@ -77,6 +73,7 @@ public class SreservationDAO {
                 hql = "from SreservationEntity where studentId='" + id + "'";
             }
             list = session.createQuery(hql).list();
+            System.out.println(((SreservationEntity) list.iterator().next()).getTheme());
             return  list;
         }catch (Exception e){
             e.printStackTrace();

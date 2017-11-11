@@ -26,6 +26,7 @@ public class LoginAction extends ActionSupport {
         user = new UsersEntity();
         user.setId(id);
         user.setPassword(password);
+        System.out.println(password);
         if (usersDAO.login(user)) {
             user = usersDAO.get(id);
             unconfirmedList = reservationDA0.get(id, 0);
