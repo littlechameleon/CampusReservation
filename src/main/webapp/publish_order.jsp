@@ -197,7 +197,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>8:30:00</td>
+                        <td>9:30:00</td>
                         <td>已预约</td>
                         <td>综合楼</td>
                         <td>李志琛</td>
@@ -206,7 +206,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>8:30:00</td>
+                        <td>10:30:00</td>
                         <td>已预约</td>
                         <td>综合楼</td>
                         <td>李志琛</td>
@@ -236,61 +236,7 @@
                         <th>预约</th>
                     </tr>
                     </thead>
-                    <tbody style="display:block;overflow-y: scroll;" id="publish_table">
-                    <tr>
-                        <td>19:30-20:00</td>
-                        <td><input type="text" class="form-control input"> </td>
-                        <td><div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="publish_items">
-                            </label>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>19:30-20:00</td>
-                        <td><input type="text" class="form-control input"> </td>
-                        <td><div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="publish_items">
-                            </label>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>19:30-20:00</td>
-                        <td><input type="text" class="form-control input"> </td>
-                        <td><div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="publish_items">
-                            </label>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>19:30-20:00</td>
-                        <td><input type="text" class="form-control input"> </td>
-                        <td><div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="publish_items">
-                            </label>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>19:30-20:00</td>
-                        <td><input type="text" class="form-control input"> </td>
-                        <td><div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="publish_items">
-                            </label>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td>19:30-20:00</td>
-                        <td><input type="text" class="form-control input"> </td>
-                        <td><div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="publish_items">
-                            </label>
-                        </div></td>
-                    </tr>
+                    <tbody style="display:block;overflow-y: scroll;max-height: 500px" id="publish_table">
                     <tr>
                         <td>19:30-20:00</td>
                         <td><input type="text" class="form-control input"> </td>
@@ -324,22 +270,25 @@
     var times=["8:00:00","8:30:00","9:00:00","9:30:00","10:00:00","10:30:00","11:00:00","11:30:00","12:00:00",
         "12:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00","15:30:00","16:00:00","16:30:00","17:00:00",
         "17:30:00","18:00:00","18:30:00","19:00:00","19:30:00","20:00:00"];
-    Array.prototype.contains = function ( needlet ) {
-        for (i in this) {
-            if (this[i] == needle) return true;
-        }
-        return false;
-    };
     var time=[];
     $("#published table tbody tr").each(function(){
         time.push($(this).children().eq(0).text());
     });
-    for(var t in times){
-        if(!times.contains(t)){
-
+    alert(time);
+    var flag;
+    for(var i=0;i<times.length;i++){
+        flag=0;
+        for(var j=0;j<time.length;j++){
+            if(times[i]==time[j]){
+                flag=1;
+                break;
+            }
         }
-    }
+        if(flag==0){
+            $("#publish_table").append("<tr><td>"+times[i]+"</td><td><input type='text' class='form-control input'> </td><td><div class='checkbox'><label><input type='checkbox' name='publish_items'></label></div></td></tr>")
+        }
 
+    }
     $(document).ready(function(){
         $("#request_table").css("max-height",$(window).height()*0.6);
 
