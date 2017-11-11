@@ -64,16 +64,30 @@ public class TreservationDAO {
         return null;
     }
 
-    public List getOneday(Date date, String TeacherID){         //获取某天教授发布但没有学生预约的预约信息
+    public List getOneday(Date date, String TeacherID, int state){         //获取某天教授某状态的预约信息
         Session session = SessionCon.currentSession();
         try{
-            String hql = "from TreservationEntity where teacherId='" +TeacherID+ "' and tstate = 4 and date='"+date+"'";
+            String hql = "from TreservationEntity where teacherId='" +TeacherID+ "' and tstate =" +state+ " and date='"+date+"'";
             return session.createQuery(hql).list();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             SessionCon.closeSession();
         }
+        return null;
+    }
+
+    public List getOnedayNotnull(Date date, String TeacherID){         //获取某天教授有请求的预约信息
+        Session session = SessionCon.currentSession();
+        try{
+            String hql = "from TreservationEntity where teacherId='" +TeacherID+ "' and tstate<4 and tstate>0 and date='"+date+"'";
+            return session.createQuery(hql).list();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            SessionCon.closeSession();
+        }
+        return null;
     }
 
     public List getNullList(String TeacherID){             //获取教授发布但没有学生预约的预约信息

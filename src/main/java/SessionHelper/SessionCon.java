@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 public class SessionCon {
     public static final SessionFactory sessionFactory;
-    public static final ThreadLocal<Session> session = new ThreadLocal<Session>();
+    public static final ThreadLocal<Session> session = new ThreadLocal<>();
 
     static {
         try {
