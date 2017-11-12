@@ -1,4 +1,6 @@
-
+body{
+    background: url("../image/background.jpg") repeat fixed!important;
+}
 .container {
     opacity: 0.8;
     padding-bottom: 100px;

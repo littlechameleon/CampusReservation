@@ -11,6 +11,7 @@ public class EditAction extends ActionSupport {
     public String execute() throws Exception{
         UsersDAO usersDAO = new UsersDAO();
         usersEntity = usersDAO.get(id);
+        System.out.println(usersEntity.getName());
         return SUCCESS;
     }
 

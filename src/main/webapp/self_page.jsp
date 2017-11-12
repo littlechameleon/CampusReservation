@@ -21,39 +21,39 @@
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
 </head>
-<body background="static/image/681662.jpg">
+<body>
 <div class="container">
     <div class="text-center">
-        <s:if test="user.type==1">
-            <h2><s:property value="user.name"/> 老师主页</h2>
+        <s:if test="usersEntity.type==1">
+            <h2><s:property value="usersEntity.name"/> 老师主页</h2>
         </s:if>
         <s:else>
-            <h2><s:property value="user.name"/> 同学主页</h2>
+            <h2><s:property value="usersEntity.name"/> 同学主页</h2>
         </s:else>    </div>
     <div class="col-lg-7 col-lg-offset-2" id="self-page">
         <table class="table table-strip table-hover">
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">姓名：</span><span class="col-lg-5"><s:property value="user.id"></s:property> </span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">姓名：</span><span class="col-lg-5"><s:property value="usersEntity.id"></s:property> </span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">学号/教工号：</span><span class="col-lg-5"><s:property value="user.id"/></span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">学号/教工号：</span><span class="col-lg-5"><s:property value="usersEntity.id"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">性别：</span><span class="col-lg-5"><s:property value="user.sex"/></span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">性别：</span><span class="col-lg-5"><s:property value="usersEntity.sex"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">学院：</span><span class="col-lg-5"><s:property value="user.college"/></span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">学院：</span><span class="col-lg-5"><s:property value="usersEntity.college"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">邮箱：</span><span class="col-lg-5"><s:property value="user.email"/></span>
+                <td><span class="col-lg-4 col-lg-offset-2">邮箱：</span><span class="col-lg-5"><s:property value="usersEntity.email"/></span>
                 </td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">联系方式：</span><span class="col-lg-5"><s:property value="user.contact"/> </span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">联系方式：</span><span class="col-lg-5"><s:property value="usersEntity.contact"/> </span></td>
             </tr>
 
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">个人简介：</span><span class="col-lg-5"><s:property value="user.detail"/></span>
+                <td><span class="col-lg-4 col-lg-offset-2">个人简介：</span><span class="col-lg-5"><s:property value="usersEntity.detail"/></span>
                 </td>
             </tr>
         </table>
