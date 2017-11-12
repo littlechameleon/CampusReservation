@@ -6,6 +6,7 @@ import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class ReservationDA0 {
     public ReservationDA0(){
@@ -15,9 +16,9 @@ public class ReservationDA0 {
         UsersDAO usersDAO = new UsersDAO();
         SreservationDAO sreservationDAO = new SreservationDAO();
         TreservationDAO treservationDAO = new TreservationDAO();
-        ReservationEntity reservationEntity = new ReservationEntity();
         ArrayList<ReservationEntity> arrayList = new ArrayList<>();
         for (Object o : sreservationDAO.getAll(id)) {
+            ReservationEntity reservationEntity = new ReservationEntity();
             SreservationEntity sreservationEntity = (SreservationEntity) o;
             reservationEntity.setSreservationEntity(sreservationEntity);
             TreservationEntity treservationEntity = treservationDAO.get(sreservationEntity.getTorder());
@@ -45,9 +46,9 @@ public class ReservationDA0 {
         SreservationDAO sreservationDAO = new SreservationDAO();
         TreservationDAO treservationDAO = new TreservationDAO();
         UsersDAO usersDAO = new UsersDAO();
-        ReservationEntity reservationEntity = new ReservationEntity();
         ArrayList<ReservationEntity> arrayList = new ArrayList<>();
         for (Object o : treservationDAO.getOnedayNotnull(date, teacherID)) {
+            ReservationEntity reservationEntity = new ReservationEntity();
             TreservationEntity treservationEntity = (TreservationEntity)o;
             reservationEntity.setTreservationEntity(treservationEntity);
             SreservationEntity sreservationEntity = sreservationDAO.get(treservationEntity.getSorder());
