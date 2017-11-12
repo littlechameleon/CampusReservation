@@ -29,6 +29,7 @@ public class LoginAction extends ActionSupport {
         if (usersDAO.login(usersEntity)) {
             usersEntity = usersDAO.get(id);
             unconfirmedList = reservationDA0.get(id, 0);
+            System.out.println(unconfirmedList);
             confirmedList = reservationDA0.get(id, 1);
             unjudgedList = reservationDA0.get(id, 2);
             judgedList = reservationDA0.get(id, 3);
