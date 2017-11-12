@@ -53,46 +53,6 @@
         </div>
     </div>
 </div>
-<div class="md-modal md-effect-1" id="modal-2">
-    <div class="md-content">
-        <h3>确认取消预约</h3>
-        <div class="text-center">
-            <p>确认取消8:30-9:00预约？</p>
-            <a class="btn btn-default" href="publish_order.html">确认</a>
-            <a class="md-close btn btn-default">取消</a>
-        </div>
-    </div>
-</div>
-<div class="md-modal md-effect-1" id="modal-3">
-    <div class="md-content">
-        <h3>确认取消预约</h3>
-        <div class="text-center">
-            <p>确认取消9:00-9:30预约？</p>
-            <a class="btn btn-default" href="publish_order.html">确认</a>
-            <a class="md-close btn btn-default">取消</a>
-        </div>
-    </div>
-</div>
-<div class="md-modal md-effect-1" id="modal-4">
-    <div class="md-content">
-        <h3>确认取消预约</h3>
-        <div class="text-center">
-            <p>确认取消9:30-10:00预约？</p>
-            <a class="btn btn-default" href="publish_order.html">确认</a>
-            <a class="md-close btn btn-default">取消</a>
-        </div>
-    </div>
-</div>
-<div class="md-modal md-effect-1" id="modal-23">
-    <div class="md-content">
-        <h3>确认取消预约</h3>
-        <div class="text-center">
-            <p>确认取消9:30-10:00预约？</p>
-            <a class="btn btn-default" href="publish_order.html">确认</a>
-            <a class="md-close btn btn-default">取消</a>
-        </div>
-    </div>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
@@ -267,28 +227,30 @@
 <script src="static/niftyModal/js/css-filters-polyfill.js"></script>
 <!--自己的js-->
 <script>
-    var times=["8:00:00","8:30:00","9:00:00","9:30:00","10:00:00","10:30:00","11:00:00","11:30:00","12:00:00",
-        "12:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00","15:30:00","16:00:00","16:30:00","17:00:00",
-        "17:30:00","18:00:00","18:30:00","19:00:00","19:30:00","20:00:00"];
-    var time=[];
-    $("#published table tbody tr").each(function(){
-        time.push($(this).children().eq(0).text());
-    });
-    alert(time);
-    var flag;
-    for(var i=0;i<times.length;i++){
-        flag=0;
-        for(var j=0;j<time.length;j++){
-            if(times[i]==time[j]){
-                flag=1;
-                break;
+    $(function(){
+        var times=["8:00:00","8:30:00","9:00:00","9:30:00","10:00:00","10:30:00","11:00:00","11:30:00","12:00:00",
+            "12:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00","15:30:00","16:00:00","16:30:00","17:00:00",
+            "17:30:00","18:00:00","18:30:00","19:00:00","19:30:00","20:00:00"];
+        var time=[];
+        $("#published table tbody tr").each(function(){
+            time.push($(this).children().eq(0).text());
+        });
+        var flag;
+        for(var i=0;i<times.length;i++){
+            flag=0;
+            for(var j=0;j<time.length;j++){
+                if(times[i]==time[j]){
+                    flag=1;
+                    break;
+                }
             }
-        }
-        if(flag==0){
-            $("#publish_table").append("<tr><td>"+times[i]+"</td><td><input type='text' class='form-control input'> </td><td><div class='checkbox'><label><input type='checkbox' name='publish_items'></label></div></td></tr>")
-        }
+            if(flag==0){
+                $("#publish_table").append("<tr><td>"+times[i]+"</td><td><input type='text' class='form-control input'> </td><td><div class='checkbox'><label><input type='checkbox' name='publish_items' value='<s:property value='usersEntity.workplace'/>'></label></div></td></tr>")
+            }
 
-    }
+        }
+    });
+
     $(document).ready(function(){
         $("#request_table").css("max-height",$(window).height()*0.6);
 

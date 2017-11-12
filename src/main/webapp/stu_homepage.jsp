@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: 11873
@@ -46,106 +47,110 @@
         </div>
     </div>
 </div>
-<div class="md-modal md-effect-2" id="modal-2">
-    <div class="md-content">
-        <h3>Modal Dialog</h3>
-        <div>
-            <p>This is a modal window. You can do the following things with it:</p>
-            <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
-                    read what they say.
-                </li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
-                    appreciate its presence.
-                </li>
-                <li><strong>Close:</strong> click on the button below to close the modal.</li>
-            </ul>
-            <button class="md-close btn btn-default">确认</button>
+<s:iterator value="confirmedList">
+    <div class="md-modal md-effect-1" id="modal-<s:property value='sreservationEntity.sorder'/>">
+        <div class="md-content">
+            <h3>已接受预约</h3>
+            <div>
+                <ul>
+                    <ul>
+                        <li><strong>日期:</strong> <s:property value="treservationEntity.date"/> </li>
+                        <li><strong>时间:</strong> <s:property value="treservationEntity.time"/></li>
+                        <li><strong>地点:</strong> <s:property value="treservationEntity.place"/></li>
+                        <li><strong>主题:</strong> <s:property value="sreservationEntity.theme"/></li>
+                        <li><strong>教师:</strong> <s:property value="usersEntity.name"/></li>
+                        <li><strong>教师联系方式:</strong> <s:property value="usersEntity.contact"/></li>
+                        <li><strong>教师学院:</strong> <s:property value="usersEntity.college"/></li>
+                        <li><strong>教师邮箱:</strong> <s:property value="usersEntity.email"/></li>
+                    </ul>
+                </ul>
+                <button class="md-close btn btn-default">确认</button>
+            </div>
         </div>
     </div>
-</div>
-<div class="md-modal md-effect-1" id="modal-3">
-    <div class="md-content">
-        <h3>Modal Dialog</h3>
-        <div>
-            <p>This is a modal window. You can do the following things with it:</p>
-            <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
-                    read what they say.
-                </li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
-                    appreciate its presence.
-                </li>
-                <li><strong>Close:</strong> click on the button below to close the modal.</li>
-            </ul>
-            <button class="md-close btn btn-default">确认</button>
+</s:iterator>
+<s:iterator value="unconfirmedList">
+    <div class="md-modal md-effect-1" id="modal-<s:property value='sreservationEntity.sorder'/>">
+        <div class="md-content">
+            <h3>已接受预约</h3>
+            <div>
+                <ul>
+                    <ul>
+                        <li><strong>日期:</strong> <s:property value="treservationEntity.date"/> </li>
+                        <li><strong>时间:</strong> <s:property value="treservationEntity.time"/></li>
+                        <li><strong>地点:</strong> <s:property value="treservationEntity.place"/></li>
+                        <li><strong>主题:</strong> <s:property value="sreservationEntity.theme"/></li>
+                        <li><strong>教师:</strong> <s:property value="usersEntity.name"/></li>
+                        <li><strong>教师联系方式:</strong> <s:property value="usersEntity.contact"/></li>
+                        <li><strong>教师学院:</strong> <s:property value="usersEntity.college"/></li>
+                        <li><strong>教师邮箱:</strong> <s:property value="usersEntity.email"/></li>
+                    </ul>
+                </ul>
+                <button class="md-close btn btn-default">确认</button>
+            </div>
         </div>
     </div>
-</div>
-<div class="md-modal md-effect-1" id="modal-4">
-    <div class="md-content">
-        <h3>Modal Dialog</h3>
-        <div>
-            <p>This is a modal window. You can do the following things with it:</p>
-            <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
-                    read what they say.
-                </li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
-                    appreciate its presence.
-                </li>
-                <li><strong>Close:</strong> click on the button below to close the modal.</li>
-            </ul>
-            <button class="md-close btn btn-default">确认</button>
+</s:iterator>
+<s:iterator value="refusedList">
+    <div class="md-modal md-effect-1" id="modal-<s:property value='sreservationEntity.sorder'/>">
+        <div class="md-content">
+            <h3>已接受预约</h3>
+            <div>
+                <ul>
+                    <ul>
+                        <li><strong>日期:</strong> <s:property value="treservationEntity.date"/> </li>
+                        <li><strong>时间:</strong> <s:property value="treservationEntity.time"/></li>
+                        <li><strong>地点:</strong> <s:property value="treservationEntity.place"/></li>
+                        <li><strong>主题:</strong> <s:property value="sreservationEntity.theme"/></li>
+                        <li><strong>教师:</strong> <s:property value="usersEntity.name"/></li>
+                        <li><strong>教师联系方式:</strong> <s:property value="usersEntity.contact"/></li>
+                        <li><strong>教师学院:</strong> <s:property value="usersEntity.college"/></li>
+                        <li><strong>教师邮箱:</strong> <s:property value="usersEntity.email"/></li>
+                    </ul>
+                </ul>
+                <button class="md-close btn btn-default">确认</button>
+            </div>
         </div>
     </div>
-</div>
-<div class="md-modal md-effect-1" id="modal-5">
-    <div class="md-content">
-        <h3>Modal Dialog</h3>
-        <div>
-            <p>This is a modal window. You can do the following things with it:</p>
-            <ul>
-                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to
-                    read what they say.
-                </li>
-                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
-                    appreciate its presence.
-                </li>
-                <li><strong>Close:</strong> click on the button below to close the modal.</li>
-            </ul>
-            <button class="md-close btn btn-default">确认</button>
-        </div>
-    </div>
-</div>
+</s:iterator>
 <!--弹出框结束-->
 <div class="container">
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
-            <span>你好，张三</span><br/>
-            <span>1150310604</span><br/>
-            <span>女</span><br/>
-            <span>计算机科学与技术学院</span><br/>
-            <span>1171163631@qq.com</span><br/>
-            <span>155044661873</span><br/>
-            <a class="pull-right" href="modify.html">编辑</a>
+            <span>你好，<s:property value="usersEntity.name"/></span><br/>
+            <span><s:property value="usersEntity.id"/></span><br/>
+            <s:if test="sex==0">
+                <span>女</span>
+            </s:if>
+            <s:else>
+                <span>男</span>
+            </s:else>
+            <br/>
+            <span><s:property value="usersEntity.college"/></span><br/>
+            <span><s:property value="usersEntity.email"/></span><br/>
+            <span><s:property value="usersEntity.contact"/> </span><br/>
+            <a class="pull-right" href="EditAction?id=<s:property value='usersEntity.id'/>">编辑</a>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
-            <a class="btn btn-success pull-right" href="publish_order.html">发布预约</a><br/><br/>
+            <div class="col-lg-4 col-lg-offset-3 input-group">
+                <input type="input" class="form-control input-lg" id="search_name"/>
+                <span class="input-group-btn">
+                <a class="btn btn-default" id="search">确认</a>
+            </span>
+            </div>                <br/><br/>
             <div class="col-lg-9 col-lg-offset-1 modal-content" id="news">
 
             </div>
-            <div id="2">
+            <div id="requested">
                 <table class="table table-striped table-hover">
-                    <caption class="text-center">已经预约</caption>
+                    <caption class="text-center">已请求预约</caption>
                     <thead style="display:block;border-bottom:1px solid #eee;">
                     <tr>
                         <th>日期</th>
                         <th>时间段</th>
-                        <th>学生</th>
-                        <th>状态</th>
+                        <th>教师</th>
                         <th>地点</th>
                         <th>主题</th>
                         <th>操作</th>
@@ -153,16 +158,15 @@
                     </tr>
                     </thead>
                     <tbody style="display:block; max-height:200px;overflow-y: scroll;">
+
                     <tr>
                         <td>2002-01-12</td>
                         <td>13:00-13:30</td>
-                        <td><a href="self_page.html" target="_blank">张三</a></td>
-                        <td>已接受</td>
+                        <td>张三</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
                         <td>
-                            <button class="btn btn-default">接受</button>
-                            <button class="btn btn-default">拒绝</button>
+                            <button class="btn btn-default">请求取消预约</button>
                         </td>
                         <td>
                             <button class="md-trigger btn btn-default" data-modal="modal-1">详情</button>
@@ -172,12 +176,10 @@
                         <td>2002-01-12</td>
                         <td>13:00-13:30</td>
                         <td>张三</td>
-                        <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
                         <td>
-                            <button class="btn btn-default">接受</button>
-                            <button class="btn btn-default">拒绝</button>
+                            未接受
                         </td>
                         <td>
                             <button class="md-trigger btn btn-default" data-modal="modal-2">详情</button>
@@ -187,68 +189,67 @@
                         <td>2002-01-12</td>
                         <td>13:00-13:30</td>
                         <td>张三</td>
-                        <td>已接受</td>
                         <td>综合楼</td>
                         <td>机器学习</td>
                         <td>
-                            <button class="btn btn-default">拒绝</button>
-                            <button class="btn btn-default">拒绝</button>
+                            已拒绝
                         </td>
                         <td>
-                            <button class="md-trigger btn btn-default" data-modal="modal-3">详情</button>
+                            <button class="md-trigger btn btn-default" data-modal="modal-2">详情</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>已接受</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                        <td>
-                            <button class="btn btn-default">接受</button>
-                            <button class="btn btn-default">拒绝</button>
-                        </td>
-                        <td>
-                            <button class="md-trigger btn btn-default" data-modal="modal-4">详情</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>已接受</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                        <td>
-                            <button class="btn btn-default">拒绝</button>
-                            <button class="btn btn-default">拒绝</button>
-                        </td>
-                        <td>
-                            <button class="md-trigger btn btn-default" data-modal="modal-5">详情</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>已接受</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                        <td>
-                            <button class="btn btn-default">接受</button>
-                            <button class="btn btn-default">拒绝</button>
-                        </td>
-                        <td>
-                            <button class="md-trigger btn btn-default" data-modal="modal-6">详情</button>
-                        </td>
-                    </tr>
+                    <s:iterator value="confirmedList">
+                        <tr>
+                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
+                            <td><s:property value="treservationEntity.time"/></td>
+                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><s:property value="treservationEntity.place"/> </td>
+                            <td><s:property value="sreservationEntity.theme"/> </td>
+                            <td>
+                                <button class="btn btn-default">请求取消预约</button>
+                            </td>
+                            <td>
+                                <button class="md-trigger btn btn-default" data-modal="modal-<s:property value='sreservation.sorder'/>">详情</button>
+                            </td>
+                        </tr>
+                    </s:iterator>
+                    <s:iterator value="unconfirmedList">
+                        <tr>
+                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
+                            <td><s:property value="treservationEntity.time"/></td>
+                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><s:property value="treservationEntity.place"/> </td>
+                            <td><s:property value="sreservationEntity.theme"/> </td>
+                            <td>
+                                未接受
+                            </td>
+                            <td>
+                                <button class="md-trigger btn btn-default" data-modal="modal-<s:property value='sreservation.sorder'/>">详情</button>
+                            </td>
+                        </tr>
+                    </s:iterator>
+                    <s:iterator value="refusedList">
+                        <tr>
+                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
+                            <td><s:property value="treservationEntity.time"/></td>
+                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><s:property value="treservationEntity.place"/> </td>
+                            <td><s:property value="sreservationEntity.theme"/> </td>
+                            <td>
+                                已拒绝
+                            </td>
+                            <td>
+                                <button class="md-trigger btn btn-default" data-modal="modal-<s:property value='sreservation.sorder'/>">详情</button>
+                            </td>
+                        </tr>
+                    </s:iterator>
                     </tbody>
                 </table>
             </div>
+            <div id="published">
             <table class="table table-striped table-hover">
-                <caption align="center">已发布预约</caption>
-                <thead>
+                <caption class="text-center">关注教师一周内发布预约</caption>
+                <thead style="display:block;border-bottom:1px solid #eee;">
                 <tr>
                     <th>日期</th>
                     <th>时间段</th>
@@ -256,7 +257,7 @@
                     <th>地点</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody style="display:block; max-height:200px;overflow-y: scroll;">
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
@@ -277,45 +278,64 @@
                 </tr>
                 </tbody>
             </table>
+            </div>
+            <div id="finished">
             <table class="table table-striped table-hover">
-                <caption align="center">已完成预约</caption>
-                <thead>
+                <caption class="text-center">已完成预约</caption>
+                <thead style="display:block;border-bottom:1px solid #eee;">
                 <tr>
                     <th>日期</th>
                     <th>时间段</th>
                     <th>教师</th>
-                    <th>学生</th>
                     <th>地点</th>
                     <th>主题</th>
+                    <th>评分</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody style="display:block; max-height:200px;overflow-y: scroll;">
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
                     <td>张三</td>
-                    <td>李四</td>
                     <td>综合楼</td>
                     <td>机器学习</td>
+                    <td>未评分</td>
                 </tr>
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
                     <td>张三</td>
-                    <td>李四</td>
                     <td>综合楼</td>
                     <td>机器学习</td>
+                    <td>1</td>
                 </tr>
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td>张三</td>
-                    <td>李四</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                </tr>
+                <s:iterator value="judgedList">
+                    <tr>
+                        <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                        <td><s:property value="treservationEntity.time"/></td>
+                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                        <td><s:property value="treservationEntity.place"/> </td>
+                        <td><s:property value="sreservationEntity.theme"/> </td>
+                        <td><div class="br-wrapper br-theme-fontawesome-stars">
+                            <select class="example">
+                                <option value="1" data-html="未到">1</option>
+                            </select>
+                        </div> </td>
+                    </tr>
+                </s:iterator>
+                <s:iterator value="unjudgedList">
+                    <tr>
+                        <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                        <td><s:property value="treservationEntity.time"/></td>
+                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                        <td><s:property value="treservationEntity.place"/> </td>
+                        <td><s:property value="sreservationEntity.theme"/> </td>
+                        <td>未评分</td>
+                    </tr>
+                </s:iterator>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>
@@ -333,26 +353,89 @@
 <script src="static/niftyModal/js/css-filters-polyfill.js"></script>
 <!--自己的js-->
 <script>
+    $(function(){
+        var names=[];
+        $("#search_name").keyup(function(){
+            if($("#search_name").val()!=''){
+                $("#load_img").removeClass("hidden");
+                $.post("SearchAction",{
+                    name:$("#search_name").val()
+                },function(data,textStatus){
+                    for(var i in data.usersEntity){
+                        names.push(name);
+                    }
+                    $("#load_img").addClass("hidden");
+                })
+            }
+            else{
+                $("#load_img").addClass("hidden")
+            }
+        });
+        $("#search_name").autocomplete(names,{
+            max:12,
+            minChars:0,
+            width:400,
+            scrollHeight:300,
+            matchContains:true,
+            autoFill:false,
+            formateItem:function(row,i,max){
+                return row.name+":"+row.college;
+            },
+            formateMatch:function(row,i,max){
+                return row.name;
+            },
+            formateResult:function(row,i,max){
+                return row;
+            }
+        }).result(function(row,i,n){
+            location.href = "RequestAction?id="+row.id;
+        });
+    });
     $(document).ready(function () {
-        var _width = $('#2').width();
-        var table_th = $("#2 th");
-        var table_td = $("#2 td");
-        table_th.eq(0).width(_width * 0.15);
-        table_td.eq(0).width(_width * 0.15);
-        table_th.eq(1).width(_width * 0.15);
-        table_td.eq(1).width(_width * 0.15);
-        table_th.eq(2).width(_width * 0.05);
-        table_td.eq(2).width(_width * 0.05);
-        table_th.eq(3).width(_width * 0.08);
-        table_td.eq(3).width(_width * 0.08);
-        table_th.eq(4).width(_width * 0.1);
-        table_td.eq(4).width(_width * 0.1);
-        table_th.eq(5).width(_width * 0.25);
-        table_td.eq(5).width(_width * 0.25);
-        table_th.eq(6).width(_width * 0.12);
-        table_td.eq(6).width(_width * 0.12);
-        table_th.eq(7).width(_width * 0.05);
-        table_td.eq(7).width(_width * 0.05);
+        var _width = $('#requested').width();
+        var req_table_th = $("#requested th");
+        var req_table_td = $("#requested td");
+        req_table_th.eq(0).width(_width * 0.15);
+        req_table_td.eq(0).width(_width * 0.15);
+        req_table_th.eq(1).width(_width * 0.15);
+        req_table_td.eq(1).width(_width * 0.15);
+        req_table_th.eq(2).width(_width * 0.05);
+        req_table_td.eq(2).width(_width * 0.05);
+        req_table_th.eq(3).width(_width * 0.08);
+        req_table_td.eq(3).width(_width * 0.08);
+        req_table_th.eq(4).width(_width * 0.25);
+        req_table_td.eq(4).width(_width * 0.25);
+        req_table_th.eq(5).width(_width * 0.1);
+        req_table_td.eq(5).width(_width * 0.1);
+        req_table_th.eq(6).width(_width * 0.12);
+        req_table_td.eq(6).width(_width * 0.12);
+        
+        var pub_table_th=$("#published th");
+        var pub_table_td=$("#published td");
+        pub_table_td.eq(0).width(_width*0.25);
+        pub_table_th.eq(0).width(_width*0.25);
+        pub_table_td.eq(1).width(_width*0.25);
+        pub_table_th.eq(1).width(_width*0.25);
+        pub_table_td.eq(2).width(_width*0.25);
+        pub_table_th.eq(2).width(_width*0.25);
+        pub_table_td.eq(3).width(_width*0.25);
+        pub_table_th.eq(3).width(_width*0.25);
+
+        var fin_table_th=$("#finished th");
+        var fin_table_td=$("#finished td");
+        fin_table_td.eq(0).width(_width*0.2);
+        fin_table_th.eq(0).width(_width*0.2);
+        fin_table_td.eq(1).width(_width*0.2);
+        fin_table_th.eq(1).width(_width*0.2);
+        fin_table_td.eq(2).width(_width*0.1);
+        fin_table_th.eq(2).width(_width*0.1);
+        fin_table_td.eq(3).width(_width*0.1);
+        fin_table_th.eq(3).width(_width*0.1);
+        fin_table_td.eq(4).width(_width*0.25);
+        fin_table_th.eq(4).width(_width*0.25);
+        fin_table_td.eq(5).width(_width*0.1);
+        fin_table_th.eq(5).width(_width*0.1);
+
     })
 </script>
 </body>

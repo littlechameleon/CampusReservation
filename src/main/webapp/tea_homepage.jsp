@@ -126,10 +126,10 @@
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
                         <td><s:property value="treservationEntity.time"/></td>
-                        <td><s:property value="usersEntity.name"/></td>
+                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                         <td>未接受</td>
                         <td><s:property value="treservationEntity.place"/></td>
-                        <td><s:property value="treservationEntity.place"/></td>
+                        <td><s:property value="sreservationEntity.theme"/></td>
                         <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
                         <td><button class="md-trigger btn btn-default" data-modal="modal-<s:property value='sreservationEntity.sorder'/>">详情</button></td>
                     </tr>
@@ -165,7 +165,7 @@
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="treservationEntity.time"/></td>
-                        <td><a href="" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                         <td>已接受</td>
                         <td><s:property value="treservationEntity.place"/> </td>
                         <td><s:property value="sreservationEntity.theme"/> </td>
@@ -199,7 +199,7 @@
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="treservationEntity.time"/> </td>
-                        <td><a href="#" target="_blank"><s:property value="usersEntity.name"/> </a></td>
+                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                         <td><s:property value="treservationEntity.place"/> </td>
                         <td><a class="btn btn-default">取消预约</a></td>
                     </tr>
@@ -240,7 +240,7 @@
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="#" target="_blank"><s:property value="usersEntity.name"/> </a></td>
+                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
                             <td><div class="br-wrapper br-theme-fontawesomeff-stars">
@@ -257,15 +257,12 @@
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="#" target="_blank"><s:property value="usersEntity.name"/> </a></td>
+                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/> </td>
-                            <td><s:property value="treservationEntity.place"/> </td>
+                            <td><s:property value="sreservationEntity.theme"/> </td>
                             <td><div class="br-wrapper br-theme-fontawesome-stars">
                                 <select class="example">
                                     <option value="1" data-html="未到">1</option>
-                                    <option value="2" data-html="迟到">2</option>
-                                    <option value="3" data-html="准时">3</option>
-                                    <option value="4" data-html="提前">4</option>
                                 </select>
                             </div> </td>
                         </tr>
