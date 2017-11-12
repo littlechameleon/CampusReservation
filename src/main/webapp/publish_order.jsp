@@ -58,7 +58,7 @@
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
             <span>你好，<s:property value="usersEntity.name"/></span><br/>
-            <span><s:property value="usersEntity.id"/></span><br/>
+            <span id="myId"><s:property value="usersEntity.id"/></span><br/>
             <s:if test="sex==0">
                 <span>女</span>
             </s:if>
@@ -75,7 +75,7 @@
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
             <div class="col-lg-4 col-lg-offset-3 input-group">
-                <input type="date" class="form-control input-lg" value="<s:date format="yyyy-MM-dd" name='date'/>"/><span class="input-group-btn">
+                <input type="date" class="form-control input-lg" value="<s:date format="yyyy-MM-dd" name='date'/>" id="date"/><span class="input-group-btn">
                 <a class="btn btn-default" id="date_button">确认</a>
             </span>
             </div>
@@ -294,8 +294,10 @@
         });
     });
     $("#confirm_submit").click(function(){
-        $.post("#",{
-            order:order
+        $.post("ReleaseAction",{
+            releaseList:order,
+            date:$("#date").val(),
+            id:$("#myId").html()
         },window.location.reload())
     });
 

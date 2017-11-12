@@ -93,7 +93,6 @@
     <column id="29" parent="13" name="Sorder">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <key id="30" parent="13" name="PRIMARY">
