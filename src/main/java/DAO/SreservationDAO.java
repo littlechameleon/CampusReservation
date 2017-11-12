@@ -16,21 +16,19 @@ public class SreservationDAO {
 
     }
 
-    public void create(SreservationEntity Sreservation, int Torder) throws RuntimeException{    //新增请求预约信息
+    public void create(SreservationEntity sreservationEntity) throws RuntimeException{    //新增请求预约信息
         Session session = SessionCon.currentSession();
         TreservationDAO treservationDAO = new TreservationDAO();
-        TreservationEntity treservationEntity = treservationDAO.get(Torder);
+        TreservationEntity treservationEntity = treservationDAO.get(sreservationEntity.getTorder());
         try {
             tx = session.beginTransaction();
-            Sreservation.setSstate(0);
-            Sreservation.setTorder(Torder);
-            Sreservation.setTeacherId(treservationEntity.getTeacherId());
-            session.save(Sreservation);
+            sreservationEntity.setSstate(0);
+            session.save(sreservationEntity);
             session.flush();
             tx.commit();
                                             //不确定flush是否可以得到自增id
             tx = session.beginTransaction();
-            treservationEntity.setSorder(Sreservation.getSorder());
+            treservationEntity.setSorder(sreservationEntity.getSorder());
             if(treservationEntity.getTstate() == 4){
                 treservationEntity.setTstate(0);
             }
@@ -71,8 +69,7 @@ public class SreservationDAO {
             else {
                 hql = "from SreservationEntity where studentId='" + id + "'";
             }
-            list = session.createQuery(hql).list();
-            return  list;
+            return session.createQuery(hql).list();
         }catch (Exception e){
             e.printStackTrace();
         }finally {

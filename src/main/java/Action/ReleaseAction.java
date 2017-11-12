@@ -6,16 +6,18 @@ import DAO.UsersDAO;
 import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
-
+import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ReleaseAction extends ActionSupport {
-    private String id;
-    private Date date;
-    private List list;
+    private Date date;                      //双向传
+
+    private String id;                      //单向传入
+    private List<String[]> releaseList;
+
+    private List list;                      //单向传出
     private ArrayList arrayList;
     private UsersEntity usersEntity;
     public String execute() throws Exception {
@@ -25,15 +27,14 @@ public class ReleaseAction extends ActionSupport {
         usersEntity = usersDAO.get(id);
         list = treservationDAO.getOneday(date, usersEntity.getId(),4);
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
-
-        Time time = Time.valueOf("12:00:00");
-        String place = "sasdf";
-        TreservationEntity treservationEntity = new TreservationEntity();
-        treservationEntity.setTime(time);
-        treservationEntity.setPlace(place);
-        //treservationEntity.setDate(date);
-        treservationEntity.setTeacherId(usersEntity.getId());
-        treservationDAO.create(treservationEntity);
+        for (String []strings : releaseList){
+            TreservationEntity treservationEntity = new TreservationEntity();
+            treservationEntity.setTime(Time.valueOf(strings[0]));
+            treservationEntity.setPlace(strings[1]);
+            treservationEntity.setDate(date);
+            treservationEntity.setTeacherId(usersEntity.getId());
+            treservationDAO.create(treservationEntity);
+        }
 
         return SUCCESS;
     }
@@ -60,5 +61,9 @@ public class ReleaseAction extends ActionSupport {
 
     public UsersEntity getUsersEntity() {
         return usersEntity;
+    }
+
+    public void setReleaseList(List releaseList) {
+        this.releaseList = releaseList;
     }
 }
