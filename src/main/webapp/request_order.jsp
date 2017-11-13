@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: giligiliai
@@ -40,28 +41,38 @@
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
-            <span>张三</span><br/>
-            <span>1150310604</span><br/>
-            <span>女</span><br/>
-            <span>计算机科学与技术学院</span><br/>
-            <span>1171163631@qq.com</span><br/>
-            <span>155044661873</span><br/>
-            <p>个人简介:</p>
-            <span>力支持舰队开发地方看到看到房价肯定</span><br/><br/>
+            <span>你好，<s:property value="usersEntity.name"/></span><br/>
+            <span><s:property value="usersEntity.id"/></span><br/>
+            <s:if test="sex==0">
+                <span>女</span>
+            </s:if>
+            <s:else>
+                <span>男</span>
+            </s:else>
+            <br/>
+            <span><s:property value="usersEntity.college"/></span><br/>
+            <span><s:property value="usersEntity.email"/></span><br/>
+            <span><s:property value="usersEntity.contact"/> </span><br/>
             <p id="follow">关注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
                     class="glyphicon glyphicon-star-empty"></span></p>
             <p id="followed">取消关注 <span class="glyphicon glyphicon-star"></span></p>
         </div>
+
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
-            <div class="col-lg-4 col-lg-offset-3 input-group">
-                <input type="date" class="form-control input-lg" placeholder="请选择时间"/><span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="date_button">确认</button>
-            </span>
-            </div>
+            <form action="RequestAction" method="post">
+                <div class="col-lg-4 col-lg-offset-3 input-group">
+                    <input type="date" class="form-control input-lg" value="<s:date format='yyyy-MM-dd' name='date'/>" id="date" name="date"/>
+                    <input type="text" class="hidden" value="<s:property value='usersEntity.id'/>" name="teacherId">
+                    <input type="text" class="hidden" value="<s:property value='id'/>" name="id">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="date_button" type="submit">确认</button>
+                    </span>
+                </div>
+            </form>
             <div id="2">
                 <table class="table table-striped table-hover">
-                    <caption class="text-center">2017-9-9</caption>
+                    <caption class="text-center"><s:date format="yyyy-MM-dd" name='date'/></caption>
                     <thead style="display:block;border-bottom:1px solid #eee;">
                     <tr>
                         <th>时间段</th>
@@ -91,118 +102,26 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>8:30-9:00</td>
-                        <td>未预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td><a class="btn btn-default md-trigger" data-toggle="modal-2">取消预约</a></td>
-                        <td>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>9:00-9:30</td>
-                        <td>未预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td><a class="btn btn-default">取消预约</a></td>
-                        <td>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>9:30-10:00</td>
-                        <td>未预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td><a class="btn btn-default">取消预约</a></td>
-                        <td>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10:00-10:30</td>
-                        <td>未预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td><a class="btn btn-default">取消预约</a></td>
-                        <td>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10:30-11:00</td>
-                        <td>未预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td><a class="btn btn-default">取消预约</a></td>
-                        <td>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11:00-11:30</td>
-                        <td>未预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td><a class="btn btn-default">取消预约</a></td>
-                        <td>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11:30-12:00</td>
-                        <td>未预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td><a class="btn btn-default">取消预约</a></td>
-                        <td>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
+                    <s:iterator value="arrayList">
+                        <s:if test="treservationEntity.tstate==4">
+                            <tr>
+                                <td><s:property value="treservationEntity.time"/> </td>
+                                <td>未预约</td>
+                                <td><s:property value="treservationEntity.place"/> </td>
+                                <td><s:property value="usersEntity.name"/> </td>
+                                <td><s:property value="usersEntity.contact"/> </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </s:if>
+                    </s:iterator>
                     </tbody>
                 </table>
                 <button class="btn btn-lg btn-primary pull-right">请求预约</button>

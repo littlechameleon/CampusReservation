@@ -30,6 +30,7 @@
     <!--临时css设置-->
 </head>
 <body>
+<%--modal--%>
 <div class="md-modal md-effect-1" id="modal-0">
     <div class="md-content">
         <h3>确认发布预约</h3>
@@ -43,16 +44,7 @@
         </div>
     </div>
 </div>
-<div class="md-modal md-effect-1" id="modal-1">
-    <div class="md-content">
-        <h3>确认取消预约</h3>
-        <div class="text-center">
-            <p>确认取消8:00-8:30预约？</p>
-            <a class="btn btn-default" href="publish_order.html">确认</a>
-            <a class="md-close btn btn-default">取消</a>
-        </div>
-    </div>
-</div>
+<%--end modal--%>
 <div class="container">
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
@@ -110,17 +102,6 @@
                                 <td>无</td>
                             </tr>
                         </s:if>
-                        <s:elseif test="treservationEntity.tstate==0">
-                            <tr>
-                                <td><s:property value="treservationEntity.time"/></td>
-                                <td>预约中</td>
-                                <td><s:property value="treservationEntity.place"/></td>
-                                <td><s:property value="usersEntity.name"/></td>
-                                <td><s:property value="usersEneity.contact"/></td>
-                                <td><s:property value="sreservationEntity.theme"/></td>
-                                <td><a class="btn btn-default">同意</a><a class="btn btn-default">拒绝</a></td>
-                            </tr>
-                        </s:elseif>
                         <s:elseif test="treservationEntity.tstate==2">
                             <tr>
                                 <td><s:property value="treservationEntity.time"/></td>
@@ -150,17 +131,6 @@
                                 <td>评分为：3 </td>
                             </tr>
                         </s:elseif>
-                        <s:else>
-                            <tr>
-                                <td><s:property value="treservationEntity.time"/></td>
-                                <td>预约中???</td>
-                                <td><s:property value="treservationEntity.place"/></td>
-                                <td><s:property value="usersEntity.name"/></td>
-                                <td><s:property value="usersEneity.contact"/></td>
-                                <td><s:property value="sreservationEntity.theme"/></td>
-                                <td><a class="btn btn-default">同意</a><a class="btn btn-default">拒绝</a></td>
-                            </tr>
-                        </s:else>
                     </s:iterator>
                     <s:iterator value="list">
                         <tr>
@@ -170,18 +140,9 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><a class="btn btn-default">取消预约</a> </td>
+                            <td><a class="btn btn-default">取消预约</a></td>
                         </tr>
                     </s:iterator>
-                    <tr>
-                        <td>8:30:00</td>
-                        <td>已预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -198,6 +159,7 @@
                     <tbody style="display:block;overflow-y: scroll;max-height: 500px" id="publish_table">
                     </tbody>
                 </table>
+                <a class="btn btn-lg btn-primary pull-left" href="ReturnHomepage?id=<s:property value='usersEntity.id'/> "><span class="glyphicon glyphicon-arrow-left"></span> 返回主页</a>
                 <button class="btn btn-lg btn-primary pull-right md-trigger" data-modal="modal-0" id="publish">发布预约</button>
             </div>
         </div>

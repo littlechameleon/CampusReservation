@@ -28,7 +28,7 @@ public class RequestAction extends ActionSupport {
         TreservationDAO treservationDAO = new TreservationDAO();
         SreservationDAO sreservationDAO = new SreservationDAO();
         usersEntity = usersDAO.get(teacherId);
-        list = treservationDAO.getOneday(date, usersEntity.getId(),4);
+        list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
 
         SreservationEntity sreservationEntity = new SreservationEntity();

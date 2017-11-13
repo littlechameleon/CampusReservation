@@ -91,6 +91,7 @@
             <span><s:property value="usersEntity.college"/></span><br/>
             <span><s:property value="usersEntity.email"/></span><br/>
             <span><s:property value="usersEntity.contact"/> </span><br/>
+            <a class="pull-left" href="LogoutAction?id=<s:property value='usersEntity.id'/>">退出登录</a>
             <a class="pull-right" href="EditAction?id=<s:property value='usersEntity.id'/>">编辑</a>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
