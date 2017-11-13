@@ -70,15 +70,19 @@
             <span><s:property value="usersEntity.email"/></span><br/>
             <span><s:property value="usersEntity.contact"/> </span><br/>
             <p>个人简介:</p>
-            <span><s:property value="usersEntity.detail"/> </span><br/><br/>
+            <span><s:property value="usersEntity.detail"/></span><br/><br/>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
-            <div class="col-lg-4 col-lg-offset-3 input-group">
-                <input type="date" class="form-control input-lg" value="<s:date format="yyyy-MM-dd" name='date'/>" id="date"/><span class="input-group-btn">
-                <a class="btn btn-default" id="date_button">确认</a>
-            </span>
-            </div>
+            <form action="ReleaseAction" method="post">
+                <div class="col-lg-4 col-lg-offset-3 input-group">
+                    <input type="date" class="form-control input-lg" value="<s:date format='yyyy-MM-dd' name='date'/>" id="date" name="date"/>
+                    <input type="text" class="hidden" value="<s:property value='usersEntity.id'/>" name="id">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="date_button" type="submit">确认</button>
+                    </span>
+                </div>
+            </form>
             <div id="published">
                 <table class="table table-striped table-hover" >
                     <caption class="text-center"><s:date format="yyyy-MM-dd" name='date'/>已经发布预约</caption>
@@ -95,25 +99,36 @@
                     </thead>
                     <tbody style="display:block;overflow-y: scroll;" id="request_table">
                     <s:iterator value="arrayList">
-                        <s:if test="treservationEntity.Tstate==1">
+                        <s:if test="treservationEntity.tstate==1">
                             <tr>
-                                <td><s:property value="treservationEntity.time"/> </td>
+                                <td><s:property value="treservationEntity.time"/></td>
                                 <td>已预约</td>
-                                <td><s:property value="treservationEntity.place"/> </td>
-                                <td><s:property value="usersEntity.name"/> </td>
-                                <td><s:property value="usersEneity.contact"/> </td>
-                                <td><s:property value="sreservationEntity"/> </td>
+                                <td><s:property value="treservationEntity.place"/></td>
+                                <td><s:property value="usersEntity.name"/></td>
+                                <td><s:property value="usersEneity.contact"/></td>
+                                <td><s:property value="sreservationEntity.theme"/></td>
                                 <td>无</td>
                             </tr>
                         </s:if>
-                        <s:elseif test="treservationEntity.Tstate==2">
+                        <s:elseif test="treservationEntity.tstate==0">
                             <tr>
-                                <td><s:property value="treservationEntity.time"/> </td>
+                                <td><s:property value="treservationEntity.time"/></td>
+                                <td>预约中</td>
+                                <td><s:property value="treservationEntity.place"/></td>
+                                <td><s:property value="usersEntity.name"/></td>
+                                <td><s:property value="usersEneity.contact"/></td>
+                                <td><s:property value="sreservationEntity.theme"/></td>
+                                <td><a class="btn btn-default">同意</a><a class="btn btn-default">拒绝</a></td>
+                            </tr>
+                        </s:elseif>
+                        <s:elseif test="treservationEntity.tstate==2">
+                            <tr>
+                                <td><s:property value="treservationEntity.time"/></td>
                                 <td>未评分</td>
-                                <td><s:property value="treservationEntity.place"/> </td>
-                                <td><s:property value="usersEntity.name"/> </td>
-                                <td><s:property value="usersEneity.contact"/> </td>
-                                <td><s:property value="sreservationEntity"/> </td>
+                                <td><s:property value="treservationEntity.place"/></td>
+                                <td><s:property value="usersEntity.name"/></td>
+                                <td><s:property value="usersEneity.contact"/></td>
+                                <td><s:property value="sreservationEntity.theme"/></td>
                                 <td><div class="br-wrapper br-theme-fontawesome-stars">
                                     <select class="example">
                                         <option value="1" data-html="未到">1</option>
@@ -124,59 +139,43 @@
                                 </div></td>
                             </tr>
                         </s:elseif>
-                        <s:elseif test="treservationEntity.Tstate==3">
+                        <s:elseif test="treservationEntity.tstate==3">
                             <tr>
-                                <td><s:property value="treservationEntity.time"/> </td>
-                                <td>未评分</td>
-                                <td><s:property value="treservationEntity.place"/> </td>
-                                <td><s:property value="usersEntity.name"/> </td>
-                                <td><s:property value="usersEneity.contact"/> </td>
-                                <td><s:property value="sreservationEntity"/> </td>
+                                <td><s:property value="treservationEntity.time"/></td>
+                                <td>已评分</td>
+                                <td><s:property value="treservationEntity.place"/></td>
+                                <td><s:property value="usersEntity.name"/></td>
+                                <td><s:property value="usersEneity.contact"/></td>
+                                <td><s:property value="sreservationEntity.theme"/></td>
                                 <td>评分为：3 </td>
                             </tr>
                         </s:elseif>
-                        <s:elseif test="treservationEntity.Tstate==4">
+                        <s:else>
                             <tr>
-                                <td><s:property value="treservationEntity.time"/> </td>
-                                <td>未评分</td>
-                                <td><s:property value="treservationEntity.place"/> </td>
-                                <td><s:property value="usersEntity.name"/> </td>
-                                <td><s:property value="usersEneity.contact"/> </td>
-                                <td><s:property value="sreservationEntity"/> </td>
-                                <td><a class="btn btn-default">取消预约</a> </td>
+                                <td><s:property value="treservationEntity.time"/></td>
+                                <td>预约中???</td>
+                                <td><s:property value="treservationEntity.place"/></td>
+                                <td><s:property value="usersEntity.name"/></td>
+                                <td><s:property value="usersEneity.contact"/></td>
+                                <td><s:property value="sreservationEntity.theme"/></td>
+                                <td><a class="btn btn-default">同意</a><a class="btn btn-default">拒绝</a></td>
                             </tr>
-                        </s:elseif>
+                        </s:else>
+                    </s:iterator>
+                    <s:iterator value="list">
+                        <tr>
+                            <td><s:property value="time"/></td>
+                            <td>无人预约 </td>
+                            <td><s:property value="place"/></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a class="btn btn-default">取消预约</a> </td>
+                        </tr>
                     </s:iterator>
                     <tr>
                         <td>8:30:00</td>
                         <td>已预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>9:30:00</td>
-                        <td>已预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>10:30:00</td>
-                        <td>已预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>9:00:00</td>
-                        <td>已完成</td>
                         <td>综合楼</td>
                         <td>李志琛</td>
                         <td>18845897065</td>
@@ -197,15 +196,6 @@
                     </tr>
                     </thead>
                     <tbody style="display:block;overflow-y: scroll;max-height: 500px" id="publish_table">
-                    <tr>
-                        <td>19:30-20:00</td>
-                        <td><input type="text" class="form-control input"> </td>
-                        <td><div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="publish_items">
-                            </label>
-                        </div></td>
-                    </tr>
                     </tbody>
                 </table>
                 <button class="btn btn-lg btn-primary pull-right md-trigger" data-modal="modal-0" id="publish">发布预约</button>
@@ -250,13 +240,6 @@
 
         }
     });
-    $(function(){
-        $("#date_button").click(function(){
-            $.ajax({
-                url:
-            })
-        })
-    });
     $(document).ready(function(){
         $("#request_table").css("max-height",$(window).height()*0.6);
 
@@ -294,13 +277,14 @@
         $('tr:has([name=publish_items]:checkbox:checked)').each(function(){
             var time=$(this).children().eq(0).html();
             var place=$(this).children().eq(1).children().val();
-            order.push([time,place]);
-            var contain="<p>时间为："+time+"地点为："+place+"</p>";
-            $("#publishing").append(contain);
+            if(place!=''){
+                order.push([time,place]);
+                var contain="<p>时间为："+time+"地点为："+place+"</p>";
+                $("#publishing").append(contain);
+            }
         });
     });
     $("#confirm_submit").click(function(){
-        alert(order);
         $.ajax({
             url:"ReleaseAction",
             type:"POST",

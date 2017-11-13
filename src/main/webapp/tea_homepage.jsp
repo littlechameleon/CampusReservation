@@ -112,16 +112,6 @@
                     </tr>
                     </thead>
                     <tbody style="display:block; max-height:200px;overflow-y: scroll;">
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td><a href="self_page.html" target="_blank">张三</a></td>
-                        <td>未接受</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-1">详情</button></td>
-                    </tr>
                     <s:iterator value="unconfirmedList">
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
@@ -152,15 +142,6 @@
                     </tr>
                     </thead>
                     <tbody style="display:block; max-height:200px;overflow-y: scroll;">
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>19:00:00</td>
-                        <td><a href="self_page.html" target="_blank">名字 </a></td>
-                        <td>已接受</td>
-                        <td>综合楼</td>
-                        <td>机器学习</td>
-                        <td><button class="md-trigger btn btn-default" data-modal="modal-1">详情</button></td>
-                    </tr>
                     <s:iterator value="confirmedList">
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
@@ -182,7 +163,6 @@
                     <tr>
                         <th>日期</th>
                         <th>时间段</th>
-                        <th>教师</th>
                         <th>地点</th>
                         <th>取消预约</th>
                     </tr>
@@ -191,16 +171,14 @@
                     <tr>
                         <td>2002-01-12</td>
                         <td>13:00-13:30</td>
-                        <td>张三</td>
                         <td>综合楼</td>
                         <td><a class="btn btn-default">取消预约</a></td>
                     </tr>
                     <s:iterator value="nullList">
                     <tr>
-                        <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
-                        <td><s:property value="treservationEntity.time"/> </td>
-                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
-                        <td><s:property value="treservationEntity.place"/> </td>
+                        <td><s:date name="date" format="yyyy-MM-dd"/></td>
+                        <td><s:property value="time"/> </td>
+                        <td><s:property value="place"/> </td>
                         <td><a class="btn btn-default">取消预约</a></td>
                     </tr>
                     </s:iterator>
@@ -333,10 +311,10 @@
         pub_table_th.eq(0).width(_width*0.2);
         pub_table_td.eq(1).width(_width*0.2);
         pub_table_th.eq(1).width(_width*0.2);
-        pub_table_td.eq(2).width(_width*0.2);
-        pub_table_th.eq(2).width(_width*0.2);
-        pub_table_td.eq(3).width(_width*0.2);
-        pub_table_th.eq(3).width(_width*0.2);
+        pub_table_td.eq(2).width(_width*0.3);
+        pub_table_th.eq(2).width(_width*0.3);
+        pub_table_td.eq(3).width(_width*0.3);
+        pub_table_th.eq(3).width(_width*0.3);
 
         var fin_table_th=$("#finished_table th");
         var fin_table_td=$("#finished_table td");
