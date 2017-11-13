@@ -22,7 +22,7 @@ public class EnterRelease extends ActionSupport {
         TreservationDAO treservationDAO = new TreservationDAO();
         date = new Date();
         usersEntity = usersDAO.get(id);
-        list = treservationDAO.getOneday(date, usersEntity.getId(),4);
+        list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;
     }

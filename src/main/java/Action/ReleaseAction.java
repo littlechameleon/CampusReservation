@@ -25,18 +25,19 @@ public class ReleaseAction extends ActionSupport {
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
         usersEntity = usersDAO.get(id);
-        list = treservationDAO.getOneday(date, usersEntity.getId(),4);
+        list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
-        for (String strings : releaseList){
-            String string[] = strings.split(",");
-            TreservationEntity treservationEntity = new TreservationEntity();
-            treservationEntity.setTime(Time.valueOf(string[0]));
-            treservationEntity.setPlace(string[1]);
-            treservationEntity.setDate(date);
-            treservationEntity.setTeacherId(usersEntity.getId());
-            treservationDAO.create(treservationEntity);
+        if(releaseList != null) {
+            for (String strings : releaseList) {
+                String string[] = strings.split(",");
+                TreservationEntity treservationEntity = new TreservationEntity();
+                treservationEntity.setTime(Time.valueOf(string[0]));
+                treservationEntity.setPlace(string[1]);
+                treservationEntity.setDate(date);
+                treservationEntity.setTeacherId(usersEntity.getId());
+                treservationDAO.create(treservationEntity);
+            }
         }
-
         return SUCCESS;
     }
 
