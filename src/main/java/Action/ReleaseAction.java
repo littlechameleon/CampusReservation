@@ -15,7 +15,7 @@ public class ReleaseAction extends ActionSupport {
     private Date date;                      //双向传
 
     private String id;                      //单向传入
-    private List<String[]> releaseList;
+    private String[] releaseList;
 
     private List list;                      //单向传出
     private ArrayList arrayList;
@@ -27,10 +27,11 @@ public class ReleaseAction extends ActionSupport {
         usersEntity = usersDAO.get(id);
         list = treservationDAO.getOneday(date, usersEntity.getId(),4);
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
-        for (String []strings : releaseList){
+        for (String strings : releaseList){
+            String string[] = strings.split(",");
             TreservationEntity treservationEntity = new TreservationEntity();
-            treservationEntity.setTime(Time.valueOf(strings[0]));
-            treservationEntity.setPlace(strings[1]);
+            treservationEntity.setTime(Time.valueOf(string[0]));
+            treservationEntity.setPlace(string[1]);
             treservationEntity.setDate(date);
             treservationEntity.setTeacherId(usersEntity.getId());
             treservationDAO.create(treservationEntity);
@@ -63,7 +64,7 @@ public class ReleaseAction extends ActionSupport {
         return usersEntity;
     }
 
-    public void setReleaseList(List releaseList) {
+    public void setReleaseList(String[] releaseList) {
         this.releaseList = releaseList;
     }
 }
