@@ -250,7 +250,13 @@
 
         }
     });
-
+    $(function(){
+        $("#date_button").click(function(){
+            $.ajax({
+                url:
+            })
+        })
+    });
     $(document).ready(function(){
         $("#request_table").css("max-height",$(window).height()*0.6);
 
@@ -294,11 +300,20 @@
         });
     });
     $("#confirm_submit").click(function(){
-        $.post("ReleaseAction",{
-            releaseList:order,
-            date:$("#date").val(),
-            id:$("#myId").html()
-        },window.location.reload())
+        alert(order);
+        $.ajax({
+            url:"ReleaseAction",
+            type:"POST",
+            data:{
+                releaseList:order,
+                date:$("#date").val(),
+                id:$("#myId").html()
+            },
+            traditional: true,
+            success:function(){
+                return window.location.reload()
+            }
+        });
     });
 
 </script>
