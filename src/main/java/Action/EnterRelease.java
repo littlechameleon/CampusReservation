@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 public class EnterRelease extends ActionSupport {
+
     private String id;              //用户自己的id
     private String teacherId;       //学生进入某老师预约界面时才用到
     private Date date;
@@ -21,7 +22,11 @@ public class EnterRelease extends ActionSupport {
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
         date = new java.sql.Date(new Date().getTime());
-        usersEntity = usersDAO.get(id);
+        if(teacherId == null) {
+            usersEntity = usersDAO.get(id);
+        }else{
+            usersEntity = usersDAO.get(teacherId);
+        }
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;
@@ -54,4 +59,9 @@ public class EnterRelease extends ActionSupport {
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
+
+    public String getId() {
+        return id;
+    }
+
 }
