@@ -37,7 +37,7 @@
             <result name="successTea">tea_homepage.jsp</result>
         </action>
         <action name="EnterDetail" class="Action.EnterDetail">
-            <result name="success">self_page</result>
+            <result name="success">self_page.jsp</result>
         </action>
 
         <!--JumpAction-->
