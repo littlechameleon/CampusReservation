@@ -27,16 +27,45 @@
 
 </head>
 <body>
+<%--modal--%>
 <div class="md-modal md-effect-1" id="modal-1">
     <div class="md-content">
-        <h3>确认取消预约</h3>
+        <h3>确认请求预约</h3>
         <div class="text-center">
-            <p>确认请求取消8:00-8:30预约？</p>
-            <a class="btn btn-default" href="request_order.html">确认</a>
+            <p>dfd1</p>
+            <a class="btn btn-default confirm_submit">确认</a>
             <a class="md-close btn btn-default">取消</a>
         </div>
     </div>
 </div>
+<s:iterator value="arrayList">
+    <s:if test="treservationEntity.tstate==4">
+    <div class="md-modal md-effect-1" id="modal-<s:property value='treservation.torder'/>">
+    <div class="md-content">
+        <h3>确认请求预约</h3>
+        <div class="text-center">
+            <p></p>
+            <a class="btn btn-default confirm_submit">确认</a>
+            <a class="md-close btn btn-default">取消</a>
+        </div>
+    </div>
+</div>
+</s:if>
+    <s:elseif test="treservationEntity.tstate==0&&id==usersEntity.id">
+        <div class="md-modal md-effect-1" id="modal-1">
+            <div class="md-content">
+                <h3>确认取消预约</h3>
+                <div class="text-center">
+                    <p></p>
+                    <a class="btn btn-default" href="request_order.html">确认</a>
+                    <a class="md-close btn btn-default">取消</a>
+                </div>
+            </div>
+        </div>
+    </s:elseif>
+</s:iterator>
+
+<%--end modal--%>
 <div class="container">
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
@@ -63,8 +92,8 @@
             <form action="RequestAction" method="post">
                 <div class="col-lg-4 col-lg-offset-3 input-group">
                     <input type="date" class="form-control input-lg" value="<s:date format='yyyy-MM-dd' name='date'/>" id="date" name="date"/>
-                    <input type="text" class="hidden" value="<s:property value='usersEntity.id'/>" name="teacherId">
-                    <input type="text" class="hidden" value="<s:property value='id'/>" name="id">
+                    <input type="text" class="hidden" value="<s:property value='usersEntity.id'/>" name="teacherId" id="teacherId">
+                    <input type="text" class="hidden" value="<s:property value='id'/>" name="id" id="id">
                     <span class="input-group-btn">
                         <button class="btn btn-default" id="date_button" type="submit">确认</button>
                     </span>
@@ -78,53 +107,38 @@
                         <th>时间段</th>
                         <th>预约状态</th>
                         <th>预约地点</th>
-                        <th>教师姓名</th>
-                        <th>教师联系方式</th>
                         <th>预约主题</th>
+                        <th>预约人</th>
                         <th>操作</th>
-                        <th>发布</th>
                     </tr>
                     </thead>
                     <tbody style="display:block;overflow-y: scroll;" id="request_table">
-                    <tr>
-                        <td>8:00-8:30</td>
-                        <td>未预约</td>
-                        <td>综合楼</td>
-                        <td>李志琛</td>
-                        <td>18845897065</td>
-                        <td>机器学习</td>
-                        <td><a class=" md-trigger btn btn-default" data-modal="modal-1">取消预约</a></td>
-                        <td>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
                     <s:iterator value="arrayList">
                         <s:if test="treservationEntity.tstate==4">
                             <tr>
-                                <td><s:property value="treservationEntity.time"/> </td>
+                                <td><s:property value="treservationEntity.time"/></td>
                                 <td>未预约</td>
-                                <td><s:property value="treservationEntity.place"/> </td>
-                                <td><s:property value="usersEntity.name"/> </td>
-                                <td><s:property value="usersEntity.contact"/> </td>
+                                <td><s:property value="treservationEntity.place"/></td>
                                 <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">
-                                        </label>
-                                    </div>
-                                </td>
+                                <td><input type="text" value="无主题" name="theme"></td>
+                                <td><a class="btn btn-default md-trigger request" data-modal="modal-<s:property value='treservation.torder'/>">请求预约</a></td>
                             </tr>
                         </s:if>
+                        <s:elseif test="treservationEntity.tstate==1">
+                            <tr>
+                                <td><s:property value="treservationEntity.time"/></td>
+                                <td>已预约</td>
+                                <td><s:property value="treservationEntity.place"/></td>
+                                <td><s:property value="sreservationEntity.theme"/></td>
+                                <td><a href="SelfPage?id=<s:property value='usersEntity.id'/>"><s:property value="usersEntity.name"/></a></td>
+
+                                <td><s:if test="#id==userEntity.id"><a class="btn btn-default md-trigger" data-modal="modal-<s:property value='treservation.torder'/>">取消预约</a></s:if></td>
+                            </tr>
+                        </s:elseif>
                     </s:iterator>
                     </tbody>
                 </table>
-                <button class="btn btn-lg btn-primary pull-right">请求预约</button>
+                <a class="btn btn-lg btn-primary pull-left" href="ReturnHomepage?id=<s:property value='id'/> "><span class="glyphicon glyphicon-arrow-left"></span> 返回主页</a>
             </div>
         </div>
     </div>
@@ -143,45 +157,40 @@
 <script src="static/niftyModal/js/css-filters-polyfill.js"></script>
 <!--自己的js-->
 <script>
-    var follow = true;
     $(document).ready(function () {
-        $("#request_table").css("max-height", $(window).height() * 0.6);
-        if (follow == true) {
-            $("#follow").addClass("hidden");
-            $("#followed").removeClass("hidden");
-        }
-        else {
-            $("#follow").removeClass("hidden");
-            $("#followed").addClass("hidden");
-        }
+//        var follow = true;
+//        $("#follow").toggleClass("hidden");
+//        $("#followed").toggleClass("hidden");
+
         var _width = $('#2').width();
         var table_th = $("#2 th");
         var table_td = $("#2 td");
-        table_th.eq(0).width(_width * 0.11);
-        table_td.eq(0).width(_width * 0.11);
+        table_th.eq(0).width(_width * 0.1);
+        table_td.eq(0).width(_width * 0.1);
         table_th.eq(1).width(_width * 0.1);
         table_td.eq(1).width(_width * 0.1);
-        table_th.eq(2).width(_width * 0.1);
-        table_td.eq(2).width(_width * 0.1);
-        table_th.eq(3).width(_width * 0.08);
-        table_td.eq(3).width(_width * 0.08);
-        table_th.eq(4).width(_width * 0.12);
-        table_td.eq(4).width(_width * 0.12);
-        table_th.eq(5).width(_width * 0.25);
-        table_td.eq(5).width(_width * 0.25);
-        table_th.eq(6).width(_width * 0.05);
-        table_td.eq(6).width(_width * 0.05);
-        table_th.eq(7).width(_width * 0.05);
-        table_td.eq(7).width(_width * 0.05);
+        table_th.eq(2).width(_width * 0.2);
+        table_td.eq(2).width(_width * 0.2);
+        table_th.eq(3).width(_width * 0.25);
+        table_td.eq(3).width(_width * 0.25);
+        table_th.eq(4).width(_width * 0.15);
+        table_td.eq(4).width(_width * 0.15);
+        table_th.eq(5).width(_width * 0.1);
+        table_td.eq(5).width(_width * 0.1);
     });
-    $("#follow").click(function () {
-        $(this).addClass("hidden");
-        $("#followed").removeClass("hidden");
+    $(function(){
+        $(".request").click(function(){
+            var order=$(this).attr('data-modal');
+            var time=$(this).parent().parent().children().eq(0).html();
+            var theme=$(this).parent().parent().children().eq(3).children().eq(0).val();
+            var date=$("#date").val();
+            var id=$("#id").val();
+            var teacherId=$("#teacherId").val();
+            $("#"+order+" p").html("时间是："+time+"主题是："+theme);
+            $("#"+order+" .confirm_submit").attr("href","RequestAction?theme="+theme+"&date="+date+"&id="+id+"&teacherId="+teacherId+"&time="+time);
+        });
     });
-    $("#followed").click(function () {
-        $(this).addClass("hidden");
-        $("#follow").removeClass("hidden");
-    });
+
 </script>
 </body>
 </html>

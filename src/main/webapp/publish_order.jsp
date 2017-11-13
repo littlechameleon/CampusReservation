@@ -32,11 +32,11 @@
 <body>
 <%--modal--%>
 <div class="md-modal md-effect-1" id="modal-0">
-    <div class="md-content">
+    <div class="md-contpublishingent">
         <h3>确认发布预约</h3>
         <div class="text-center">
             <p>确认发布以下预约？</p>
-            <div id="publishing">
+            <div id="">
 
             </div>
             <a class="btn btn-default" id="confirm_submit">确认</a>

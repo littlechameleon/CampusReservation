@@ -80,7 +80,7 @@
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
             <span>你好，<s:property value="usersEntity.name"/></span><br/>
-            <span><s:property value="usersEntity.id"/></span><br/>
+            <span id="id"><s:property value="usersEntity.id"/></span><br/>
             <s:if test="sex==0">
                 <span>女</span>
             </s:if>
@@ -121,7 +121,7 @@
                         <td>未接受</td>
                         <td><s:property value="treservationEntity.place"/></td>
                         <td><s:property value="sreservationEntity.theme"/></td>
-                        <td><button class="btn btn-default">接受</button><button class="btn btn-default">拒绝</button></td>
+                        <td><a class="btn btn-default agree" href="AgreeRequest?sorder=<s:property value='sreservationEntity.sorder'/>">接受</a><button class="btn btn-default">拒绝</button></td>
                         <td><button class="md-trigger btn btn-default" data-modal="modal-<s:property value='sreservationEntity.sorder'/>">详情</button></td>
                     </tr>
                     </s:iterator>
@@ -169,18 +169,12 @@
                     </tr>
                     </thead>
                     <tbody style="display: block;max-height: 200px;overflow-y: scroll">
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>综合楼</td>
-                        <td><a class="btn btn-default">取消预约</a></td>
-                    </tr>
                     <s:iterator value="nullList">
                     <tr>
                         <td><s:date name="date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="time"/> </td>
                         <td><s:property value="place"/> </td>
-                        <td><a class="btn btn-default">取消预约</a></td>
+                        <td><a class="btn btn-default cancel" href="CancelRelease?torder=<s:property value='torder'/>">取消预约</a></td>
                     </tr>
                     </s:iterator>
                     </tbody>
@@ -337,6 +331,17 @@
             showValues:true,
             initialRating:4
         });
+
+        $(".agree").each(function(){
+                var href=$(this).attr("href");
+                $(this).attr("href",href+"&id="+$("#id").html());
+            }
+        );
+        $(".cancel").each(function(){
+            var href=$(this).attr("href");
+            alert(href+"&id="+$("#id").html());
+            $(this).attr("href",href+"&id="+$("#id").html());
+        })
     });
 </script>
 </body>
