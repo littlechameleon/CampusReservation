@@ -30,14 +30,15 @@ public class RequestAction extends ActionSupport {
         usersEntity = usersDAO.get(teacherId);
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
-
-        SreservationEntity sreservationEntity = new SreservationEntity();
-        sreservationEntity.setTeacherId(teacherId);
-        sreservationEntity.setTorder(torder);
-        sreservationEntity.setTheme(theme);
-        sreservationEntity.setStudentId(id);
-        sreservationEntity.setTeacherId(usersEntity.getId());
-        sreservationDAO.create(sreservationEntity);
+        if(theme != null) {
+            SreservationEntity sreservationEntity = new SreservationEntity();
+            sreservationEntity.setTeacherId(teacherId);
+            sreservationEntity.setTorder(torder);
+            sreservationEntity.setTheme(theme);
+            sreservationEntity.setStudentId(id);
+            sreservationEntity.setTeacherId(usersEntity.getId());
+            sreservationDAO.create(sreservationEntity);
+        }
         return SUCCESS;
     }
 

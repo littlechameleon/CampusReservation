@@ -1,11 +1,10 @@
 package DAO;
 
+import Entity.SreservationEntity;
 import Entity.TreservationEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import SessionHelper.SessionCon;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,15 +31,39 @@ public class TreservationDAO {
         }
     }
 
+
     public void delete(TreservationEntity Treservation) throws RuntimeException{       //取消发布预约信息
         Session session = SessionCon.currentSession();
         TreservationDAO treservationDAO = new TreservationDAO();
         try{
             tx = session.beginTransaction();
-
-
-
+            String hql = "from SreservationEntity where torder = " + Treservation.getTorder();
+            List list = session.createQuery(hql).list();
+            for(Object o : list){
+                SreservationEntity sreservationEntity = (SreservationEntity) o;
+                session.delete(sreservationEntity);
+            }
             session.delete(Treservation);
+            tx.commit();
+        }catch (Exception e){
+            SessionCon.rollback(tx);
+            e.printStackTrace();
+        }finally {
+            SessionCon.closeSession();
+        }
+    }
+
+    public void agree(SreservationEntity sreservationEntity, TreservationEntity treservationEntity){       //同意预约
+        Session session = SessionCon.currentSession();
+        try{
+            tx = session.beginTransaction();
+            treservationEntity.setTstate(1);
+            sreservationEntity.setSstate(1);
+            session.update(treservationEntity);
+            session.update(sreservationEntity);
+            String hql = "update SreservationEntity set sstate=4 where sstate=0 and torder="+sreservationEntity.getTorder();
+            session.createQuery(hql).executeUpdate();
+            System.out.println(hql);
             tx.commit();
         }catch (Exception e){
             SessionCon.rollback(tx);
@@ -67,7 +90,7 @@ public class TreservationDAO {
     public List getOnedayNull(Date date, String TeacherID){         //获取某天教授不确定的预约信息
         Session session = SessionCon.currentSession();
         try{
-            String hql = "from TreservationEntity where teacherId='" +TeacherID+ "' and (tstate = 0 and tstate = 4) and date='"+date+"'";
+            String hql = "from TreservationEntity where teacherId='" +TeacherID+ "' and (tstate = 0 or tstate = 4) and date='"+date+"'";
             return session.createQuery(hql).list();
         }catch (Exception e){
             e.printStackTrace();
