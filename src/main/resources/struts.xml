@@ -28,6 +28,14 @@
         <action name="RequestAction" class="Action.RequestAction">
             <result name="success">request_order.jsp</result>
         </action>
+        <action name="CancelRelease" class="Action.CancelRelease">
+            <result name="successStu">stu_homepage.jsp</result>
+            <result name="successTea">tea_homepage.jsp</result>
+        </action>
+        <action name="AgreeRequest" class="Action.AgreeRequest">
+            <result name="successStu">stu_homepage.jsp</result>
+            <result name="successTea">tea_homepage.jsp</result>
+        </action>
 
         <!--JumpAction-->
         <action name="EditAction" class="Action.EditAction">

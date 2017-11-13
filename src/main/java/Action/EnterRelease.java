@@ -20,7 +20,7 @@ public class EnterRelease extends ActionSupport {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
-        date = new Date();
+        date = new java.sql.Date(new Date().getTime());
         usersEntity = usersDAO.get(id);
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());

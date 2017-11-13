@@ -3,14 +3,15 @@ package Action;
 import DAO.ReservationDA0;
 import DAO.TreservationDAO;
 import DAO.UsersDAO;
+import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginAction extends ActionSupport {
-    private String password;
+public class CancelRelease extends ActionSupport {
     private String id;
+    private int Torder;
     private UsersEntity usersEntity;
     private ArrayList unjudgedList;
     private ArrayList judgedList;
@@ -21,32 +22,25 @@ public class LoginAction extends ActionSupport {
 
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
-        ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
-        usersEntity = new UsersEntity();
-        usersEntity.setId(id);
-        usersEntity.setPassword(password);
-        if (usersDAO.login(usersEntity)) {
-            usersEntity = usersDAO.get(id);
-            unconfirmedList = reservationDA0.get(id, 0);
-            confirmedList = reservationDA0.get(id, 1);
-            unjudgedList = reservationDA0.get(id, 2);
-            judgedList = reservationDA0.get(id, 3);
-            if (usersEntity.getType() == 1) {
-                nullList = treservationDAO.getNullList(id);
-                return "successTea";
-            } else {
-                refusedList = reservationDA0.get(id, 4);
-                return "successStu";
-            }
+        ReservationDA0 reservationDA0 = new ReservationDA0();
+        usersEntity = usersDAO.get(id);
+        TreservationEntity treservationEntity = new TreservationEntity();
+        treservationEntity.setTorder(Torder);
+        treservationDAO.delete(treservationEntity);
+        unconfirmedList = reservationDA0.get(id, 0);
+        confirmedList = reservationDA0.get(id, 1);
+        unjudgedList = reservationDA0.get(id, 2);
+        judgedList = reservationDA0.get(id, 3);
+        if (usersEntity.getType() == 1) {
+            nullList = treservationDAO.getNullList(id);
+            return "successTea";
         } else {
-            return ERROR;
+            refusedList = reservationDA0.get(id, 4);
+            return "successStu";
         }
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public void setId(String id) {
         this.id = id;
@@ -78,5 +72,9 @@ public class LoginAction extends ActionSupport {
 
     public List getNullList() {
         return nullList;
+    }
+
+    public void setTorder(int torder) {
+        Torder = torder;
     }
 }

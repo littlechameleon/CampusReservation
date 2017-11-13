@@ -42,7 +42,7 @@ public class ReservationDA0 {
         return arrayList;
     }
 
-    public ArrayList getOnedayNotnull(Date date, String teacherID){     //获取某教授某日预约
+    public ArrayList getOnedayNotnull(Date date, String teacherID){     //获取某教授某日已确定预约
         SreservationDAO sreservationDAO = new SreservationDAO();
         TreservationDAO treservationDAO = new TreservationDAO();
         UsersDAO usersDAO = new UsersDAO();
@@ -56,6 +56,7 @@ public class ReservationDA0 {
             //预约对象只能是学生
             UsersEntity usersEntity = usersDAO.get(sreservationEntity.getStudentId());
             reservationEntity.setUsersEntity(usersEntity);
+            arrayList.add(reservationEntity);
         }
         return arrayList;
     }
