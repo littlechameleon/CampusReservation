@@ -130,7 +130,7 @@
                                 <td>已预约</td>
                                 <td><s:property value="treservationEntity.place"/></td>
                                 <td><s:property value="sreservationEntity.theme"/></td>
-                                <td><a href="SelfPage?id=<s:property value='usersEntity.id'/>"><s:property value="usersEntity.name"/></a></td>
+                                <td><a href="EnterDetail?id=<s:property value='usersEntity.id'/>"><s:property value="usersEntity.name"/></a></td>
 
                                 <td><s:if test="#id==userEntity.id"><a class="btn btn-default md-trigger" data-modal="modal-<s:property value='treservation.torder'/>">取消预约</a></s:if></td>
                             </tr>

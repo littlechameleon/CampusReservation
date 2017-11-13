@@ -145,7 +145,7 @@
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><a href="EnterDetail?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
                             <td>
@@ -160,7 +160,7 @@
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><a href="EnterDetail?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
                             <td>
@@ -175,7 +175,7 @@
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><a href="EnterDetail?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
                             <td>
@@ -260,7 +260,7 @@
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="treservationEntity.time"/></td>
-                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                        <td><a href="EnterDetail?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                         <td><s:property value="treservationEntity.place"/> </td>
                         <td><s:property value="sreservationEntity.theme"/> </td>
                         <td><div class="br-wrapper br-theme-fontawesome-stars">
@@ -274,7 +274,7 @@
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="treservationEntity.time"/></td>
-                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                        <td><a href="EnterDetail?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
                         <td><s:property value="treservationEntity.place"/> </td>
                         <td><s:property value="sreservationEntity.theme"/> </td>
                         <td>未评分</td>
