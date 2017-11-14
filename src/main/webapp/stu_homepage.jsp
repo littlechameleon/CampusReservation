@@ -101,7 +101,7 @@
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
             <span>你好，<s:property value="usersEntity.name"/></span><br/>
-            <span><s:property value="usersEntity.id"/></span><br/>
+            <span id="id"><s:property value="usersEntity.id"/></span><br/>
             <s:if test="sex==0">
                 <span>女</span>
             </s:if>
@@ -207,21 +207,21 @@
                     <td>13:00-13:30</td>
                     <td>张三</td>
                     <td>综合楼</td>
-                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=123">预约</a></td>
+                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
                 </tr>
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
                     <td>张三</td>
                     <td>综合楼</td>
-                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=123">预约</a></td>
+                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
                 </tr>
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
                     <td>张三</td>
                     <td>综合楼</td>
-                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=123">预约</a></td>
+                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
                 </tr>
                 </tbody>
             </table>
