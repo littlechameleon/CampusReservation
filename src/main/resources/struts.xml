@@ -41,6 +41,9 @@
         </action>
 
         <!--JumpAction-->
+        <action name="LogoutAction" class="Action.LogoutAction">
+            <result name="success">register.jsp</result>
+        </action>
         <action name="EditAction" class="Action.EditAction">
             <result name="success">user_edit.jsp</result>
         </action>
