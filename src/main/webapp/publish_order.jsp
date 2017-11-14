@@ -32,11 +32,11 @@
 <body>
 <%--modal--%>
 <div class="md-modal md-effect-1" id="modal-0">
-    <div class="md-contpublishingent">
+    <div class="md-content">
         <h3>确认发布预约</h3>
         <div class="text-center">
             <p>确认发布以下预约？</p>
-            <div id="">
+            <div id="publishing">
 
             </div>
             <a class="btn btn-default" id="confirm_submit">确认</a>
@@ -50,7 +50,7 @@
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
             <span>你好，<s:property value="usersEntity.name"/></span><br/>
-            <span id="myId"><s:property value="usersEntity.id"/></span><br/>
+            <span id="id"><s:property value="usersEntity.id"/></span><br/>
             <s:if test="sex==0">
                 <span>女</span>
             </s:if>
@@ -96,7 +96,7 @@
                                 <td><s:property value="treservationEntity.time"/></td>
                                 <td>已预约</td>
                                 <td><s:property value="treservationEntity.place"/></td>
-                                <td><s:property value="usersEntity.name"/></td>
+                                <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                                 <td><s:property value="usersEneity.contact"/></td>
                                 <td><s:property value="sreservationEntity.theme"/></td>
                                 <td>无</td>
@@ -107,7 +107,7 @@
                                 <td><s:property value="treservationEntity.time"/></td>
                                 <td>未评分</td>
                                 <td><s:property value="treservationEntity.place"/></td>
-                                <td><s:property value="usersEntity.name"/></td>
+                                <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                                 <td><s:property value="usersEneity.contact"/></td>
                                 <td><s:property value="sreservationEntity.theme"/></td>
                                 <td><div class="br-wrapper br-theme-fontawesome-stars">
@@ -125,7 +125,7 @@
                                 <td><s:property value="treservationEntity.time"/></td>
                                 <td>已评分</td>
                                 <td><s:property value="treservationEntity.place"/></td>
-                                <td><s:property value="usersEntity.name"/></td>
+                                <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                                 <td><s:property value="usersEneity.contact"/></td>
                                 <td><s:property value="sreservationEntity.theme"/></td>
                                 <td>评分为：3 </td>
@@ -231,6 +231,11 @@
         no_publish_th.eq(1).width(_width*0.5);
         no_publish_td.eq(2).width(_width*0.2);
         no_publish_th.eq(2).width(_width*0.2);
+
+        $(".visit").each(function(){
+            var href=$(this).attr("href");
+            $(this).attr("href",href+"&id="+$("#id").html());
+        });
     });
     var order;
     $("#publish").click(function(){
@@ -253,7 +258,7 @@
             data:{
                 releaseList:order,
                 date:$("#date").val(),
-                id:$("#myId").html()
+                id:$("#id").html()
             },
             traditional: true,
             success:function(){

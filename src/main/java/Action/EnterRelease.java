@@ -58,4 +58,8 @@ public class EnterRelease extends ActionSupport {
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
+
+    public String getId() {
+        return id;
+    }
 }

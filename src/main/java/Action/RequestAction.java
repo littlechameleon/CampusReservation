@@ -5,6 +5,7 @@ import DAO.SreservationDAO;
 import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import Entity.SreservationEntity;
+import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
 import java.sql.Date;
@@ -32,12 +33,13 @@ public class RequestAction extends ActionSupport {
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         if(theme != null) {
             SreservationEntity sreservationEntity = new SreservationEntity();
+            TreservationEntity treservationEntity = treservationDAO.get(torder);
             sreservationEntity.setTeacherId(teacherId);
             sreservationEntity.setTorder(torder);
             sreservationEntity.setTheme(theme);
             sreservationEntity.setStudentId(id);
             sreservationEntity.setTeacherId(usersEntity.getId());
-            sreservationDAO.create(sreservationEntity);
+            sreservationDAO.create(sreservationEntity, treservationEntity);
         }
         return SUCCESS;
     }
