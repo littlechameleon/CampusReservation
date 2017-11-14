@@ -118,8 +118,10 @@
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
             <div class="col-lg-4 col-lg-offset-3 input-group">
-                <form action="SearchAction">
-                <input type="input" class="form-control input-lg" id="search_name" name="name"/>
+                <form action="EnterRequest">
+                <input type="text" class="form-control input-lg" id="search_name" name="teacherId"/>
+                    <input type="text" class="hidden" name="id" value="<s:property value="usersEntity.id"/> ">
+                    <input type="submit" class="hidden">
             </form>
             </div>                <br/><br/>
 

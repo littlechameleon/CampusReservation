@@ -101,6 +101,7 @@
                         </s:if>
                     </s:iterator>
                         <s:iterator value="list">
+                            <s:if test="tstate==4">
                             <tr>
                                 <td><s:property value="time"/></td>
                                 <td>未预约</td>
@@ -109,6 +110,17 @@
                                 <td></td>
                                 <td><a class="btn btn-default md-trigger request" data-modal="modal-<s:property value='torder'/>">请求预约</a></td>
                             </tr>
+                            </s:if>
+                            <s:elseif test="tstate==0">
+                                <tr>
+                                    <td><s:property value="time"/></td>
+                                    <td>预约中</td>
+                                    <td><s:property value="place"/></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </s:elseif>
                         </s:iterator>
 
                     </tbody>
@@ -167,7 +179,7 @@
         });
         $(".visit").each(function(){
             var href=$(this).attr("href");
-            $(this).attr("href",href+"&id="+$("#id").html());
+            $(this).attr("href",href+"&id="+$("#id").val());
         });
     });
 
