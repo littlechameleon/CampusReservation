@@ -133,6 +133,7 @@
                         </s:elseif>
                     </s:iterator>
                     <s:iterator value="list">
+                        <s:if test="tstate==4">
                         <tr>
                             <td><s:property value="time"/></td>
                             <td>无人预约 </td>
@@ -142,6 +143,18 @@
                             <td></td>
                             <td><a class="btn btn-default">取消预约</a></td>
                         </tr>
+                        </s:if>
+                        <s:elseif test="tstate==0">
+                            <tr>
+                                <td><s:property value="time"/></td>
+                                <td>预约中</td>
+                                <td><s:property value="place"/></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a class="btn btn-default">取消预约</a></td>
+                            </tr>
+                        </s:elseif>
                     </s:iterator>
                     </tbody>
                 </table>
