@@ -42,7 +42,7 @@
 
         <!--JumpAction-->
         <action name="EditAction" class="Action.EditAction">
-            <result name="success">modify.jsp</result>
+            <result name="success">user_edit.jsp</result>
         </action>
         <action name="EnterRelease" class="Action.EnterRelease">
             <result name="success">publish_order.jsp</result>
