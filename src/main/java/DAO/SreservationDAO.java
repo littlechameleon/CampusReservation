@@ -16,23 +16,16 @@ public class SreservationDAO {
 
     }
 
-    public void create(SreservationEntity sreservationEntity) throws RuntimeException{    //新增请求预约信息
+    public void create(SreservationEntity sreservationEntity, TreservationEntity treservationEntity) throws RuntimeException{    //新增请求预约信息
         Session session = SessionCon.currentSession();
-        TreservationDAO treservationDAO = new TreservationDAO();
-        TreservationEntity treservationEntity = treservationDAO.get(sreservationEntity.getTorder());
         try {
             tx = session.beginTransaction();
             sreservationEntity.setSstate(0);
             session.save(sreservationEntity);
-            session.flush();
-            tx.commit();
-                                            //不确定flush是否可以得到自增id
-            tx = session.beginTransaction();
-            treservationEntity.setSorder(sreservationEntity.getSorder());
             if(treservationEntity.getTstate() == 4){
                 treservationEntity.setTstate(0);
             }
-            session.save(treservationEntity);
+            session.update(treservationEntity);
             session.flush();
             tx.commit();
         }catch (Exception e){
