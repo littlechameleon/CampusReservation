@@ -207,21 +207,21 @@
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
-                    <td>张三</td>
+                    <td>李四</td>
                     <td>综合楼</td>
                     <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
                 </tr>
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
-                    <td>张三</td>
+                    <td>李四</td>
                     <td>综合楼</td>
                     <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
                 </tr>
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
-                    <td>张三</td>
+                    <td>李四</td>
                     <td>综合楼</td>
                     <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
                 </tr>
@@ -253,7 +253,7 @@
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
-                    <td>张三</td>
+                    <td>李四</td>
                     <td>综合楼</td>
                     <td>机器学习</td>
                     <td>1</td>

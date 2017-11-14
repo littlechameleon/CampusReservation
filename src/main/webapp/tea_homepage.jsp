@@ -197,7 +197,7 @@
                     <tr>
                         <td>2002-01-12</td>
                         <td>13:00-13:30</td>
-                        <td>李四</td>
+                        <td>张三</td>
                         <td>地点</td>
                         <td>机器学习</td>
                         <td><div class="br-wrapper br-theme-fontawesome-stars">
