@@ -117,7 +117,7 @@
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
                         <td><s:property value="treservationEntity.time"/></td>
-                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                        <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                         <td>未接受</td>
                         <td><s:property value="treservationEntity.place"/></td>
                         <td><s:property value="sreservationEntity.theme"/></td>
@@ -147,7 +147,7 @@
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="treservationEntity.time"/></td>
-                        <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                        <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                         <td>已接受</td>
                         <td><s:property value="treservationEntity.place"/> </td>
                         <td><s:property value="sreservationEntity.theme"/> </td>
@@ -213,7 +213,7 @@
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
                             <td><div class="br-wrapper br-theme-fontawesomeff-stars">
@@ -230,7 +230,7 @@
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="selfPageAction?id=<s:property value='usersEntity.id'/>" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
                             <td><div class="br-wrapper br-theme-fontawesome-stars">
@@ -339,9 +339,12 @@
         );
         $(".cancel").each(function(){
             var href=$(this).attr("href");
-            alert(href+"&id="+$("#id").html());
             $(this).attr("href",href+"&id="+$("#id").html());
-        })
+        });
+        $(".visit").each(function(){
+            var href=$(this).attr("href");
+            $(this).attr("href",href+"&id="+$("#id").html());
+        });
     });
 </script>
 </body>
