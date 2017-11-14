@@ -18,7 +18,6 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:campusreservation</introspection-schemas>
     </data-source>
   </component>
 </project>

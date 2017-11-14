@@ -113,7 +113,7 @@
 
                     </tbody>
                 </table>
-                <a class="btn btn-lg btn-primary pull-left" href="ReturnHomepage?id=<s:property value='id'/> "><span class="glyphicon glyphicon-arrow-left"></span> 返回主页</a>
+                <a class="btn btn-lg btn-primary pull-left" href="ReturnHomepage?id=<s:property value='id'/>"><span class="glyphicon glyphicon-arrow-left"></span> 返回主页</a>
             </div>
         </div>
     </div>
