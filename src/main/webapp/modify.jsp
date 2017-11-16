@@ -18,7 +18,7 @@
 
     <link rel="shortcut icon" href="static/image/favicon.ico">
 
-    <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
 </head>
@@ -94,7 +94,7 @@
 </div>
 s
 <script src="static/js/jquery-3.1.1.min.js"></script>
-<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
 <script>
     $(function () {
