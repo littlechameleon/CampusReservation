@@ -23,9 +23,7 @@
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
 
     <!--nifty 动态弹出框引入-->
-    <link rel="stylesheet" type="text/css" href="static/niftyModal/css/component.css" />
-    <script src="static/niftyModal/js/modernizr.custom.js"></script>
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap-stars.css">
+    <link rel="stylesheet" type="text/css" href="static/css/component.css" />
     <style>
         .container{
             font-size: 20px;
@@ -34,6 +32,52 @@
 </head>
 <body>
 <!--弹出框-->
+
+<div class="md-modal md-effect-1" id="modal-edit">
+    <div class="md-content">
+        <div class="text-center">
+            <h2>修改个人信息</h2>
+        </div><br/><br/>
+        <div class="center-block">
+            <form action="ModifyAction" method="post">
+                <div class="form-group">
+                    <label for="confirm_username" class="control-label">姓名<span class="important">*</span></label>
+                    <input required class="form-control input" id="confirm_username" value="<s:property value='usersEntity.name'/>" type="text"
+                           name="name" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="number" class="control-label">学号/教工号</label>
+                    <input class="form-control input" id="number" value="<s:property value='usersEntity.id'/>" type="text"
+                           name="id" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="institute" class="control-label">学院<span class="important">*</span></label>
+                    <input required class="form-control input" id="institute" placeholder="请输入您所属学院" value="<s:property value='usersEntity.college'/>" type="text"
+                           name="college" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="control-label">联系方式<span class="important">*</span></label>
+                    <input required class="form-control input" type="tel" id="phone" placeholder="请输入联系方式" value="<s:property value='usersEntity.contact'/>"
+                           name="contact" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="confirm_email" class="control-label">邮箱<span class="important">*</span></label>
+                    <input required class="form-control input" type="tel" id="confirm_email" value="<s:property value='usersEntity.email'/>"
+                           name="email" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="indi_resume" class="control-label">个人简介</label>
+                    <textarea class="form-control" name="detail" rows="5" maxlength="300" id="indi_resume"
+                              placeholder="请输入个人简介.最多300个字符"><s:property value="detail"/></textarea>
+                </div>
+                <div class="submit-block text-center">
+                    <input type="submit" class="btn btn-default btn-lg edit" value="提交"/>
+                    <a class="md-close btn btn-default btn-lg edit">取消</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <s:iterator value="unconfirmedList">
     <div class="md-modal md-effect-1" id="modal-<s:property value='sreservationEntity.sorder'/>">
         <div class="md-content">
@@ -49,7 +93,9 @@
                     <li><strong>学生学院:</strong> <s:property value="usersEntity.college"/></li>
                     <li><strong>学生邮箱:</strong> <s:property value="usersEntity.email"/></li>
                 </ul>
-                <button class="md-close btn btn-default">确认</button>
+                <div class="text-center">
+                    <a class="md-close btn btn-default">确认</a>
+                </div>
             </div>
         </div>
     </div>
@@ -69,7 +115,9 @@
                     <li><strong>学生学院:</strong> <s:property value="usersEntity.college"/></li>
                     <li><strong>学生邮箱:</strong> <s:property value="usersEntity.email"/></li>
                 </ul>
-                <button class="md-close btn btn-default">确认</button>
+                <div class="text-center">
+                    <a class="md-close btn btn-default">确认</a>
+                </div>
             </div>
         </div>
     </div>
@@ -92,7 +140,7 @@
             <span><s:property value="usersEntity.email"/></span><br/>
             <span><s:property value="usersEntity.contact"/> </span><br/>
             <a class="pull-left" href="LogoutAction?id=<s:property value='usersEntity.id'/>">退出登录</a>
-            <a class="pull-right" href="EditAction?id=<s:property value='usersEntity.id'/>">编辑</a>
+            <a class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</a>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
@@ -112,7 +160,7 @@
                         <th>详情</th>
                     </tr>
                     </thead>
-                    <tbody style="display:block; max-height:200px;overflow-y: scroll;">
+                    <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="unconfirmedList">
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
@@ -142,12 +190,12 @@
                         <th>详情</th>
                     </tr>
                     </thead>
-                    <tbody style="display:block; max-height:200px;overflow-y: scroll;">
+                    <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="confirmedList">
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="treservationEntity.time"/></td>
-                        <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                        <td><s:property value="usersEntity.name"/></td>
                         <td>已接受</td>
                         <td><s:property value="treservationEntity.place"/> </td>
                         <td><s:property value="sreservationEntity.theme"/> </td>
@@ -168,7 +216,7 @@
                         <th>取消预约</th>
                     </tr>
                     </thead>
-                    <tbody style="display: block;max-height: 200px;overflow-y: scroll">
+                    <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="nullList">
                     <tr>
                         <td><s:date name="date" format="yyyy-MM-dd"/></td>
@@ -193,27 +241,12 @@
                         <th>评分</th>
                     </tr>
                     </thead>
-                    <tbody style="display:block;max-height:200px;overflow-y: scroll">
-                    <tr>
-                        <td>2002-01-12</td>
-                        <td>13:00-13:30</td>
-                        <td>张三</td>
-                        <td>地点</td>
-                        <td>机器学习</td>
-                        <td><div class="br-wrapper br-theme-fontawesome-stars">
-                            <select class="example">
-                                <option value="1" data-html="未到">1</option>
-                                <option value="2" data-html="迟到">2</option>
-                                <option value="3" data-html="准时">3</option>
-                                <option value="4" data-html="提前">4</option>
-                            </select>
-                        </div> </td>
-                    </tr>
+                    <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="unjudgedList">
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
                             <td><div class="br-wrapper br-theme-fontawesomeff-stars">
@@ -230,7 +263,7 @@
                         <tr>
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
-                            <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                            <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
                             <td><div class="br-wrapper br-theme-fontawesome-stars">
@@ -252,13 +285,8 @@
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
 <script src="static/js/jquery.barrating.min.js"></script>
-<!--niftyModal js文件引入及必要操作-->
-<script src="static/niftyModal/js/classie.js"></script>
-<script src="static/niftyModal/js/modalEffects.js"></script>
-<script>
-    var polyfilter_scriptpath = '/js/';
-</script>
-<script src="static/niftyModal/js/css-filters-polyfill.js"></script>
+<script src="static/js/modal.js"></script>
+
 <!--自己的js-->
 <script>
     $(document).ready(function(){
@@ -288,14 +316,14 @@
         acc_table_th.eq(0).width(_width*0.15);
         acc_table_td.eq(1).width(_width*0.15);
         acc_table_th.eq(1).width(_width*0.15);
-        acc_table_td.eq(2).width(_width*0.05);
-        acc_table_th.eq(2).width(_width*0.05);
+        acc_table_td.eq(2).width(_width*0.1);
+        acc_table_th.eq(2).width(_width*0.1);
         acc_table_td.eq(3).width(_width*0.08);
         acc_table_th.eq(3).width(_width*0.08);
         acc_table_td.eq(4).width(_width*0.1);
         acc_table_th.eq(4).width(_width*0.1);
-        acc_table_td.eq(5).width(_width*0.25);
-        acc_table_th.eq(5).width(_width*0.25);
+        acc_table_td.eq(5).width(_width*0.2);
+        acc_table_th.eq(5).width(_width*0.2);
         acc_table_td.eq(6).width(_width*0.12);
         acc_table_th.eq(6).width(_width*0.12);
 

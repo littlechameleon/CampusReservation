@@ -22,7 +22,7 @@
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
 
     <!--nifty 动态弹出框引入-->
-    <link rel="stylesheet" type="text/css" href="static/niftyModal/css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/component.css"/>
     <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
 </head>
@@ -135,13 +135,9 @@
 <script src="static/js/jquery-3.1.1.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
-<!--niftyModal js文件引入及必要操作-->
-<script src="static/niftyModal/js/classie.js"></script>
-<script src="static/niftyModal/js/modalEffects.js"></script>
-<script>
-    var polyfilter_scriptpath = '/js/';
-</script>
-<script src="static/niftyModal/js/css-filters-polyfill.js"></script>
+
+<script src="static/js/modal.js"></script>
+
 <!--自己的js-->
 <script>
     $(document).ready(function () {
