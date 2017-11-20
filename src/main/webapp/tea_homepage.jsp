@@ -19,16 +19,32 @@
 
     <!--bootstrap 和 jquery,jquery-ui 引入-->
     <link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <link href="static/css/fontawesome-stars.css" type="text/css" rel="stylesheet">
 
     <!--nifty 动态弹出框引入-->
     <link rel="stylesheet" type="text/css" href="static/css/component.css" />
-    <style>
-        .container{
-            font-size: 20px;
-        }
-    </style>
+
+    <link href="static/css/main.css" type="text/css" rel="stylesheet">
+<style>
+    .unconfirmedList{
+        color: red;
+    }
+    .confirmedList{
+        color: #4cae4c;
+    }
+    .nullList{
+        color: black;
+    }
+    .unjudgedList{
+        color: #003eff;
+    }
+    .judgedList{
+        color: #d9534f;
+    }
+</style>
 </head>
 <body>
 <!--弹出框-->
@@ -162,7 +178,7 @@
                     </thead>
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="unconfirmedList">
-                    <tr>
+                    <tr class="unconfirmedList">
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
                         <td><s:property value="treservationEntity.time"/></td>
                         <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
@@ -192,7 +208,7 @@
                     </thead>
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="confirmedList">
-                    <tr>
+                    <tr class="confirmedList">
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="treservationEntity.time"/></td>
                         <td><s:property value="usersEntity.name"/></td>
@@ -218,7 +234,7 @@
                     </thead>
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="nullList">
-                    <tr>
+                    <tr class="nullList">
                         <td><s:date name="date" format="yyyy-MM-dd"/></td>
                         <td><s:property value="time"/> </td>
                         <td><s:property value="place"/> </td>
@@ -243,34 +259,32 @@
                     </thead>
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="unjudgedList">
-                        <tr>
+                        <tr class="unjudgedList">
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
-                            <td><div class="br-wrapper br-theme-fontawesomeff-stars">
-                                <select class="example">
+                            <td><div class="stars stars-example-fontawesome">
+
+                                <select class="example" name="rating">
                                     <option value="1" data-html="未到">1</option>
                                     <option value="2" data-html="迟到">2</option>
                                     <option value="3" data-html="准时">3</option>
-                                    <option value="4" data-html="提前">4</option>
+                                    <option value="4" data-html="早到">4</option>
                                 </select>
-                            </div> </td>
+                            </div>
+                            </td>
                         </tr>
                     </s:iterator>
                     <s:iterator value="judgedList">
-                        <tr>
+                        <tr class="judgedList">
                             <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
-                            <td><div class="br-wrapper br-theme-fontawesome-stars">
-                                <select class="example">
-                                    <option value="1" data-html="未到">1</option>
-                                </select>
-                            </div> </td>
+                            <td></td>
                         </tr>
                     </s:iterator>
                     </tbody>
@@ -284,12 +298,20 @@
 <script src="static/js/jquery-3.1.1.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
-<script src="static/js/jquery.barrating.min.js"></script>
-<script src="static/js/modal.js"></script>
+<script src="static/js/plugins.js"></script>
 
 <!--自己的js-->
 <script>
-    $(document).ready(function(){
+    /*
+    暂无法实现$(function () {
+        var institutes = ["经济管理与人文社会科学研究院","航天学院","机电工程学院","材料科学与工程学院","能源科学与工程学院","电气工程及自动化学院",
+            "理学院","经济与管理学院","人文社科与法学学院","土木工程学院","建筑学院","交通科学与工程学院","计算机科学与技术学院", "化工与化学学院",
+            "外国语学院","电子与信息工程学院","基础与交叉科学研究院","能源学院"];
+        $("#institute").autocomplete({
+            source: institutes
+        });
+    });*/
+    $(function(){
         var _width=$('#new_table').width();
         var new_table_th=$("#new_table th");
         var new_table_td=$("#new_table td");
@@ -355,9 +377,9 @@
         fin_table_th.eq(5).width(_width*0.27);
 
         $('.example').barrating({
-            theme: 'bootstrap-stars',
-            showValues:true,
-            initialRating:4
+            theme: 'fontawesome-stars',
+            showSelectedRating: false,
+            showValues:true
         });
 
         $(".agree").each(function(){

@@ -20,10 +20,16 @@
     <!--bootstrap 和 jquery,jquery-ui 引入-->
     <link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/component.css"/>
+
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
 
     <!--nifty 动态弹出框引入-->
-    <link rel="stylesheet" type="text/css" href="static/css/component.css"/>
+    <style>
+        #institute{
+            z-index:2147483647;
+        }
+    </style>
 
 </head>
 <body>
@@ -338,9 +344,21 @@
 <script src="static/js/jquery-3.1.1.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
-<script src="static/js/modal.js"></script>
+<script src="static/js/plugins.js"></script>
 <!--自己的js-->
 <script>
+/*    $(function () {
+暂无法实现
+        var institutes = ["经济管理与人文社会科学研究院","航天学院","机电工程学院","材料科学与工程学院","能源科学与工程学院","电气工程及自动化学院",
+            "理学院","经济与管理学院","人文社科与法学学院","土木工程学院","建筑学院","交通科学与工程学院","计算机科学与技术学院", "化工与化学学院",
+            "外国语学院","电子与信息工程学院","基础与交叉科学研究院","能源学院"];
+        $("#institute").autocomplete({
+            source: institutes
+        });
+        $("#search_name").autocomplete({
+            source: institutes
+        });
+    });*/
 //    $(function(){
 //        var names=[];
 //        $("#search_name").keyup(function(){

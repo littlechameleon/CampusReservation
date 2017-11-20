@@ -8,7 +8,6 @@ perspective effects (not including the modals and the overlay).
 .md-perspective,
 .md-perspective body {
     height: 100%;
-    overflow: hidden;
 }
 
 .md-perspective body {

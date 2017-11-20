@@ -136,8 +136,7 @@
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
 
-<script src="static/js/modal.js"></script>
-
+<script src="static/js/plugins.js"></script>
 <!--自己的js-->
 <script>
     $(document).ready(function () {
