@@ -1,5 +1,4 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%--
   Created by IntelliJ IDEA.
   User: giligiliai
@@ -19,12 +18,12 @@
     <link rel="shortcut icon" href="static/image/favicon.ico">
 
     <!--bootstrap 和 jquery,jquery-ui 引入-->
-    <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
 
     <!--nifty 动态弹出框引入-->
-    <link rel="stylesheet" type="text/css" href="static/niftyModal/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/component.css" />
     <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
     <!--临时css设置-->
@@ -181,15 +180,11 @@
 <div class="md-overlay"></div>
 <!--jquery bootstrap jquery-ui js文件引入-->
 <script src="static/js/jquery-3.1.1.min.js"></script>
-<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
-<!--niftyModal js文件引入及必要操作-->
-<script src="static/niftyModal/js/classie.js"></script>
-<script src="static/niftyModal/js/modalEffects.js"></script>
-<script>
-    var polyfilter_scriptpath = '/js/';
-</script>
-<script src="static/niftyModal/js/css-filters-polyfill.js"></script>
+
+<script src="static/js/modal.js"></script>
+
 <!--自己的js-->
 <script>
     $(function(){

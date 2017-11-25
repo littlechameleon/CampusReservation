@@ -15,13 +15,13 @@
     <title>登录/注册</title>
     <link rel="shortcut icon" href="static/image/favicon.ico">
 
-    <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/regisiter.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<div class="container regisiter">
+<div class="container modal-content">
     <div class="center-block">
         <div id="tabs" class="">
             <ul id="login_signup" class="nav nav-tabs">
@@ -105,13 +105,13 @@
 </div>
 <script src="static/js/jquery-3.1.1.min.js"></script>
 <script src="static/js/regisiter.js"></script>
-<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
 <script>
 
     $(function () {
 //        登录滑块
         $("#login_password").blur(function () {
-            if($("#id").val()!=''&&$("#login_password").val()!=''){
+            if($("#login_username").val()!=''&&$("#login_password").val()!=''){
                 $("#drag").removeClass("hidden");
             }
         });

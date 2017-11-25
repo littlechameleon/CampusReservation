@@ -18,24 +18,68 @@
     <link rel="shortcut icon" href="static/image/favicon.ico">
 
     <!--bootstrap 和 jquery,jquery-ui 引入-->
-    <link href="static/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
 
     <!--nifty 动态弹出框引入-->
-    <link rel="stylesheet" type="text/css" href="static/niftyModal/css/component.css"/>
-    <script src="static/niftyModal/js/modernizr.custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/component.css"/>
 
 </head>
 <body>
 <!--弹出框-->
+    <div class="md-modal md-effect-1" id="modal-edit">
+        <div class="md-content">
+        <div class="text-center">
+            <h2>修改个人信息</h2>
+        </div><br/><br/>
+        <div class="center-block">
+            <form action="ModifyAction" method="post">
+                <div class="form-group">
+                    <label for="confirm_username" class="control-label">姓名<span class="important">*</span></label>
+                    <input required class="form-control input" id="confirm_username" value="<s:property value='usersEntity.name'/>" type="text"
+                           name="name" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="number" class="control-label">学号/教工号</label>
+                    <input class="form-control input" id="number" value="<s:property value='usersEntity.id'/>" type="text"
+                           name="id" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="institute" class="control-label">学院<span class="important">*</span></label>
+                    <input required class="form-control input" id="institute" placeholder="请输入您所属学院" value="<s:property value='usersEntity.college'/>" type="text"
+                           name="college" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="control-label">联系方式<span class="important">*</span></label>
+                    <input required class="form-control input" type="tel" id="phone" placeholder="请输入联系方式" value="<s:property value='usersEntity.contact'/>"
+                           name="contact" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="confirm_email" class="control-label">邮箱<span class="important">*</span></label>
+                    <input required class="form-control input" type="tel" id="confirm_email" value="<s:property value='usersEntity.email'/>"
+                           name="email" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="indi_resume" class="control-label">个人简介</label>
+                    <textarea class="form-control" name="detail" rows="5" maxlength="300" id="indi_resume"
+                              placeholder="请输入个人简介.最多300个字符"><s:property value="detail"/></textarea>
+                </div>
+                <div class="submit-block text-center">
+                    <input type="submit" class="btn btn-default btn-lg edit" value="提交"/>
+                    <a class="md-close btn btn-default btn-lg edit">取消</a>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+
 <s:iterator value="confirmedList">
     <div class="md-modal md-effect-1" id="modal-<s:property value='sreservationEntity.sorder'/>">
         <div class="md-content">
             <h3>已接受预约</h3>
             <div>
                 <ul>
-                    <ul>
                         <li><strong>日期:</strong> <s:property value="treservationEntity.date"/> </li>
                         <li><strong>时间:</strong> <s:property value="treservationEntity.time"/></li>
                         <li><strong>地点:</strong> <s:property value="treservationEntity.place"/></li>
@@ -44,9 +88,10 @@
                         <li><strong>教师联系方式:</strong> <s:property value="usersEntity.contact"/></li>
                         <li><strong>教师学院:</strong> <s:property value="usersEntity.college"/></li>
                         <li><strong>教师邮箱:</strong> <s:property value="usersEntity.email"/></li>
-                    </ul>
                 </ul>
-                <button class="md-close btn btn-default">确认</button>
+                <div class="text-center">
+                    <a class="md-close btn btn-default">确认</a>
+                </div>
             </div>
         </div>
     </div>
@@ -57,7 +102,6 @@
             <h3>已接受预约</h3>
             <div>
                 <ul>
-                    <ul>
                         <li><strong>日期:</strong> <s:property value="treservationEntity.date"/> </li>
                         <li><strong>时间:</strong> <s:property value="treservationEntity.time"/></li>
                         <li><strong>地点:</strong> <s:property value="treservationEntity.place"/></li>
@@ -66,9 +110,10 @@
                         <li><strong>教师联系方式:</strong> <s:property value="usersEntity.contact"/></li>
                         <li><strong>教师学院:</strong> <s:property value="usersEntity.college"/></li>
                         <li><strong>教师邮箱:</strong> <s:property value="usersEntity.email"/></li>
-                    </ul>
                 </ul>
-                <button class="md-close btn btn-default">确认</button>
+                <div class="text-center">
+                    <a class="md-close btn btn-default">确认</a>
+                </div>
             </div>
         </div>
     </div>
@@ -79,7 +124,6 @@
             <h3>已接受预约</h3>
             <div>
                 <ul>
-                    <ul>
                         <li><strong>日期:</strong> <s:property value="treservationEntity.date"/> </li>
                         <li><strong>时间:</strong> <s:property value="treservationEntity.time"/></li>
                         <li><strong>地点:</strong> <s:property value="treservationEntity.place"/></li>
@@ -88,9 +132,10 @@
                         <li><strong>教师联系方式:</strong> <s:property value="usersEntity.contact"/></li>
                         <li><strong>教师学院:</strong> <s:property value="usersEntity.college"/></li>
                         <li><strong>教师邮箱:</strong> <s:property value="usersEntity.email"/></li>
-                    </ul>
                 </ul>
-                <button class="md-close btn btn-default">确认</button>
+                <div class="text-center">
+                    <a class="md-close btn btn-default">确认</a>
+                </div>
             </div>
         </div>
     </div>
@@ -113,13 +158,13 @@
             <span><s:property value="usersEntity.email"/></span><br/>
             <span><s:property value="usersEntity.contact"/> </span><br/>
             <a class="pull-left" href="LogoutAction?id=<s:property value='usersEntity.id'/>">退出登录</a>
-            <a class="pull-right" href="EditAction?id=<s:property value='usersEntity.id'/>">编辑</a>
+            <button class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</button>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
             <div class="col-lg-4 col-lg-offset-3 input-group">
                 <form action="EnterRequest">
-                <input type="text" class="form-control input-lg" id="search_name" name="teacherId"/>
+                    <input type="text" class="form-control input-lg" id="search_name" name="teacherId"/>
                     <input type="text" class="hidden" name="id" value="<s:property value="usersEntity.id"/> ">
                     <input type="submit" class="hidden">
             </form>
@@ -291,15 +336,9 @@
 <div class="md-overlay"></div>
 <!--jquery bootstrap jquery-ui js文件引入-->
 <script src="static/js/jquery-3.1.1.min.js"></script>
-<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
-<!--niftyModal js文件引入及必要操作-->
-<script src="static/niftyModal/js/classie.js"></script>
-<script src="static/niftyModal/js/modalEffects.js"></script>
-<script>
-    var polyfilter_scriptpath = '/js/';
-</script>
-<script src="static/niftyModal/js/css-filters-polyfill.js"></script>
+<script src="static/js/modal.js"></script>
 <!--自己的js-->
 <script>
 //    $(function(){
@@ -345,14 +384,14 @@
         var _width = $('#requested').width();
         var req_table_th = $("#requested th");
         var req_table_td = $("#requested td");
-        req_table_th.eq(0).width(_width * 0.15);
-        req_table_td.eq(0).width(_width * 0.15);
-        req_table_th.eq(1).width(_width * 0.15);
-        req_table_td.eq(1).width(_width * 0.15);
-        req_table_th.eq(2).width(_width * 0.05);
-        req_table_td.eq(2).width(_width * 0.05);
-        req_table_th.eq(3).width(_width * 0.08);
-        req_table_td.eq(3).width(_width * 0.08);
+        req_table_th.eq(0).width(_width * 0.1);
+        req_table_td.eq(0).width(_width * 0.1);
+        req_table_th.eq(1).width(_width * 0.1);
+        req_table_td.eq(1).width(_width * 0.1);
+        req_table_th.eq(2).width(_width * 0.08);
+        req_table_td.eq(2).width(_width * 0.08);
+        req_table_th.eq(3).width(_width * 0.2);
+        req_table_td.eq(3).width(_width * 0.2);
         req_table_th.eq(4).width(_width * 0.25);
         req_table_td.eq(4).width(_width * 0.25);
         req_table_th.eq(5).width(_width * 0.1);

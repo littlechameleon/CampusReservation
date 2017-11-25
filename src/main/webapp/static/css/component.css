@@ -69,6 +69,8 @@ perspective effects (not including the modals and the overlay).
 .md-content {
     color: #fff;
     background: #3e68ff;
+    opacity: 1;
+    border: 1px solid #000;
     position: relative;
     border-radius: 3px;
     margin: 0 auto;
@@ -106,15 +108,6 @@ perspective effects (not including the modals and the overlay).
     padding: 5px 0;
 }
 
-.md-content button {
-    display: block;
-    margin: 0 auto;
-    font-size: 0.8em;
-}
-
-/* Individual modal styles with animations/transitions */
-
-/* Effect 1: Fade in and scale up */
 .md-effect-1 .md-content {
     -webkit-transform: scale(0.7);
     -moz-transform: scale(0.7);
