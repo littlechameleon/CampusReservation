@@ -25,11 +25,11 @@
 <body>
 <div class="container">
     <div class="text-center">
-        <s:if test="usersEntity.type==1">
-            <h2><s:property value="usersEntity.name"/> 老师，您好，请确认并完善个人信息</h2>
+        <s:if test="#session.user.type==1">
+            <h2>${user.name} 老师，您好，请确认并完善个人信息</h2>
         </s:if>
         <s:else>
-            <h2><s:property value="usersEntity.name"/> 同学，你好，请确认并完善个人信息</h2>
+            <h2>${user.name} 同学，你好，请确认并完善个人信息</h2>
         </s:else>
     </div><br/><br/>
     <div class="center-block">
@@ -37,12 +37,12 @@
             <form action="ModifyAction" class=" col-lg-6 col-lg-offset-3" method="post">
                 <div class="form-group">
                     <label for="confirm_username" class="control-label">姓名<span class="important">*</span></label>
-                    <input required class="form-control input" id="confirm_username" value="<s:property value='usersEntity.name'/>" type="text"
+                    <input required class="form-control input" id="confirm_username" value="${user.name}" type="text"
                            name="name" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="number" class="control-label">学号/教工号</label>
-                    <input class="form-control input" id="number" value="<s:property value='usersEntity.id'/>" type="text"
+                    <input class="form-control input" id="number" value="${user.id}" type="text"
                            name="id" readonly="readonly">
                 </div>
                 <div class="form-group">

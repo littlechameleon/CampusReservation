@@ -37,33 +37,33 @@
             <form action="ModifyAction" method="post">
                 <div class="form-group">
                     <label for="confirm_username" class="control-label">姓名<span class="important">*</span></label>
-                    <input required class="form-control input" id="confirm_username" value="<s:property value='usersEntity.name'/>" type="text"
+                    <input required class="form-control input" id="confirm_username" value="${user.name}" type="text"
                            name="name" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="number" class="control-label">学号/教工号</label>
-                    <input class="form-control input" id="number" value="<s:property value='usersEntity.id'/>" type="text"
+                    <input class="form-control input" id="number" value="${user.id}>" type="text"
                            name="id" readonly="readonly">
                 </div>
                 <div class="form-group">
                     <label for="institute" class="control-label">学院<span class="important">*</span></label>
-                    <input required class="form-control input" id="institute" placeholder="请输入您所属学院" value="<s:property value='usersEntity.college'/>" type="text"
+                    <input required class="form-control input" id="institute" placeholder="请输入您所属学院" value="${user.college}" type="text"
                            name="college" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="phone" class="control-label">联系方式<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="phone" placeholder="请输入联系方式" value="<s:property value='usersEntity.contact'/>"
+                    <input required class="form-control input" type="tel" id="phone" placeholder="请输入联系方式" value="${user.contact}"
                            name="contact" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="confirm_email" class="control-label">邮箱<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="confirm_email" value="<s:property value='usersEntity.email'/>"
+                    <input required class="form-control input" type="tel" id="confirm_email" value="${user.email}"
                            name="email" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="indi_resume" class="control-label">个人简介</label>
                     <textarea class="form-control" name="detail" rows="5" maxlength="300" id="indi_resume"
-                              placeholder="请输入个人简介.最多300个字符"><s:property value="detail"/></textarea>
+                              placeholder="请输入个人简介.最多300个字符">${user.detail}</textarea>
                 </div>
                 <div class="submit-block text-center">
                     <input type="submit" class="btn btn-default btn-lg edit" value="提交"/>
@@ -145,19 +145,19 @@
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
-            <span>你好，<s:property value="usersEntity.name"/></span><br/>
-            <span id="id"><s:property value="usersEntity.id"/></span><br/>
-            <s:if test="sex==0">
+            <span>你好，${user.name} 同学</span><br/>
+            <span id="id">${user.id}</span><br/>
+            <s:if test="#session.user.sex==0">
                 <span>女</span>
             </s:if>
             <s:else>
                 <span>男</span>
             </s:else>
             <br/>
-            <span><s:property value="usersEntity.college"/></span><br/>
-            <span><s:property value="usersEntity.email"/></span><br/>
-            <span><s:property value="usersEntity.contact"/> </span><br/>
-            <a class="pull-left" href="LogoutAction?id=<s:property value='usersEntity.id'/>">退出登录</a>
+            <span>${user.college}</span><br/>
+            <span>${user.email}</span><br/>
+            <span>${user.contact}</span><br/>
+            <a class="pull-left" href="LogoutAction">退出登录</a>
             <button class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</button>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
@@ -165,8 +165,6 @@
             <div class="col-lg-4 col-lg-offset-3 input-group">
                 <form action="EnterRequest">
                     <input type="text" class="form-control input-lg" id="search_name" name="teacherId"/>
-                    <input type="text" class="hidden" name="id" value="<s:property value="usersEntity.id"/> ">
-                    <input type="submit" class="hidden">
             </form>
             </div>                <br/><br/>
 

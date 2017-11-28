@@ -11,11 +11,8 @@
         <property name="connection.username">root</property>
 
         <!-- <property name="connection.password"/> -->
-<<<<<<< HEAD
+
         <property name="connection.password">helloworld147</property>
-=======
-        <property name="connection.password">hbh828hbh</property>
->>>>>>> remotes/origin/master
 
         <!-- DB schema will be updated if needed -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>

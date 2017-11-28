@@ -23,7 +23,6 @@
 
     <!--nifty 动态弹出框引入-->
     <link rel="stylesheet" type="text/css" href="static/css/component.css"/>
-    <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
 </head>
 <body>
@@ -68,7 +67,6 @@
                 <div class="col-lg-4 col-lg-offset-3 input-group">
                     <input type="date" class="form-control input-lg" value="<s:date format='yyyy-MM-dd' name='date'/>" id="date" name="date"/>
                     <input type="text" class="hidden" value="<s:property value='usersEntity.id'/>" name="teacherId" id="teacherId">
-                    <input type="text" class="hidden" value="<s:property value='id'/>" name="id" id="id">
                     <span class="input-group-btn">
                         <button class="btn btn-default" id="date_button" type="submit">确认</button>
                     </span>
@@ -96,7 +94,7 @@
                                 <td><s:property value="treservationEntity.place"/></td>
                                 <td><s:property value="sreservationEntity.theme"/></td>
                                 <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
-                                <td><s:if test="#id==usersEntity.id"><a class="btn btn-default md-trigger" data-modal="modal-<s:property value='treservation.torder'/>">取消预约</a></s:if></td>
+                                <td><s:if test="#session.user.id==usersEntity.id"><a class="btn btn-default md-trigger" data-modal="modal-<s:property value='treservation.torder'/>">取消预约</a></s:if></td>
                             </tr>
                         </s:if>
                     </s:iterator>
@@ -125,7 +123,7 @@
 
                     </tbody>
                 </table>
-                <a class="btn btn-lg btn-primary pull-left" href="ReturnHomepage?id=<s:property value='id'/>"><span class="glyphicon glyphicon-arrow-left"></span> 返回主页</a>
+                <a class="btn btn-lg btn-primary pull-left" href="ReturnHomepage"><span class="glyphicon glyphicon-arrow-left"></span> 返回主页</a>
             </div>
         </div>
     </div>

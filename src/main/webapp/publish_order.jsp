@@ -24,7 +24,6 @@
 
     <!--nifty 动态弹出框引入-->
     <link rel="stylesheet" type="text/css" href="static/css/component.css" />
-    <script src="static/niftyModal/js/modernizr.custom.js"></script>
 
     <!--临时css设置-->
 </head>
@@ -48,27 +47,26 @@
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
-            <span>你好，<s:property value="usersEntity.name"/></span><br/>
-            <span id="id"><s:property value="usersEntity.id"/></span><br/>
-            <s:if test="sex==0">
+            <span>你好，${user.name}</span><br/>
+            <span id="id">${user.id}</span><br/>
+            <s:if test="#session.user.sex==0">
                 <span>女</span>
             </s:if>
             <s:else>
                 <span>男</span>
             </s:else>
             <br/>
-            <span><s:property value="usersEntity.college"/></span><br/>
-            <span><s:property value="usersEntity.email"/></span><br/>
-            <span><s:property value="usersEntity.contact"/> </span><br/>
+            <span>${user.college}</span><br/>
+            <span>${user.email}</span><br/>
+            <span>${user.contact}</span><br/>
             <p>个人简介:</p>
-            <span><s:property value="usersEntity.detail"/></span><br/><br/>
+            <span>${user.detail}</span><br/><br/>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
             <form action="ReleaseAction" method="post">
                 <div class="col-lg-4 col-lg-offset-3 input-group">
                     <input type="date" class="form-control input-lg" value="<s:date format='yyyy-MM-dd' name='date'/>" id="date" name="date"/>
-                    <input type="text" class="hidden" value="<s:property value='usersEntity.id'/>" name="id">
                     <span class="input-group-btn">
                         <button class="btn btn-default" id="date_button" type="submit">确认</button>
                     </span>
@@ -171,7 +169,7 @@
                     <tbody style="display:block;overflow-y: scroll;max-height: 500px" id="publish_table">
                     </tbody>
                 </table>
-                <a class="btn btn-lg btn-primary pull-left" href="ReturnHomepage?id=<s:property value='usersEntity.id'/> "><span class="glyphicon glyphicon-arrow-left"></span> 返回主页</a>
+                <a class="btn btn-lg btn-primary pull-left" href="ReturnHomepage"><span class="glyphicon glyphicon-arrow-left"></span> 返回主页</a>
                 <button class="btn btn-lg btn-primary pull-right md-trigger" data-modal="modal-0" id="publish">发布预约</button>
             </div>
         </div>
