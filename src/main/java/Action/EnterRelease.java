@@ -27,6 +27,10 @@ public class EnterRelease extends ActionSupport {
             usersEntity = usersDAO.get(teacherId);
         }
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
+        System.out.println(date);
+        System.out.println(usersEntity.getId());
+        System.out.println("-------------------------------------------");
+
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;
     }

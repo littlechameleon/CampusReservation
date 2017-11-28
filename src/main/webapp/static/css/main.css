@@ -7,23 +7,20 @@ body{
     font-size: 20px;
     margin-top: 100px;
 }
-
-.input {
-    height: 45px;
+.modal-content{
+    box-shadow: 0 0 5px 2px #8c8c8c;
+    background-color: rgb(244,251,255);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.input{
+    height: 50px;
 }
 
-#tabs {
-    margin-top: 50px;
+.hidden{
+    display: none;
 }
-
-#username {
-    margin-top: 50px;
-}
-
-#password {
-    margin-top: 30px;
-}
-
 #sex_label {
     margin-left: -15px;
 }
@@ -109,7 +106,7 @@ body{
     margin-bottom: 30px;
 }
 
-/*密码强度*/
+/*密码强度插件*/
 .pw-strength {
     clear: both;
     position: relative;
@@ -165,4 +162,28 @@ body{
     font-size: 12px;
     text-align: center;
     width: 58px;
+}
+/*评分插件*/
+.br-theme-bootstrap-stars .br-widget {
+    height: 28px;
+}
+.br-theme-bootstrap-stars .br-widget a {
+    font: normal normal normal 18px/1 'Glyphicons Halflings';
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    margin-right: 2px;
+}
+.br-theme-bootstrap-stars .br-widget a:after {
+    content: '\e006';
+    color: #dddddd;
+}
+.br-theme-bootstrap-stars .br-widget a.br-active:after {
+    color: #ffdf88;
+}
+.br-theme-bootstrap-stars .br-widget a.br-selected:after {
+    color: #ffdf88;
+}
+.br-theme-bootstrap-stars .br-widget .br-current-rating {
+    display: none;
 }
