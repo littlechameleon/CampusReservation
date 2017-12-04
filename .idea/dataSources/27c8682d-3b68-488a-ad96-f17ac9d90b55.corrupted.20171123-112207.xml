@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="campusreservation">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+<<<<<<< HEAD
+    <schema id="3" parent="1" name="bookdb"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sakila"/>
+    <schema id="8" parent="1" name="sys"/>
+    <schema id="9" parent="1" name="world"/>
+    <table id="10" parent="2" name="sreservation"/>
+    <table id="11" parent="2" name="treservation"/>
+    <table id="12" parent="2" name="users"/>
+    <column id="13" parent="10" name="Sorder">
+=======
+    <schema id="3" parent="1" name="first_database"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="lab2">
+      <Visible>1</Visible>
+    </schema>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="samp_db"/>
+    <schema id="9" parent="1" name="select_test"/>
+    <schema id="10" parent="1" name="test"/>
+    <schema id="11" parent="1" name="users"/>
+    <table id="12" parent="2" name="sreservation"/>
+    <table id="13" parent="2" name="treservation"/>
+    <table id="14" parent="2" name="users"/>
+    <table id="15" parent="5" name="author"/>
+    <table id="16" parent="5" name="book"/>
+    <column id="17" parent="12" name="Sorder">
+>>>>>>> refs/remotes/origin/master
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="18" parent="12" name="StudentID">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="12" name="theme">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="12" name="Sstate">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="21" parent="12" name="Torder">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="22" parent="12" name="TeacherID">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+<<<<<<< HEAD
+    <key id="19" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+=======
+    <key id="23" parent="12" name="PRIMARY">
+>>>>>>> refs/remotes/origin/master
+      <ColNames>Sorder</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="24" parent="13" name="Torder">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="13" name="TeacherID">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="13" name="date">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="13" name="time">
+      <Position>4</Position>
+      <DataType>time|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="13" name="place">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="13" name="Tstate">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="30" parent="13" name="Sorder">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+<<<<<<< HEAD
+    <key id="27" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+=======
+    <key id="31" parent="13" name="PRIMARY">
+>>>>>>> refs/remotes/origin/master
+      <ColNames>Torder</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="32" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;XXXXXXXXXX&apos;</DefaultExpression>
+    </column>
+    <column id="33" parent="14" name="name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+<<<<<<< HEAD
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;user&apos;</DefaultExpression>
+=======
+>>>>>>> refs/remotes/origin/master
+    </column>
+    <column id="34" parent="14" name="type">
+      <Position>3</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="35" parent="14" name="sex">
+      <Position>4</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="36" parent="14" name="password">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="37" parent="14" name="college">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="38" parent="14" name="workplace">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="39" parent="14" name="contact">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="40" parent="14" name="email">
+      <Position>9</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+<<<<<<< HEAD
+    <column id="37" parent="12" name="question">
+      <Position>10</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="38" parent="12" name="answer">
+=======
+    <column id="41" parent="14" name="answer">
+      <Position>10</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="42" parent="14" name="question">
+>>>>>>> refs/remotes/origin/master
+      <Position>11</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="43" parent="14" name="detail">
+      <Position>12</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="44" parent="14" name="score">
+      <Position>13</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;100&apos;</DefaultExpression>
+    </column>
+<<<<<<< HEAD
+    <key id="41" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+=======
+    <key id="45" parent="14" name="PRIMARY">
+>>>>>>> refs/remotes/origin/master
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="46" parent="15" name="AuthorID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="15" name="Name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="48" parent="15" name="Age">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="49" parent="15" name="Country">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="50" parent="15" name="PRIMARY">
+      <ColNames>AuthorID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="16" name="ISBN">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="16" name="Title">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="53" parent="16" name="AuthorID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="54" parent="16" name="Publisher">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="55" parent="16" name="PublishDate">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="56" parent="16" name="Price">
+      <Position>6</Position>
+      <DataType>float|0</DataType>
+    </column>
+    <index id="57" parent="16" name="AuthorID">
+      <ColNames>AuthorID</ColNames>
+    </index>
+    <key id="58" parent="16" name="PRIMARY">
+      <ColNames>ISBN</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="59" parent="16" name="AuthorID">
+      <ColNames>AuthorID</ColNames>
+      <RefSchemaName>lab2</RefSchemaName>
+      <RefTableName>author</RefTableName>
+      <RefColNames>AuthorID</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

@@ -5,6 +5,9 @@ import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +22,7 @@ public class LoginAction extends ActionSupport {
     private ArrayList refusedList;
     private List nullList;
 
-    public String execute() throws Exception {
+    public String Login() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
@@ -28,6 +31,8 @@ public class LoginAction extends ActionSupport {
         usersEntity.setPassword(password);
         if (usersDAO.login(usersEntity)) {
             usersEntity = usersDAO.get(id);
+            HttpSession session = ServletActionContext.getRequest().getSession();
+            session.setAttribute("user",usersEntity);
             unconfirmedList = reservationDA0.get(id, 0);
             confirmedList = reservationDA0.get(id, 1);
             unjudgedList = reservationDA0.get(id, 2);
