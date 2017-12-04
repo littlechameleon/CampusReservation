@@ -207,6 +207,9 @@
                     else{
                         alert("操作失败！");
                     }
+                },
+                error:function () {
+                    alert("无法连接到服务器！");
                 }
             })
         })
