@@ -163,7 +163,7 @@
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
             <div class="col-lg-4 col-lg-offset-3 input-group">
-                <form action="EnterRequest">
+                <form action="EnterRequest" method="post">
                     <input type="text" class="form-control input-lg" id="search_name" name="teacherId"/>
             </form>
             </div>                <br/><br/>
@@ -252,21 +252,21 @@
                     <td>13:00-13:30</td>
                     <td>李四</td>
                     <td>综合楼</td>
-                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
+                    <td><a class="btn btn-default" href="EnterRequest?teacherId=12">预约</a></td>
                 </tr>
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
                     <td>李四</td>
                     <td>综合楼</td>
-                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
+                    <td><a class="btn btn-default" href="EnterRequest?teacherId=12">预约</a></td>
                 </tr>
                 <tr>
                     <td>2002-01-12</td>
                     <td>13:00-13:30</td>
                     <td>李四</td>
                     <td>综合楼</td>
-                    <td><a class="btn btn-default" href="EnterRequest?id=1&teacherId=12">预约</a></td>
+                    <td><a class="btn btn-default" href="EnterRequest?teacherId=12">预约</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -285,22 +285,6 @@
                 </tr>
                 </thead>
                 <tbody style="display:block; max-height:200px;overflow-y: scroll;">
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td>张三</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                    <td>未评分</td>
-                </tr>
-                <tr>
-                    <td>2002-01-12</td>
-                    <td>13:00-13:30</td>
-                    <td>李四</td>
-                    <td>综合楼</td>
-                    <td>机器学习</td>
-                    <td>1</td>
-                </tr>
                 <s:iterator value="judgedList">
                     <tr>
                         <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>

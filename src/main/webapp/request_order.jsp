@@ -16,6 +16,7 @@
     <title>请求预约</title>
     <link rel="shortcut icon" href="static/image/favicon.ico">
 
+    <link rel="stylesheet" type="text/css" href="static/css/css/font-awesome.min.css">
     <!--bootstrap 和 jquery,jquery-ui 引入-->
     <link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
@@ -45,7 +46,7 @@
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
             <span>你好，<s:property value="usersEntity.name"/></span><br/>
-            <span><s:property value="usersEntity.id"/></span><br/>
+            <span id="teacherId"><s:property value="usersEntity.id"/></span><br/>
             <s:if test="sex==0">
                 <span>女</span>
             </s:if>
@@ -56,9 +57,12 @@
             <span><s:property value="usersEntity.college"/></span><br/>
             <span><s:property value="usersEntity.email"/></span><br/>
             <span><s:property value="usersEntity.contact"/> </span><br/>
-            <p id="follow">关注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                    class="glyphicon glyphicon-star-empty"></span></p>
-            <p id="followed">取消关注 <span class="glyphicon glyphicon-star"></span></p>
+            <s:if test="unfollowed">
+            <p id="follow" class="follow_type">关注<i class="fa fa-star-o fa-lg"></i></p>
+            </s:if>
+            <s:else>
+            <p id="followed" class="follow_type">取消关注<i class="fa fa-star fa-lg"></i></p>
+            </s:else>
         </div>
 
         <div class="col-lg-11 modal-content col-lg-offset-2">
@@ -176,7 +180,37 @@
             $(this).attr("href",href+"&id="+$("#id").val());
         });
     });
-
+    $(function () {
+        var id=$("#teacherId").text();
+        var follow_type;
+        $(".follow_type").click(function () {
+            if($(this).id=="follow"){
+                follow_type="unfollow";
+            }
+            else{
+                follow_type="follow";
+            }
+            $.ajax({
+                url:"followAction",
+                type:"POST",
+                data:{"id":id,"action":follow_type},
+                success:function (e) {
+                    if(e=="1"){
+                        $(this).html("取消关注<i class='fa fa-star fa-lg'></i>");
+                        $(this).id="unfollow";
+                        alert("取消关注成功！");
+                    }else if(e=="2"){
+                        $(this).html("关注<i class='fa fa-star-o fa-lg'></i>");
+                        $(this).id="follow";
+                        alert("关注成功！");
+                    }
+                    else{
+                        alert("操作失败！");
+                    }
+                }
+            })
+        })
+    })
 </script>
 </body>
 </html>

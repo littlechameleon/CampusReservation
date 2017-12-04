@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: 11873
@@ -40,6 +41,8 @@
                             <input required type="password" name="password" class="form-control input"
                                    id="login_password"
                                    placeholder="密码">
+                            <p class="hidden" id="login_tip">输入完成后请按Tab键</p>
+                            <p class="important"><s:property value="msg"/></p>
                             <a href="#" id="forget_password" class="pull-right">忘记密码</a>
                         </div>
                         <div id="drag" class="center-block hidden"></div>
@@ -109,6 +112,9 @@
 <script>
 
     $(function () {
+        $("#login_password").keyup(function () {
+            $("#login_tip").removeClass("hidden");
+        });
 //        登录滑块
         $("#login_password").blur(function () {
             if($("#login_username").val()!=''&&$("#login_password").val()!=''){
