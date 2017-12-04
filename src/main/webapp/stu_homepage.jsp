@@ -360,7 +360,7 @@
 //            }
 //        });
 //
-//        $("#search_name").autocomplete(names,{
+//        $("#segitarch_name").autocomplete(names,{
 //            max:12,
 //            minChars:0,
 //            width:400,
