@@ -12,5 +12,6 @@
         <property name="place" column="place"/>
         <property name="tstate" column="Tstate"/>
         <property name="sorder" column="Sorder"/>
+        <property name="score" column="score"/>
     </class>
 </hibernate-mapping>

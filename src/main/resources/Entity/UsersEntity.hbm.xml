@@ -18,5 +18,6 @@
         <property name="answer" column="answer"/>
         <property name="detail" column="detail"/>
         <property name="score" column="score"/>
+        <property name="followNum" column="followNum"/>
     </class>
 </hibernate-mapping>

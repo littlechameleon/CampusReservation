@@ -13,7 +13,8 @@ public class TreservationEntity {
     private Time time;
     private String place;
     private int tstate;
-    private int sorder;
+    private Integer sorder;
+    private Integer score;
 
     @Id
     @Column(name = "Torder")
@@ -77,12 +78,22 @@ public class TreservationEntity {
 
     @Basic
     @Column(name = "Sorder")
-    public int getSorder() {
+    public Integer getSorder() {
         return sorder;
     }
 
-    public void setSorder(int sorder) {
+    public void setSorder(Integer sorder) {
         this.sorder = sorder;
+    }
+
+    @Basic
+    @Column(name = "score")
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
     }
 
     @Override
@@ -94,11 +105,12 @@ public class TreservationEntity {
 
         if (torder != that.torder) return false;
         if (tstate != that.tstate) return false;
-        if (sorder != that.sorder) return false;
         if (teacherId != null ? !teacherId.equals(that.teacherId) : that.teacherId != null) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
         if (time != null ? !time.equals(that.time) : that.time != null) return false;
         if (place != null ? !place.equals(that.place) : that.place != null) return false;
+        if (sorder != null ? !sorder.equals(that.sorder) : that.sorder != null) return false;
+        if (score != null ? !score.equals(that.score) : that.score != null) return false;
 
         return true;
     }
@@ -111,7 +123,8 @@ public class TreservationEntity {
         result = 31 * result + (time != null ? time.hashCode() : 0);
         result = 31 * result + (place != null ? place.hashCode() : 0);
         result = 31 * result + tstate;
-        result = 31 * result + sorder;
+        result = 31 * result + (sorder != null ? sorder.hashCode() : 0);
+        result = 31 * result + (score != null ? score.hashCode() : 0);
         return result;
     }
 }
