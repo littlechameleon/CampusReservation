@@ -12,7 +12,7 @@
 
         <!-- <property name="connection.password"/> -->
 
-        <property name="connection.password">helloworld147</property>
+        <property name="connection.password">hbh828hbh</property>
 
         <!-- DB schema will be updated if needed -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
@@ -27,5 +27,7 @@
         <mapping resource="Entity/SreservationEntity.hbm.xml"/>
         <mapping class="Entity.TreservationEntity"/>
         <mapping resource="Entity/TreservationEntity.hbm.xml"/>
+        <mapping class="Entity.FollowEntity"/>
+        <mapping resource="Entity/FollowEntity.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

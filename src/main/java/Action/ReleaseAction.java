@@ -7,6 +7,9 @@ import Entity.ReservationEntity;
 import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -15,19 +18,16 @@ import java.util.List;
 public class ReleaseAction extends ActionSupport {
     private Date date;                      //双向传
 
-    private String id;                      //单向传入
-    private String[] releaseList;
+    private String[] releaseList;           //单向传入
 
     private List list;                      //单向传出
     private ArrayList arrayList;
-    private UsersEntity usersEntity;
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
-        usersEntity = usersDAO.get(id);
-        list = treservationDAO.getOnedayNull(date, usersEntity.getId());
-        arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
         if(releaseList != null) {
             for (String strings : releaseList) {
                 String string[] = strings.split(",");
@@ -39,12 +39,11 @@ public class ReleaseAction extends ActionSupport {
                 treservationDAO.create(treservationEntity);
             }
         }
+        list = treservationDAO.getOnedayNull(date, usersEntity.getId());
+        arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public void setDate(Date date) {
         this.date = date;
@@ -60,10 +59,6 @@ public class ReleaseAction extends ActionSupport {
 
     public ArrayList getArrayList() {
         return arrayList;
-    }
-
-    public UsersEntity getUsersEntity() {
-        return usersEntity;
     }
 
     public void setReleaseList(String[] releaseList) {

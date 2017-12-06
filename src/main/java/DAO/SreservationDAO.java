@@ -17,22 +17,24 @@ public class SreservationDAO {
     }
 
     public void create(SreservationEntity sreservationEntity, TreservationEntity treservationEntity) throws RuntimeException{    //新增请求预约信息
-        Session session = SessionCon.currentSession();
-        try {
-            tx = session.beginTransaction();
-            sreservationEntity.setSstate(0);
-            session.save(sreservationEntity);
-            if(treservationEntity.getTstate() == 4){
-                treservationEntity.setTstate(0);
+        if(IsAready(sreservationEntity.getTorder(),sreservationEntity.getStudentId())) {
+            Session session = SessionCon.currentSession();
+            try {
+                tx = session.beginTransaction();
+                sreservationEntity.setSstate(0);
+                session.save(sreservationEntity);
+                if (treservationEntity.getTstate() == 4) {
+                    treservationEntity.setTstate(0);
+                }
+                session.update(treservationEntity);
+                session.flush();
+                tx.commit();
+            } catch (Exception e) {
+                SessionCon.rollback(tx);
+                e.printStackTrace();
+            } finally {
+                SessionCon.closeSession();
             }
-            session.update(treservationEntity);
-            session.flush();
-            tx.commit();
-        }catch (Exception e){
-            SessionCon.rollback(tx);
-            e.printStackTrace();
-        }finally {
-            SessionCon.closeSession();
         }
     }
 
@@ -69,5 +71,18 @@ public class SreservationDAO {
             SessionCon.closeSession();
         }
         return null;
+    }
+
+    private boolean IsAready(int torder, String studentId){
+        Session session = SessionCon.currentSession();
+        try{
+            String hql = "from SreservationEntity where studentId ='"+studentId+"' and torder="+torder;
+            return session.createQuery(hql).list().isEmpty();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            SessionCon.closeSession();
+        }
+        return false;
     }
 }

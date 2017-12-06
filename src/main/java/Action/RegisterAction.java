@@ -3,6 +3,9 @@ package Action;
 import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
 
 public class RegisterAction extends ActionSupport {
     private String password;
@@ -23,6 +26,8 @@ public class RegisterAction extends ActionSupport {
         usersEntity.setScore(100);
         if (!usersDAO.find(id)) {
             usersDAO.create(usersEntity);
+            HttpSession session = ServletActionContext.getRequest().getSession();
+            session.setAttribute("user",usersEntity);
             return SUCCESS;
         } else {
             return ERROR;

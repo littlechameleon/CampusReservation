@@ -9,15 +9,15 @@ import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import SessionHelper.SessionCon;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AgreeRequest extends ActionSupport {
-    private String id;
     private int Sorder;
-    private UsersEntity usersEntity;
     private ArrayList unjudgedList;
     private ArrayList judgedList;
     private ArrayList unconfirmedList;
@@ -29,8 +29,9 @@ public class AgreeRequest extends ActionSupport {
         TreservationDAO treservationDAO = new TreservationDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         SreservationDAO sreservationDAO = new SreservationDAO();
-        UsersDAO usersDAO = new UsersDAO();
-        usersEntity = usersDAO.get(id);
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
+        String id = usersEntity.getId();
         SreservationEntity sreservationEntity = sreservationDAO.get(Sorder);
         TreservationEntity treservationEntity = treservationDAO.get(sreservationEntity.getTorder());
         treservationEntity.setSorder(Sorder);
@@ -46,15 +47,6 @@ public class AgreeRequest extends ActionSupport {
             refusedList = reservationDA0.get(id, 4);
             return "successStu";
         }
-    }
-
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public UsersEntity getUsersEntity() {
-        return usersEntity;
     }
 
     public ArrayList getUnjudgedList() {

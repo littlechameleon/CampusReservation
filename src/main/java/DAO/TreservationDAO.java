@@ -113,11 +113,24 @@ public class TreservationDAO {
         return null;
     }
 
-    public List getNullList(String TeacherID){             //获取教授发布但没有学生预约的预约信息
+    public List getNullList(String TeacherID){             //获取教授发布但未确定的预约信息
         Session session = SessionCon.currentSession();
         try {
             String hql = "from TreservationEntity where teacherId='" +TeacherID+ "' and (tstate = 4 or tstate = 0)";
             return session.createQuery(hql).list();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            SessionCon.closeSession();
+        }
+        return null;
+    }
+
+    public List getNewOrder(int maxNum){                //最新消息maxNum条
+        Session session = SessionCon.currentSession();
+        try {
+            String hql = "from TreservationEntity order by torder desc";
+            return session.createQuery(hql).setMaxResults(maxNum).list();
         }catch (Exception e){
             e.printStackTrace();
         }finally {

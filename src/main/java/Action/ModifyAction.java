@@ -5,6 +5,9 @@ import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +44,8 @@ public class ModifyAction extends ActionSupport {
         usersEntity.setAnswer(answer);
         usersEntity.setQuestion(question);
         usersDAO.update(usersEntity);
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        session.setAttribute("user",usersEntity);
         unconfirmedList = reservationDA0.get(id, 0);
         confirmedList = reservationDA0.get(id, 1);
         unjudgedList = reservationDA0.get(id, 2);

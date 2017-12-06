@@ -6,7 +6,6 @@ import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
-
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +32,9 @@ public class LoginAction extends ActionSupport {
             usersEntity = usersDAO.get(id);
             HttpSession session = ServletActionContext.getRequest().getSession();
             session.setAttribute("user",usersEntity);
+            if(usersEntity.getContact() == null){
+                return "notModify";
+            }
             unconfirmedList = reservationDA0.get(id, 0);
             confirmedList = reservationDA0.get(id, 1);
             unjudgedList = reservationDA0.get(id, 2);
