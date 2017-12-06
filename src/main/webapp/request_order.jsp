@@ -169,11 +169,10 @@
             var time=$(this).parent().parent().children().eq(0).html();
             var theme=$(this).parent().parent().children().eq(3).children().eq(0).val();
             var date=$("#date").val();
-            var id=$("#id").val();
-            var teacherId=$("#teacherId").val();
+            var teacherId=$("#teacherId").text();
             var href=$("#"+order+" .confirm_submit").attr("href");
             $("#"+order+" p").html("日期："+date+"时间："+time+"主题："+theme);
-            $("#"+order+" .confirm_submit").attr("href",href+"&theme="+theme+"&date="+date+"&id="+id+"&teacherId="+teacherId);
+            $("#"+order+" .confirm_submit").attr("href",href+"&theme="+theme+"&date="+date+"&teacherId="+teacherId);
         });
         $(".visit").each(function(){
             var href=$(this).attr("href");
