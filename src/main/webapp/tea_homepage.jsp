@@ -39,36 +39,50 @@
             <h2>修改个人信息</h2>
         </div><br/><br/>
         <div class="center-block">
-            <form action="ModifyAction" method="post">
+            <form action="ModifyAction" method="post" class="form-horizontal">
                 <div class="form-group">
-                    <label for="confirm_username" class="control-label">姓名<span class="important">*</span></label>
-                    <input required class="form-control input" id="confirm_username" value="${user.name}" type="text"
-                           name="name" maxlength="20">
+                    <label for="confirm_username" class="control-label col-sm-2">姓名：<span class="important">*</span></label>
+                    <div class="col-sm-10">
+                        <input required class="form-control input col-sm-10" id="confirm_username" value="${user.name}" type="text"
+                               name="name" maxlength="20">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="number" class="control-label">学号/教工号</label>
-                    <input class="form-control input" id="number" value="${user.id}" type="text"
-                           name="id" readonly="readonly">
+                    <label for="number" class="control-label col-sm-2">学号/教工号：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control input col-sm-10" id="number" value="${user.id}" type="text"
+                               name="id" readonly="readonly">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="institute" class="control-label">学院<span class="important">*</span></label>
-                    <input required class="form-control input" id="institute" placeholder="请输入您所属学院" value="${user.college}" type="text"
-                           name="college" maxlength="20">
+                    <label for="institute" class="control-label col-sm-2">学院：<span class="important">*</span></label>
+                    <div class="col-sm-10">
+                        <input required class="form-control input col-sm-10" id="institute" placeholder="请输入您所属学院"
+                               value="${user.college}" type="text"
+                               name="college" maxlength="20">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="control-label">联系方式<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="phone" placeholder="请输入联系方式" value="${user.contact}"
-                           name="contact" maxlength="20">
+                    <label for="phone" class="control-label col-sm-2">联系方式：<span class="important">*</span></label>
+                    <div class="col-sm-10">
+                        <input required class="form-control input col-sm-10" type="tel" id="phone" placeholder="请输入联系方式"
+                               value="${user.contact}"
+                               name="contact" maxlength="20">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="confirm_email" class="control-label">邮箱<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="confirm_email" value="${user.email}"
-                           name="email" maxlength="20">
+                    <label for="confirm_email" class="control-label col-sm-2">邮箱：<span class="important">*</span></label>
+                    <div class="col-sm-10">
+                        <input required class="form-control input col-sm-10" type="tel" id="confirm_email" value="${user.email}"
+                               name="email" maxlength="20">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="indi_resume" class="control-label">个人简介</label>
-                    <textarea class="form-control" name="detail" rows="5" maxlength="300" id="indi_resume"
+                    <label for="indi_resume" class="control-label col-sm-2">个人简介：</label>
+                    <div class="col-md-10">
+                    <textarea class="form-control col-sm-10" name="detail" rows="5" maxlength="300" id="indi_resume"
                               placeholder="请输入个人简介.最多300个字符">${user.detail}</textarea>
+                    </div>
                 </div>
                 <div class="submit-block text-center">
                     <input type="submit" class="btn btn-default btn-lg edit" value="提交"/>
@@ -146,7 +160,7 @@
             <br/><br/>
             <a class="btn btn-success pull-right" href="EnterRelease">发布预约</a><br/><br/>
             <div id="new_table">
-                <table class="table table-striped table-hover" >
+                <table class="table table-striped table-hover">
                     <caption class="text-center">最新消息</caption>
                     <thead style="display:block;border-bottom:1px solid #eee;">
                     <tr>
