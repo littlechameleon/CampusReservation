@@ -45,7 +45,7 @@ public class ModifyAction extends ActionSupport {
         usersEntity.setQuestion(question);
         usersDAO.update(usersEntity);
         HttpSession session = ServletActionContext.getRequest().getSession();
-        session.setAttribute("user",usersEntity);
+        session.setAttribute("user", usersEntity);
         unconfirmedList = reservationDA0.get(id, 0);
         confirmedList = reservationDA0.get(id, 1);
         unjudgedList = reservationDA0.get(id, 2);

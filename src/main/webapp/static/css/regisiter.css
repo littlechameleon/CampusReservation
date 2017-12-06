@@ -1,17 +1,20 @@
-#login_signup{
+#login_signup {
     -webkit-box-shadow: 0 3px 0 #e1e1e8;
     -moz-box-shadow: 0 3px 0 #e1e1e8;
     box-shadow: 0 0 3px 0 #e1e1e8;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
- }
+}
+
 .input {
     margin-top: 30px;
 }
+
 #tabs {
     margin-top: 50px;
 }
+
 /*滑动验证码*/
 #drag {
     position: relative;

@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class UsersEntity {
     private String id;
     private String name;
-    private byte type;
-    private byte sex;
+    private Byte type;
+    private Byte sex;
     private String password;
     private String college;
     private String workplace;
@@ -18,6 +18,7 @@ public class UsersEntity {
     private String answer;
     private String detail;
     private int score;
+    private Integer followNum;
 
     @Id
     @Column(name = "id")
@@ -41,21 +42,21 @@ public class UsersEntity {
 
     @Basic
     @Column(name = "type")
-    public byte getType() {
+    public Byte getType() {
         return type;
     }
 
-    public void setType(byte type) {
+    public void setType(Byte type) {
         this.type = type;
     }
 
     @Basic
     @Column(name = "sex")
-    public byte getSex() {
+    public Byte getSex() {
         return sex;
     }
 
-    public void setSex(byte sex) {
+    public void setSex(Byte sex) {
         this.sex = sex;
     }
 
@@ -149,6 +150,16 @@ public class UsersEntity {
         this.score = score;
     }
 
+    @Basic
+    @Column(name = "followNum")
+    public Integer getFollowNum() {
+        return followNum;
+    }
+
+    public void setFollowNum(Integer followNum) {
+        this.followNum = followNum;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -156,11 +167,11 @@ public class UsersEntity {
 
         UsersEntity that = (UsersEntity) o;
 
-        if (type != that.type) return false;
-        if (sex != that.sex) return false;
         if (score != that.score) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+        if (sex != null ? !sex.equals(that.sex) : that.sex != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (college != null ? !college.equals(that.college) : that.college != null) return false;
         if (workplace != null ? !workplace.equals(that.workplace) : that.workplace != null) return false;
@@ -169,6 +180,7 @@ public class UsersEntity {
         if (question != null ? !question.equals(that.question) : that.question != null) return false;
         if (answer != null ? !answer.equals(that.answer) : that.answer != null) return false;
         if (detail != null ? !detail.equals(that.detail) : that.detail != null) return false;
+        if (followNum != null ? !followNum.equals(that.followNum) : that.followNum != null) return false;
 
         return true;
     }
@@ -177,8 +189,8 @@ public class UsersEntity {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (int) type;
-        result = 31 * result + (int) sex;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (sex != null ? sex.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (college != null ? college.hashCode() : 0);
         result = 31 * result + (workplace != null ? workplace.hashCode() : 0);
@@ -188,6 +200,7 @@ public class UsersEntity {
         result = 31 * result + (answer != null ? answer.hashCode() : 0);
         result = 31 * result + (detail != null ? detail.hashCode() : 0);
         result = 31 * result + score;
+        result = 31 * result + (followNum != null ? followNum.hashCode() : 0);
         return result;
     }
 }

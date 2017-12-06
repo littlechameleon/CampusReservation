@@ -13,7 +13,7 @@
             <interceptor name="LoginInterceptor" class="Webfilter.LoginInterceptor"/>
             <interceptor-stack name="LoginStack">
                 <interceptor-ref name="LoginInterceptor">
-                    <param name="excludeMethods">Login</param>
+                    <param name="includeMethods"> </param>
                 </interceptor-ref>
                 <interceptor-ref name="defaultStack"> </interceptor-ref>
             </interceptor-stack>

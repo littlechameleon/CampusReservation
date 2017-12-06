@@ -1,11 +1,14 @@
 package Action;
 
+import Ajax.SearchAction;
 import DAO.ReservationDA0;
 import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+
+import javax.naming.directory.SearchControls;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +34,8 @@ public class LoginAction extends ActionSupport {
         if (usersDAO.login(usersEntity)) {
             usersEntity = usersDAO.get(id);
             HttpSession session = ServletActionContext.getRequest().getSession();
-            session.setAttribute("user",usersEntity);
-            if(usersEntity.getContact() == null){
+            session.setAttribute("user", usersEntity);
+            if (usersEntity.getContact() == null) {
                 return "notModify";
             }
             unconfirmedList = reservationDA0.get(id, 0);

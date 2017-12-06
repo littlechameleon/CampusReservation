@@ -4,11 +4,11 @@ import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class EnterDetail extends ActionSupport{
+public class EnterDetail extends ActionSupport {
     private String visitId;
     private UsersEntity usersEntity;
 
-    public String execute() throws Exception{
+    public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
         usersEntity = usersDAO.get(visitId);
         return SUCCESS;
