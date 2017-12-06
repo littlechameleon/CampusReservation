@@ -12,12 +12,12 @@ import java.util.List;
 public class SreservationDAO {
     private Transaction tx;
 
-    public SreservationDAO(){
+    public SreservationDAO() {
 
     }
 
-    public void create(SreservationEntity sreservationEntity, TreservationEntity treservationEntity) throws RuntimeException{    //新增请求预约信息
-        if(IsAready(sreservationEntity.getTorder(),sreservationEntity.getStudentId())) {
+    public void create(SreservationEntity sreservationEntity, TreservationEntity treservationEntity) throws RuntimeException {    //新增请求预约信息
+        if (IsAready(sreservationEntity.getTorder(), sreservationEntity.getStudentId())) {
             Session session = SessionCon.currentSession();
             try {
                 tx = session.beginTransaction();
@@ -38,49 +38,48 @@ public class SreservationDAO {
         }
     }
 
-    public SreservationEntity get(int Sorder){           //获取教授某条预约信息(学生部分)
+    public SreservationEntity get(int Sorder) {           //获取教授某条预约信息(学生部分)
         Session session = SessionCon.currentSession();
-        try{
-            String hql = "from SreservationEntity where sorder=" +Sorder;
+        try {
+            String hql = "from SreservationEntity where sorder=" + Sorder;
             List list = session.createQuery(hql).list();
             return (SreservationEntity) list.iterator().next();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             SessionCon.closeSession();
         }
         return null;
     }
 
-    public List getAll(String id){           //获取某教授或学生全部请求预约信息(学生部分信息)
+    public List getAll(String id) {           //获取某教授或学生全部请求预约信息(学生部分信息)
         Session session = SessionCon.currentSession();
-        try{
+        try {
             String hql = "from UsersEntity where id='" + id + "'";
             List list = session.createQuery(hql).list();
             UsersEntity usersEntity = (UsersEntity) list.iterator().next();
-            if(usersEntity.getType() == 1) {
+            if (usersEntity.getType() == 1) {
                 hql = "from SreservationEntity where teacherId='" + id + "'";
-            }
-            else {
+            } else {
                 hql = "from SreservationEntity where studentId='" + id + "'";
             }
             return session.createQuery(hql).list();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             SessionCon.closeSession();
         }
         return null;
     }
 
-    private boolean IsAready(int torder, String studentId){
+    private boolean IsAready(int torder, String studentId) {
         Session session = SessionCon.currentSession();
-        try{
-            String hql = "from SreservationEntity where studentId ='"+studentId+"' and torder="+torder;
+        try {
+            String hql = "from SreservationEntity where studentId ='" + studentId + "' and torder=" + torder;
             return session.createQuery(hql).list().isEmpty();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             SessionCon.closeSession();
         }
         return false;

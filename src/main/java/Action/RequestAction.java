@@ -25,36 +25,35 @@ public class RequestAction extends ActionSupport {
     private List list;                  //单向传出
     private ArrayList arrayList;
     private UsersEntity usersEntity;    //教师信息
+
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
         SreservationDAO sreservationDAO = new SreservationDAO();
-        usersEntity = usersDAO.get(teacherId);
-        if(theme != null) {
+        TreservationEntity treservationEntity = treservationDAO.get(torder);
+        if (theme != null) {
             SreservationEntity sreservationEntity = new SreservationEntity();
-            TreservationEntity treservationEntity = treservationDAO.get(torder);
             HttpSession session = ServletActionContext.getRequest().getSession();
             UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
-            String id = usersEntity.getId();
             sreservationEntity.setTeacherId(teacherId);
             sreservationEntity.setTorder(torder);
             sreservationEntity.setTheme(theme);
-            sreservationEntity.setStudentId(id);
-            sreservationEntity.setTeacherId(usersEntity.getId());
+            sreservationEntity.setStudentId(usersEntity.getId());
             sreservationDAO.create(sreservationEntity, treservationEntity);
         }
+        usersEntity = usersDAO.get(teacherId);
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public Date getDate() {
         return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public List getList() {
@@ -69,12 +68,12 @@ public class RequestAction extends ActionSupport {
         return usersEntity;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
-
     public String getTeacherId() {
         return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
     }
 
     public void setTheme(String theme) {

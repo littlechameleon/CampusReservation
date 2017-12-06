@@ -7,9 +7,10 @@ public class VerifyIdAction extends ActionSupport {
 
     private String id;
     private int VerifyId;
-    public String execute() throws Exception{
+
+    public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
-        VerifyId = usersDAO.find(id)?1:0;
+        VerifyId = usersDAO.find(id) ? 1 : 0;
         return SUCCESS;
     }
 

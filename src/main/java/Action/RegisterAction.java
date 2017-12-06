@@ -27,7 +27,7 @@ public class RegisterAction extends ActionSupport {
         if (!usersDAO.find(id)) {
             usersDAO.create(usersEntity);
             HttpSession session = ServletActionContext.getRequest().getSession();
-            session.setAttribute("user",usersEntity);
+            session.setAttribute("user", usersEntity);
             return SUCCESS;
         } else {
             return ERROR;

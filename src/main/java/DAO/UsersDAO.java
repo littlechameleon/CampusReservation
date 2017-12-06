@@ -6,7 +6,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import SessionHelper.SessionCon;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UsersDAO {
@@ -92,10 +91,10 @@ public class UsersDAO {
         return null;
     }
 
-    public List getTeacher(String name){               //通过名字查找老师
+    public List getTeacher(String name) {               //通过名字查找老师
         Session session = SessionCon.currentSession();
         try {
-            String hql = "from UsersEntity where name='" + name + "'";
+            String hql = "select name,id,college from UsersEntity where name='" + name + "'";
             return session.createQuery(hql).list();
         } catch (Exception e) {
             e.printStackTrace();

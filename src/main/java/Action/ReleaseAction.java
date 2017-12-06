@@ -3,7 +3,6 @@ package Action;
 import DAO.ReservationDA0;
 import DAO.TreservationDAO;
 import DAO.UsersDAO;
-import Entity.ReservationEntity;
 import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,13 +21,14 @@ public class ReleaseAction extends ActionSupport {
 
     private List list;                      //单向传出
     private ArrayList arrayList;
+
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
         HttpSession session = ServletActionContext.getRequest().getSession();
         UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
-        if(releaseList != null) {
+        if (releaseList != null) {
             for (String strings : releaseList) {
                 String string[] = strings.split(",");
                 TreservationEntity treservationEntity = new TreservationEntity();
@@ -44,13 +44,12 @@ public class ReleaseAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public Date getDate() {
+        return date;
+    }
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Date getDate() {
-        return date;
     }
 
     public List getList() {

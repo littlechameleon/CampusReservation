@@ -18,12 +18,13 @@ public class EnterRelease extends ActionSupport {
     private List list;
     private ArrayList arrayList;
     private UsersEntity usersEntity;            //老师个人信息
+
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
         date = new java.sql.Date(new Date().getTime());
-        if(teacherId == null) {
+        if (teacherId == null) {
             HttpSession session = ServletActionContext.getRequest().getSession();
             usersEntity = (UsersEntity) session.getAttribute("user");
         } else {
