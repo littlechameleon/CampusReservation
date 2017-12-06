@@ -430,45 +430,46 @@
 <script src="static/js/modal.js"></script>
 <!--自己的js-->
 <script>
-    //    $(function(){
-    //        var names=[];
-    //        $("#search_name").keyup(function(){
-    //            if($(this).val()!=''){
-    //                $("#load_img").removeClass("hidden");
-    //                $.post("SearchAction",{
-    //                    name:$("#search_name").val()
-    //                },function(data,textStatus){
-    //                    for(var i in data.usersEntity){
-    //                        names.push(name);
-    //                    }
-    //                    $("#load_img").addClass("hidden");
-    //                })
-    //            }
-    //            else{
-    //                $("#load_img").addClass("hidden")
-    //            }
-    //        });
-    //
-    //        $("#search_name").autocomplete(names,{
-    //            max:12,
-    //            minChars:0,
-    //            width:400,
-    //            scrollHeight:300,
-    //            matchContains:true,
-    //            autoFill:false,
-    //            formateItem:function(row,i,max){
-    //                return row.name+":"+row.college;
-    //            },
-    //            formateMatch:function(row,i,max){
-    //                return row.name;
-    //            },
-    //            formateResult:function(row,i,max){
-    //                return row;
-    //            }
-    //        }).result(function(row,i,n){
-    //            location.href = "RequestAction?id="+row.id;
-    //        });
-    //    });
+
+//    $(function(){
+//        var names=[];
+//        $("#search_name").keyup(function(){
+//            if($(this).val()!=''){
+//                $("#load_img").removeClass("hidden");
+//                $.post("SearchAction",{
+//                    name:$("#search_name").val()
+//                },function(data,textStatus){
+//                    for(var i in data.usersEntity){
+//                        names.push(name);
+//                    }
+//                    $("#load_img").addClass("hidden");
+//                })
+//            }
+//            else{
+//                $("#load_img").addClass("hidden")
+//            }
+//        });
+//
+//        $("#segitarch_name").autocomplete(names,{
+//            max:12,
+//            minChars:0,
+//            width:400,
+//            scrollHeight:300,
+//            matchContains:true,
+//            autoFill:false,
+//            formateItem:function(row,i,max){
+//                return row.name+":"+row.college;
+//            },
+//            formateMatch:function(row,i,max){
+//                return row.name;
+//            },
+//            formateResult:function(row,i,max){
+//                return row;
+//            }
+//        }).result(function(row,i,n){
+//            location.href = "RequestAction?id="+row.id;
+//        });
+//    });
     $(document).ready(function () {
         var _width = $('#requested').width();
         var req_table_th = $("#requested th");
