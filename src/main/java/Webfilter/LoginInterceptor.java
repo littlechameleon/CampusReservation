@@ -8,10 +8,8 @@ public class LoginInterceptor extends MethodFilterInterceptor{
     protected String doIntercept(ActionInvocation invoker)throws Exception{
         Object loginUser = ActionContext.getContext().getSession().get("user");
         if(loginUser==null){
-            System.out.println("11111111111111");
             return "Login";
         }
-        System.out.println("-------------");
         return invoker.invoke();
     }
 }

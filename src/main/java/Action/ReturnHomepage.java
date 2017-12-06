@@ -5,12 +5,13 @@ import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReturnHomepage extends ActionSupport {
-    private String id;
-    private UsersEntity usersEntity;
     private ArrayList unjudgedList;
     private ArrayList judgedList;
     private ArrayList unconfirmedList;
@@ -19,10 +20,11 @@ public class ReturnHomepage extends ActionSupport {
     private List nullList;
 
     public String execute() throws Exception {
-        UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
-        usersEntity = usersDAO.get(id);
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
+        String id = usersEntity.getId();
         unconfirmedList = reservationDA0.get(id, 0);
         confirmedList = reservationDA0.get(id, 1);
         unjudgedList = reservationDA0.get(id, 2);
@@ -34,15 +36,6 @@ public class ReturnHomepage extends ActionSupport {
             refusedList = reservationDA0.get(id, 4);
             return "successStu";
         }
-    }
-
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public UsersEntity getUsersEntity() {
-        return usersEntity;
     }
 
     public ArrayList getUnjudgedList() {

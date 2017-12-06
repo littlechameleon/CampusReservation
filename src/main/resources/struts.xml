@@ -22,12 +22,13 @@
 
         <global-results>
             <result name="Login">register.jsp</result>
+            <result name="successStu">stu_homepage.jsp</result>
+            <result name="successTea">tea_homepage.jsp</result>
         </global-results>
 
         <!--Action-->
         <action name="LoginAction" class="Action.LoginAction" method="Login">
-            <result name="successStu">stu_homepage.jsp</result>
-            <result name="successTea">tea_homepage.jsp</result>
+            <result name="notModify">modify.jsp</result>
             <result name="error">register.jsp</result>
         </action>
         <action name="RegisterAction" class="Action.RegisterAction">
@@ -35,8 +36,6 @@
             <result name="error">register.jsp</result>
         </action>
         <action name="ModifyAction" class="Action.ModifyAction">
-            <result name="successStu">stu_homepage.jsp</result>
-            <result name="successTea">tea_homepage.jsp</result>
             <result name="error">modify.jsp</result>
         </action>
         <action name="ReleaseAction" class="Action.ReleaseAction">
@@ -46,12 +45,8 @@
             <result name="success">request_order.jsp</result>
         </action>
         <action name="CancelRelease" class="Action.CancelRelease">
-            <result name="successStu">stu_homepage.jsp</result>
-            <result name="successTea">tea_homepage.jsp</result>
         </action>
         <action name="AgreeRequest" class="Action.AgreeRequest">
-            <result name="successStu">stu_homepage.jsp</result>
-            <result name="successTea">tea_homepage.jsp</result>
         </action>
         <action name="EnterDetail" class="Action.EnterDetail">
             <result name="success">self_page.jsp</result>
@@ -61,9 +56,6 @@
         <action name="LogoutAction" class="Action.LogoutAction">
             <result name="success">register.jsp</result>
         </action>
-        <action name="EditAction" class="Action.EditAction">
-            <result name="success">user_edit.jsp</result>
-        </action>
         <action name="EnterRelease" class="Action.EnterRelease">
             <result name="success">publish_order.jsp</result>
         </action>
@@ -71,8 +63,6 @@
             <result name="success">request_order.jsp</result>
         </action>
         <action name="ReturnHomepage" class="Action.ReturnHomepage">
-            <result name="successStu">stu_homepage.jsp</result>
-            <result name="successTea">tea_homepage.jsp</result>
         </action>
     </package>
 

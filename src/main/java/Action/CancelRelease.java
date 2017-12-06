@@ -6,13 +6,14 @@ import DAO.UsersDAO;
 import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CancelRelease extends ActionSupport {
-    private String id;
     private int Torder;
-    private UsersEntity usersEntity;
     private ArrayList unjudgedList;
     private ArrayList judgedList;
     private ArrayList unconfirmedList;
@@ -21,11 +22,12 @@ public class CancelRelease extends ActionSupport {
     private List nullList;
 
     public String execute() throws Exception {
-        UsersDAO usersDAO = new UsersDAO();
         TreservationDAO treservationDAO = new TreservationDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
-        usersEntity = usersDAO.get(id);
         TreservationEntity treservationEntity = new TreservationEntity();
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
+        String id = usersEntity.getId();
         treservationEntity.setTorder(Torder);
         treservationDAO.delete(treservationEntity);
         unconfirmedList = reservationDA0.get(id, 0);
@@ -39,15 +41,6 @@ public class CancelRelease extends ActionSupport {
             refusedList = reservationDA0.get(id, 4);
             return "successStu";
         }
-    }
-
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public UsersEntity getUsersEntity() {
-        return usersEntity;
     }
 
     public ArrayList getUnjudgedList() {

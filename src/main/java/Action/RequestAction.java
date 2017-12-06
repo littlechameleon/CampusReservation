@@ -8,12 +8,14 @@ import Entity.SreservationEntity;
 import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RequestAction extends ActionSupport {
-    private String id;                  //学生自己的id
     private String teacherId;           //学生所查询老师的id
     private Date date;
 
@@ -29,11 +31,12 @@ public class RequestAction extends ActionSupport {
         TreservationDAO treservationDAO = new TreservationDAO();
         SreservationDAO sreservationDAO = new SreservationDAO();
         usersEntity = usersDAO.get(teacherId);
-        list = treservationDAO.getOnedayNull(date, usersEntity.getId());
-        arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         if(theme != null) {
             SreservationEntity sreservationEntity = new SreservationEntity();
             TreservationEntity treservationEntity = treservationDAO.get(torder);
+            HttpSession session = ServletActionContext.getRequest().getSession();
+            UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
+            String id = usersEntity.getId();
             sreservationEntity.setTeacherId(teacherId);
             sreservationEntity.setTorder(torder);
             sreservationEntity.setTheme(theme);
@@ -41,6 +44,8 @@ public class RequestAction extends ActionSupport {
             sreservationEntity.setTeacherId(usersEntity.getId());
             sreservationDAO.create(sreservationEntity, treservationEntity);
         }
+        list = treservationDAO.getOnedayNull(date, usersEntity.getId());
+        arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;
     }
 
@@ -62,14 +67,6 @@ public class RequestAction extends ActionSupport {
 
     public UsersEntity getUsersEntity() {
         return usersEntity;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void setTeacherId(String teacherId) {

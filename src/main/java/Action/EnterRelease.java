@@ -5,12 +5,14 @@ import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class EnterRelease extends ActionSupport {
-    private String id;              //用户自己的id
     private String teacherId;       //学生进入某老师预约界面时才用到
     private Date date;
     private List list;
@@ -22,21 +24,14 @@ public class EnterRelease extends ActionSupport {
         TreservationDAO treservationDAO = new TreservationDAO();
         date = new java.sql.Date(new Date().getTime());
         if(teacherId == null) {
-            usersEntity = usersDAO.get(id);
+            HttpSession session = ServletActionContext.getRequest().getSession();
+            usersEntity = (UsersEntity) session.getAttribute("user");
         } else {
             usersEntity = usersDAO.get(teacherId);
         }
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
-        System.out.println(date);
-        System.out.println(usersEntity.getId());
-        System.out.println("-------------------------------------------");
-
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public ArrayList getArrayList() {
@@ -61,9 +56,5 @@ public class EnterRelease extends ActionSupport {
 
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
-    }
-
-    public String getId() {
-        return id;
     }
 }
