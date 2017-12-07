@@ -94,7 +94,7 @@ public class UsersDAO {
     public List getTeacher(String name) {               //通过名字查找老师
         Session session = SessionCon.currentSession();
         try {
-            String hql = "select name,id,college from UsersEntity where name='" + name + "'";
+            String hql = "from UsersEntity where name='" + name + "'";
             return session.createQuery(hql).list();
         } catch (Exception e) {
             e.printStackTrace();
