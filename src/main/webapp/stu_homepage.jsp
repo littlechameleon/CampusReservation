@@ -35,38 +35,50 @@
         </div>
         <br/><br/>
         <div class="center-block">
-            <form action="ModifyAction" method="post">
+            <form action="ModifyAction" method="post" class="form-horizontal">
                 <div class="form-group">
-                    <label for="confirm_username" class="control-label">姓名<span class="important">*</span></label>
-                    <input required class="form-control input" id="confirm_username" value="${user.name}" type="text"
+                    <label for="confirm_username" class="control-label col-sm-2">姓名：<span class="important">*</span></label>
+                    <div class="col-sm-10">
+                    <input required class="form-control input col-sm-10" id="confirm_username" value="${user.name}" type="text"
                            name="name" maxlength="20">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="number" class="control-label">学号/教工号</label>
-                    <input class="form-control input" id="number" value="${user.id}>" type="text"
+                    <label for="number" class="control-label col-sm-2">学号/教工号：</label>
+                    <div class="col-sm-10">
+                    <input class="form-control input col-sm-10" id="number" value="${user.id}" type="text"
                            name="id" readonly="readonly">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="institute" class="control-label">学院<span class="important">*</span></label>
-                    <input required class="form-control input" id="institute" placeholder="请输入您所属学院"
+                    <label for="institute" class="control-label col-sm-2">学院：<span class="important">*</span></label>
+                    <div class="col-sm-10">
+                    <input required class="form-control input col-sm-10" id="institute" placeholder="请输入您所属学院"
                            value="${user.college}" type="text"
                            name="college" maxlength="20">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="control-label">联系方式<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="phone" placeholder="请输入联系方式"
+                    <label for="phone" class="control-label col-sm-2">联系方式：<span class="important">*</span></label>
+                    <div class="col-sm-10">
+                    <input required class="form-control input col-sm-10" type="tel" id="phone" placeholder="请输入联系方式"
                            value="${user.contact}"
                            name="contact" maxlength="20">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="confirm_email" class="control-label">邮箱<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="confirm_email" value="${user.email}"
+                    <label for="confirm_email" class="control-label col-sm-2">邮箱：<span class="important">*</span></label>
+                    <div class="col-sm-10">
+                    <input required class="form-control input col-sm-10" type="tel" id="confirm_email" value="${user.email}"
                            name="email" maxlength="20">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="indi_resume" class="control-label">个人简介</label>
-                    <textarea class="form-control" name="detail" rows="5" maxlength="300" id="indi_resume"
+                    <label for="indi_resume" class="control-label col-sm-2">个人简介：</label>
+                    <div class="col-md-10">
+                    <textarea class="form-control col-sm-10" name="detail" rows="5" maxlength="300" id="indi_resume"
                               placeholder="请输入个人简介.最多300个字符">${user.detail}</textarea>
+                    </div>
                 </div>
                 <div class="submit-block text-center">
                     <input type="submit" class="btn btn-default btn-lg edit" value="提交"/>
@@ -418,45 +430,46 @@
 <script src="static/js/modal.js"></script>
 <!--自己的js-->
 <script>
-    //    $(function(){
-    //        var names=[];
-    //        $("#search_name").keyup(function(){
-    //            if($(this).val()!=''){
-    //                $("#load_img").removeClass("hidden");
-    //                $.post("SearchAction",{
-    //                    name:$("#search_name").val()
-    //                },function(data,textStatus){
-    //                    for(var i in data.usersEntity){
-    //                        names.push(name);
-    //                    }
-    //                    $("#load_img").addClass("hidden");
-    //                })
-    //            }
-    //            else{
-    //                $("#load_img").addClass("hidden")
-    //            }
-    //        });
-    //
-    //        $("#search_name").autocomplete(names,{
-    //            max:12,
-    //            minChars:0,
-    //            width:400,
-    //            scrollHeight:300,
-    //            matchContains:true,
-    //            autoFill:false,
-    //            formateItem:function(row,i,max){
-    //                return row.name+":"+row.college;
-    //            },
-    //            formateMatch:function(row,i,max){
-    //                return row.name;
-    //            },
-    //            formateResult:function(row,i,max){
-    //                return row;
-    //            }
-    //        }).result(function(row,i,n){
-    //            location.href = "RequestAction?id="+row.id;
-    //        });
-    //    });
+
+//    $(function(){
+//        var names=[];
+//        $("#search_name").keyup(function(){
+//            if($(this).val()!=''){
+//                $("#load_img").removeClass("hidden");
+//                $.post("SearchAction",{
+//                    name:$("#search_name").val()
+//                },function(data,textStatus){
+//                    for(var i in data.usersEntity){
+//                        names.push(name);
+//                    }
+//                    $("#load_img").addClass("hidden");
+//                })
+//            }
+//            else{
+//                $("#load_img").addClass("hidden")
+//            }
+//        });
+//
+//        $("#segitarch_name").autocomplete(names,{
+//            max:12,
+//            minChars:0,
+//            width:400,
+//            scrollHeight:300,
+//            matchContains:true,
+//            autoFill:false,
+//            formateItem:function(row,i,max){
+//                return row.name+":"+row.college;
+//            },
+//            formateMatch:function(row,i,max){
+//                return row.name;
+//            },
+//            formateResult:function(row,i,max){
+//                return row;
+//            }
+//        }).result(function(row,i,n){
+//            location.href = "RequestAction?id="+row.id;
+//        });
+//    });
     $(document).ready(function () {
         var _width = $('#requested').width();
         var req_table_th = $("#requested th");
@@ -509,11 +522,41 @@
         });
     });
     $(function () {
-        var news = setInterval('get_news()', 60000);
-
-        function get_news() {
-            alert("刷新页面");
-        }
+        var data=[];
+        $.ajax({
+            async:false,
+            type: "POST", //post请求
+            url: "SearchAction", //请求action的URL
+            dataType:"json",//返回类型
+            success: function(result){ //回调函数
+                datas=result.teacherList;
+                for(i in datas){
+                    var d=Object();
+                    d.label=datas[i].name;
+                    d.id=datas[i].id;
+                    d.value=datas[i].name;
+                    d.desc=datas[i].college;
+                    data.push(d);
+                }
+            },
+            error:function(){
+                alert("无法连接到服务器")
+            }
+        });
+        $("#search_name").autocomplete({
+            source:data,
+            minLength:0,
+            focus:function (event,ui) {
+                $("#search_name").val(ui.item.name)
+            },
+            select:function(event,ui){
+                window.location.href="EnterRequest?teacherId="+ui.item.id;
+            }
+        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+            return $( "<li>" )
+                .append( "<div style='font-size: 20px;'><span>" + item.value + "</span><br/><span>学院：" + item.desc + "</span><div>" )
+                .appendTo( ul );
+        };
     })
 </script>
 </body>
