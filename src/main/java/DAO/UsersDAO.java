@@ -91,10 +91,10 @@ public class UsersDAO {
         return null;
     }
 
-    public List getTeacher(String name) {               //通过名字查找老师
+    public List getTeacher() {               //通过名字查找老师
         Session session = SessionCon.currentSession();
         try {
-            String hql = "select name,id,college from UsersEntity where name='" + name + "'";
+            String hql = "from UsersEntity where type = 1";
             return session.createQuery(hql).list();
         } catch (Exception e) {
             e.printStackTrace();
