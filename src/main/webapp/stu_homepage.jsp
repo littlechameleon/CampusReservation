@@ -522,9 +522,30 @@
         });
     });
     $(function () {
+        var data=[];
+        $.ajax({
+            async:false,
+            type: "POST", //post请求
+            url: "SearchAction", //请求action的URL
+            dataType:"json",//返回类型
+            success: function(result){ //回调函数
+                datas=result.teacherList;
+                for(i in datas){
+                    var d=Object();
+                    d.label=datas[i].name;
+                    d.id=datas[i].id;
+                    d.value=datas[i].name;
+                    d.desc=datas[i].college;
+                    data.push(d);
+                }
+            },
+            error:function(){
+                alert("无法连接到服务器")
+            }
+        });
         $("#search_name").autocomplete({
-            source:"searchAction",
-            minLength:1,
+            source:data,
+            minLength:0,
             focus:function (event,ui) {
                 $("#search_name").val(ui.item.name)
             },
@@ -533,7 +554,7 @@
             }
         }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
             return $( "<li>" )
-                .append( "<a>" + item.name + "<br>" + item.college + "</a>" )
+                .append( "<div style='font-size: 20px;'><span>" + item.value + "</span><br/><span>学院：" + item.desc + "</span><div>" )
                 .appendTo( ul );
         };
     })
