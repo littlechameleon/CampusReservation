@@ -1,5 +1,7 @@
 package DAO;
 
+import Entity.SreservationEntity;
+import Entity.TreservationEntity;
 import Entity.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -118,5 +120,30 @@ public class UsersDAO {
             SessionCon.closeSession();
         }
         return false;
+    }
+
+    public void score(int torder, int score){                   //评分
+        TreservationDAO treservationDAO = new TreservationDAO();
+        TreservationEntity treservationEntity = treservationDAO.get(torder);
+        treservationEntity.setScore(score);
+        treservationEntity.setTstate(3);
+        SreservationDAO sreservationDAO = new SreservationDAO();
+        UsersDAO usersDAO = new UsersDAO();
+        SreservationEntity sreservationEntity = sreservationDAO.get(treservationEntity.getSorder());
+        sreservationEntity.setSstate(3);
+        UsersEntity usersEntity = usersDAO.get(sreservationEntity.getStudentId());
+        usersEntity.setScore(usersEntity.getScore()+score);
+        Session session = SessionCon.currentSession();
+        try {
+            tx = session.beginTransaction();
+            session.update(usersEntity);
+            session.update(treservationEntity);
+            tx.commit();
+        } catch (Exception e) {
+            SessionCon.rollback(tx);
+            e.printStackTrace();
+        } finally {
+            SessionCon.closeSession();
+        }
     }
 }

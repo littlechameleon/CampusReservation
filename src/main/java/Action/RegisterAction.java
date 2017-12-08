@@ -23,7 +23,8 @@ public class RegisterAction extends ActionSupport {
         usersEntity.setEmail(email);
         usersEntity.setPassword(password);
         usersEntity.setType(type);
-        usersEntity.setScore(100);
+        usersEntity.setScore(80);
+        usersEntity.setFollowNum(0);
         if (!usersDAO.find(id)) {
             usersDAO.create(usersEntity);
             HttpSession session = ServletActionContext.getRequest().getSession();
