@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 public class FollowAction extends ActionSupport{
     private String teacherId;
     private int followType;
-    @Override
+
     public String execute() throws Exception {
         HttpSession session = ServletActionContext.getRequest().getSession();
         UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
