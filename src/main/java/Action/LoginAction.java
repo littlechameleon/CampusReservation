@@ -32,7 +32,7 @@ public class LoginAction extends ActionSupport {
         usersEntity = new UsersEntity();
         usersEntity.setId(id);
         usersEntity.setPassword(password);
-        if (usersDAO.login(usersEntity)) {
+        if (usersDAO.login(usersEntity)==0) {
             usersEntity = usersDAO.get(id);
             HttpSession session = ServletActionContext.getRequest().getSession();
             session.setAttribute("user", usersEntity);
@@ -51,7 +51,7 @@ public class LoginAction extends ActionSupport {
                 return "successStu";
             }
         } else {
-            message = "登录失败，请检查用户名和密码是否错误";
+            message = "登录失败，请仔细核对账号和密码!";
             return ERROR;
         }
     }
