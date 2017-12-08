@@ -29,6 +29,7 @@
                 <li class="active"><a href="#login" data-toggle="tab">登录</a></li>
                 <li><a href="#signup" data-toggle="tab">注册</a></li>
             </ul>
+            <p><s:property value="message"/> </p>
             <div class="login_signup_tabs tab-content">
                 <div id="login" class="tab-pane fade in active ">
                     <form action="LoginAction" class="col-lg-5 col-lg-offset-3" method="post">

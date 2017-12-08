@@ -3,6 +3,7 @@
   <component name="dataSourceStorageLocal">
     <data-source name="campusreservation@localhost" uuid="c52a45a3-b15f-4556-9233-38e64d83e4f0">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>root</user-name>
       <introspection-schemas>*:campusreservation</introspection-schemas>
     </data-source>
   </component>
