@@ -76,13 +76,7 @@
         <action name="ScoreAction" class="Ajax.ScoreAction">
             <result name="success" type="json"> </result>
         </action>
-        <action name="IsfollowAction" class="Ajax.IsfollowAction">
-            <result name="success" type="json"> </result>
-        </action>
         <action name="FollowAction" class="Ajax.FollowAction">
-            <result name="success" type="json"> </result>
-        </action>
-        <action name="UnfollowAction" class="Ajax.UnfollowAction">
             <result name="success" type="json"> </result>
         </action>
         <action name="Request" class="Ajax.RequestAction">

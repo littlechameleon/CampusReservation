@@ -11,6 +11,10 @@
         <welcome-file>register.jsp</welcome-file>
         <welcome-file>error.jsp</welcome-file>
     </welcome-file-list>
+    
+    <listener>
+        <listener-class>Timer.ContextListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>Login</filter-name>

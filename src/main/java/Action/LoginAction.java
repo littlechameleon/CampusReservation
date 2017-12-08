@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginAction extends ActionSupport {
+    private String message;
     private String password;
     private String id;
     private UsersEntity usersEntity;
@@ -31,7 +32,7 @@ public class LoginAction extends ActionSupport {
         usersEntity = new UsersEntity();
         usersEntity.setId(id);
         usersEntity.setPassword(password);
-        if (usersDAO.login(usersEntity)) {
+        if (usersDAO.login(usersEntity)==0) {
             usersEntity = usersDAO.get(id);
             HttpSession session = ServletActionContext.getRequest().getSession();
             session.setAttribute("user", usersEntity);
@@ -50,6 +51,7 @@ public class LoginAction extends ActionSupport {
                 return "successStu";
             }
         } else {
+            message = "登录失败，请仔细核对账号和密码!";
             return ERROR;
         }
     }
@@ -88,5 +90,9 @@ public class LoginAction extends ActionSupport {
 
     public List getNullList() {
         return nullList;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

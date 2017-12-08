@@ -61,22 +61,24 @@ public class UsersDAO {
         return false;
     }
 
-    public Boolean login(UsersEntity user) {       //登录验证
+    public int login(UsersEntity user) {       //登录验证
         Session session = SessionCon.currentSession();
         try {
             String hql = "select password from UsersEntity where id='" + user.getId() + "'";
             List list = session.createQuery(hql).list();
             if (!list.isEmpty()) {
                 if (list.iterator().next().equals(user.getPassword())) {
-                    return true;
+                    return 0;
                 }
             }
+            return 1;
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             SessionCon.closeSession();
         }
-        return false;
+        return 2;
     }
 
     public UsersEntity get(String id) {                      //通过id获取用户信息
