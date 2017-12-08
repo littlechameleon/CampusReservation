@@ -21,6 +21,8 @@
     <link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="static/css/main.css" type="text/css" rel="stylesheet">
     <link href="static/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="static/css/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="static/css/fontawesome-stars.css"/>
 
     <!--nifty 动态弹出框引入-->
     <link rel="stylesheet" type="text/css" href="static/css/component.css" />
@@ -263,14 +265,14 @@
                             <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
-                            <td><div class="br-wrapper br-theme-fontawesomeff-stars">
+                            <td id = "<s:property value='treservationEntity.torder'/>">
                                 <select class="example">
                                     <option value="1" data-html="未到">1</option>
                                     <option value="2" data-html="迟到">2</option>
                                     <option value="3" data-html="准时">3</option>
                                     <option value="4" data-html="提前">4</option>
                                 </select>
-                            </div> </td>
+                            </td>
                         </tr>
                     </s:iterator>
                     <s:iterator value="judgedList">
@@ -280,11 +282,11 @@
                             <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
-                            <td><div class="br-wrapper br-theme-fontawesome-stars">
-                                <select class="example">
+                            <td>
+                                <select class="finish">
                                     <option value="1" data-html="未到">1</option>
                                 </select>
-                            </div> </td>
+                            </td>
                         </tr>
                     </s:iterator>
                     </tbody>
@@ -369,9 +371,21 @@
         fin_table_th.eq(5).width(_width*0.27);
 
         $('.example').barrating({
-            theme: 'bootstrap-stars',
+            theme: 'fontawesome-stars',
             showValues:true,
-            initialRating:4
+            initialRating:4,
+            onSelect:function(value, text){
+                torder = $(this).parents("td").eq(0).attr("id");
+                $.ajax({
+                    url:"ScoreAction",
+                    type:"POST",
+                    data:{"torder":torder,"score":value},
+                    success:function(){
+                        $(this).parent().html(text);
+                        alert("完成评分");
+                    }
+                })
+            }
         });
 
         $(".agree").each(function(){
