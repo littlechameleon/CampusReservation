@@ -57,7 +57,7 @@
             <span><s:property value="usersEntity.college"/></span><br/>
             <span><s:property value="usersEntity.email"/></span><br/>
             <span><s:property value="usersEntity.contact"/> </span><br/>
-            <s:if test="unfollowed">
+            <s:if test="isFollow!=1">
             <p id="follow" class="follow_type">关注<i class="fa fa-star-o fa-lg"></i></p>
             </s:if>
             <s:else>
@@ -181,30 +181,29 @@
     });
     $(function () {
         var id=$("#teacherId").text();
+        alert(id);
         var follow_type;
         $(".follow_type").click(function () {
             if($(this).id=="follow"){
-                follow_type="unfollow";
+                follow_type=0;
             }
             else{
-                follow_type="follow";
+                follow_type=1;
             }
+            alert(follow_type);
             $.ajax({
-                url:"followAction",
+                url:"FollowAction",
                 type:"POST",
-                data:{"id":id,"action":follow_type},
-                success:function (e) {
-                    if(e=="1"){
+                data:{"teacherId":id,"followType":follow_type},
+                success:function () {
+                    if(follow_type==0){
                         $(this).html("取消关注<i class='fa fa-star fa-lg'></i>");
                         $(this).id="unfollow";
                         alert("取消关注成功！");
-                    }else if(e=="2"){
+                    }else{
                         $(this).html("关注<i class='fa fa-star-o fa-lg'></i>");
                         $(this).id="follow";
                         alert("关注成功！");
-                    }
-                    else{
-                        alert("操作失败！");
                     }
                 },
                 error:function () {
