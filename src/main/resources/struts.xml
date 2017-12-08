@@ -13,7 +13,7 @@
             <interceptor name="LoginInterceptor" class="Webfilter.LoginInterceptor"/>
             <interceptor-stack name="LoginStack">
                 <interceptor-ref name="LoginInterceptor">
-                    <param name="excludeMethods">Login</param>
+                    <param name="excludeMethods">Login, register</param>
                 </interceptor-ref>
                 <interceptor-ref name="defaultStack"> </interceptor-ref>
             </interceptor-stack>
@@ -31,7 +31,7 @@
             <result name="notModify">modify.jsp</result>
             <result name="error">register.jsp</result>
         </action>
-        <action name="RegisterAction" class="Action.RegisterAction">
+        <action name="RegisterAction" class="Action.RegisterAction" method="register">
             <result name="success">modify.jsp</result>
             <result name="error">register.jsp</result>
         </action>
