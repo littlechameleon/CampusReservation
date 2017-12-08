@@ -52,21 +52,31 @@ public class FollowDAO {
         return 0;
     }
 
-    public void add(String id, String teacherId){           //关注
+    public void add(String id, String teacherId, int followType){           //关注
         FollowEntity followEntity = new FollowEntity();
-        followEntity.setFollower(id);
-        followEntity.setFollowed(teacherId);
         UsersDAO usersDAO = new UsersDAO();
         UsersEntity studentUsers = usersDAO.get(id);
-        studentUsers.setFollowNum(studentUsers.getFollowNum()+1);
         UsersEntity teacherUsers = usersDAO.get(teacherId);
-        teacherUsers.setFollowNum(teacherUsers.getFollowNum()+1);
         Session session = SessionCon.currentSession();
         try{
             tx = session.beginTransaction();
+            if(followType == 1) {
+                studentUsers.setFollowNum(studentUsers.getFollowNum() + 1);
+                teacherUsers.setFollowNum(teacherUsers.getFollowNum() + 1);
+                followEntity.setFollower(id);
+                followEntity.setFollowed(teacherId);
+                session.save(followEntity);
+            }
+            else{
+                studentUsers.setFollowNum(studentUsers.getFollowNum() - 1);
+                teacherUsers.setFollowNum(teacherUsers.getFollowNum() - 1);
+                String sql = "from FollowEntity where follower='"+id+"' and followed='"+teacherId+"'";
+                followEntity = (FollowEntity) session.createQuery(sql).list().iterator().next();
+                session.delete(followEntity);
+
+            }
             session.update(studentUsers);
             session.update(teacherUsers);
-            session.save(followEntity);
             tx.commit();
         }catch (Exception e){
             SessionCon.rollback(tx);
@@ -76,26 +86,4 @@ public class FollowDAO {
         }
     }
 
-    public void delete(String id, String teacherId){           //取关
-        UsersDAO usersDAO = new UsersDAO();
-        UsersEntity studentUsers = usersDAO.get(id);
-        studentUsers.setFollowNum(studentUsers.getFollowNum()-1);
-        UsersEntity teacherUsers = usersDAO.get(teacherId);
-        teacherUsers.setFollowNum(teacherUsers.getFollowNum()-1);
-        Session session = SessionCon.currentSession();
-        try{
-            tx = session.beginTransaction();
-            String sql = "from FollowEntity where follower='"+id+"' and followed='"+teacherId+"'";
-            FollowEntity followEntity = (FollowEntity) session.createQuery(sql).list().iterator().next();
-            session.update(studentUsers);
-            session.update(teacherUsers);
-            session.delete(followEntity);
-            tx.commit();
-        }catch (Exception e){
-            SessionCon.rollback(tx);
-            e.printStackTrace();
-        }finally {
-            SessionCon.closeSession();
-        }
-    }
 }

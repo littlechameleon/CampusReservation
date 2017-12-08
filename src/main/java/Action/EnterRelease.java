@@ -1,5 +1,6 @@
 package Action;
 
+import DAO.FollowDAO;
 import DAO.ReservationDA0;
 import DAO.TreservationDAO;
 import DAO.UsersDAO;
@@ -17,6 +18,7 @@ public class EnterRelease extends ActionSupport {
     private Date date;
     private List list;
     private ArrayList arrayList;
+    private int isFollow;               //是否关注
     private UsersEntity usersEntity;            //老师个人信息
 
     public String execute() throws Exception {
@@ -24,10 +26,11 @@ public class EnterRelease extends ActionSupport {
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
         date = new java.sql.Date(new Date().getTime());
-        if (teacherId == null) {
-            HttpSession session = ServletActionContext.getRequest().getSession();
-            usersEntity = (UsersEntity) session.getAttribute("user");
-        } else {
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        usersEntity = (UsersEntity) session.getAttribute("user");
+        if (teacherId != null) {
+            FollowDAO followDAO = new FollowDAO();
+            isFollow = followDAO.isfollow(usersEntity.getId(),teacherId);
             usersEntity = usersDAO.get(teacherId);
         }
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
@@ -57,5 +60,9 @@ public class EnterRelease extends ActionSupport {
 
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
+    }
+
+    public int getIsFollow() {
+        return isFollow;
     }
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginAction extends ActionSupport {
+    private String message;
     private String password;
     private String id;
     private UsersEntity usersEntity;
@@ -50,6 +51,7 @@ public class LoginAction extends ActionSupport {
                 return "successStu";
             }
         } else {
+            message = "登录失败，请检查用户名和密码是否错误";
             return ERROR;
         }
     }
@@ -88,5 +90,9 @@ public class LoginAction extends ActionSupport {
 
     public List getNullList() {
         return nullList;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }
