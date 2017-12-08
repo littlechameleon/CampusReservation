@@ -40,7 +40,7 @@ public class ContextListener implements ServletContextListener{
         Date date = calendar.getTime();
 //        System.out.println(date);
 
-        int period = 10 * 60 * 1000;                            //执行时间间隔
+        int period = 1 * 60 * 1000;                            //执行时间间隔
         //每天的date时刻执行task，每隔persion 时间重复执行
         timer.schedule(new TimerTask(arg0.getServletContext()), date, period);
 //        在 指定的date时刻执行task, 仅执行一次

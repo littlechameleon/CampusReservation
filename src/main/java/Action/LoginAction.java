@@ -43,6 +43,8 @@ public class LoginAction extends ActionSupport {
             confirmedList = reservationDA0.get(id, 1);
             unjudgedList = reservationDA0.get(id, 2);
             judgedList = reservationDA0.get(id, 3);
+            System.out.println("----");
+            System.out.println(judgedList);
             if (usersEntity.getType() == 1) {
                 nullList = treservationDAO.getNullList(id);
                 return "successTea";

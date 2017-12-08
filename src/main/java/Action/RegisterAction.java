@@ -15,7 +15,7 @@ public class RegisterAction extends ActionSupport {
     private byte type;
     private UsersEntity usersEntity;
 
-    public String execute() throws Exception {
+    public String register() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
         usersEntity = new UsersEntity();
         usersEntity.setId(id);

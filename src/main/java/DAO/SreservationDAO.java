@@ -46,8 +46,6 @@ public class SreservationDAO {
             return (SreservationEntity) list.iterator().next();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            SessionCon.closeSession();
         }
         return null;
     }
