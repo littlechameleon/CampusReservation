@@ -70,7 +70,7 @@ public class SreservationDAO {
         return null;
     }
 
-    private boolean IsAready(int torder, String studentId) {
+    public boolean IsAready(int torder, String studentId) {         //1为空
         Session session = SessionCon.currentSession();
         try {
             String hql = "from SreservationEntity where studentId ='" + studentId + "' and torder=" + torder;

@@ -128,7 +128,7 @@ public class TreservationDAO {
         return null;
     }
 
-    public List getNewOrder(int maxNum) {                //最新消息maxNum条
+    public List getNewOrder(int maxNum) {                //最新消息maxNum条   订单老师部分
         Session session = SessionCon.currentSession();
         try {
             String hql = "from TreservationEntity order by torder desc";
