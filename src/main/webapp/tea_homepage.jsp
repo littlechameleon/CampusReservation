@@ -94,6 +94,17 @@
         </div>
     </div>
 </div>
+<div class="md-modal md-effect-1" id="modal-follow">
+    <div class="md-content">
+        <h3>关注人：</h3>
+        <div>
+            <p id="follow_people"></p>
+            <div class="text-center">
+                <a class="md-close btn btn-default">确认</a>
+            </div>
+        </div>
+    </div>
+</div>
 <s:iterator value="unconfirmedList">
     <div class="md-modal md-effect-1" id="modal-<s:property value='sreservationEntity.sorder'/>">
         <div class="md-content">
@@ -152,9 +163,10 @@
                 <span>男</span>
             </s:else>
             <br/>
-            <span>${user.college}</span><br/>
-            <span>${user.email}</span><br/>
-            <span>${user.contact}</span><br/>
+            <span>学院；${user.college}</span><br/>
+            <span>邮箱：${user.email}</span><br/>
+            <span>联系方式：${user.contact}</span><br/>
+            <a class="btn btn-default md-trigger" data-modal="modal-follow" id="to_follow">关注人数：${user.followNum}</a><br/>
             <a class="pull-left" href="LogoutAction">退出登录</a>
             <a class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</a>
         </div>
@@ -397,7 +409,9 @@
             var href=$(this).attr("href");
             $(this).attr("href",href+"&id="+$("#id").html());
         });
-    });
+        $("#to_follow").click(function () {
+            $("#follow_people")
+        });
 </script>
 </body>
 </html>
