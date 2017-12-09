@@ -134,7 +134,13 @@ public class UsersDAO {
         SreservationEntity sreservationEntity = sreservationDAO.get(treservationEntity.getSorder());
         sreservationEntity.setSstate(3);
         UsersEntity usersEntity = usersDAO.get(sreservationEntity.getStudentId());
-        usersEntity.setScore(usersEntity.getScore()+score);
+        int sumScore = usersEntity.getScore() + score;
+        if(sumScore>=100){
+            usersEntity.setScore(100);
+        }
+        else{
+            usersEntity.setScore(sumScore);
+        }
         Session session = SessionCon.currentSession();
         try {
             tx = session.beginTransaction();

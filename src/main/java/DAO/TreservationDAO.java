@@ -5,6 +5,7 @@ import Entity.TreservationEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import SessionHelper.SessionCon;
+import org.hibernate.query.Query;
 
 import java.util.Date;
 import java.util.List;
@@ -131,7 +132,9 @@ public class TreservationDAO {
         Session session = SessionCon.currentSession();
         try {
             String hql = "from TreservationEntity order by torder desc";
-            return session.createQuery(hql).setMaxResults(maxNum).list();
+            Query query = session.createQuery(hql);
+            query.setMaxResults(maxNum);
+            return query.list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

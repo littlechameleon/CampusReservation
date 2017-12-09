@@ -32,9 +32,9 @@ public class ReleaseAction extends ActionSupport {
             for (String strings : releaseList) {
                 String string[] = strings.split(",");
                 TreservationEntity treservationEntity = new TreservationEntity();
-                treservationEntity.setTime(Time.valueOf(string[0]));
+                treservationEntity.setTime(string[0]);
                 treservationEntity.setPlace(string[1]);
-                treservationEntity.setDate(date);
+                treservationEntity.setDate(String.valueOf(date));
                 treservationEntity.setTeacherId(usersEntity.getId());
                 treservationDAO.create(treservationEntity);
             }

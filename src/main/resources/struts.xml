@@ -82,5 +82,11 @@
         <action name="Request" class="Ajax.RequestAction">
             <result name="success" type="json"> </result>
         </action>
+        <action name="ViewFollow" class="Ajax.ViewFollow">
+            <result name="success" type="json"> </result>
+        </action>
+        <action name="NewOrder" class="Ajax.NewOrder">
+            <result name="success" type="json"> </result>
+        </action>
     </package>
 </struts>

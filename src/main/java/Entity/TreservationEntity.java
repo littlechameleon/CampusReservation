@@ -9,8 +9,8 @@ import java.sql.Time;
 public class TreservationEntity {
     private int torder;
     private String teacherId;
-    private Date date;
-    private Time time;
+    private String date;
+    private String time;
     private String place;
     private int tstate;
     private Integer sorder;
@@ -38,21 +38,21 @@ public class TreservationEntity {
 
     @Basic
     @Column(name = "date")
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     @Basic
     @Column(name = "time")
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
