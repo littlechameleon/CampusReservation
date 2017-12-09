@@ -45,7 +45,7 @@ public class RequestHomepage extends ActionSupport {
         unjudgedList = reservationDA0.get(usersEntity.getId(), 2);
         judgedList = reservationDA0.get(usersEntity.getId(), 3);
         refusedList = reservationDA0.get(usersEntity.getId(), 4);
-        return SUCCESS;
+        return "successStu";
     }
 
     public void setTheme(String theme) {
