@@ -73,7 +73,6 @@ public class FollowDAO {
                 String sql = "from FollowEntity where follower='"+id+"' and followed='"+teacherId+"'";
                 followEntity = (FollowEntity) session.createQuery(sql).list().iterator().next();
                 session.delete(followEntity);
-
             }
             session.update(studentUsers);
             session.update(teacherUsers);
