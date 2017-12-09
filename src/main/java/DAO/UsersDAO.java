@@ -148,6 +148,7 @@ public class UsersDAO {
         try {
             tx = session.beginTransaction();
             session.update(usersEntity);
+            session.update(sreservationEntity);
             session.update(treservationEntity);
             tx.commit();
         } catch (Exception e) {

@@ -4,7 +4,6 @@ import DAO.TreservationDAO;
 import DAO.UsersDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 public class NewOrder extends ActionSupport{
     private JSONArray newOrders;
