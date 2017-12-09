@@ -94,6 +94,13 @@ body {
     padding-bottom: 40px;
 }
 
+#follow_people{
+    background-color: white;
+    font-size: 20px;
+    margin: 10px 10px 10px 10px;
+    color: black;
+}
+
 #self-page {
     margin-top: 100px;
 }

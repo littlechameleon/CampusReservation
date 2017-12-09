@@ -94,17 +94,6 @@
         </div>
     </div>
 </div>
-<div class="md-modal md-effect-1" id="modal-follow">
-    <div class="md-content">
-        <h3>关注人：</h3>
-        <div>
-            <p id="follow_people"></p>
-            <div class="text-center">
-                <a class="md-close btn btn-default">确认</a>
-            </div>
-        </div>
-    </div>
-</div>
 <s:iterator value="unconfirmedList">
     <div class="md-modal md-effect-1" id="modal-<s:property value='sreservationEntity.sorder'/>">
         <div class="md-content">
@@ -166,7 +155,8 @@
             <span>学院；${user.college}</span><br/>
             <span>邮箱：${user.email}</span><br/>
             <span>联系方式：${user.contact}</span><br/>
-            <a class="btn btn-default md-trigger" data-modal="modal-follow" id="to_follow">关注人数：${user.followNum}</a><br/>
+            <a class="btn btn-default" id="to_follow">关注人数：${user.followNum}</a><br/>
+            <div id="follow_people"></div>
             <a class="pull-left" href="LogoutAction">退出登录</a>
             <a class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</a>
         </div>
@@ -313,105 +303,128 @@
 
 <!--自己的js-->
 <script>
-    $(document).ready(function(){
-        var _width=$('#new_table').width();
-        var new_table_th=$("#new_table th");
-        var new_table_td=$("#new_table td");
-        new_table_th.eq(0).width(_width*0.15);
-        new_table_td.eq(0).width(_width*0.15);
-        new_table_th.eq(1).width(_width*0.15);
-        new_table_td.eq(1).width(_width*0.15);
-        new_table_th.eq(2).width(_width*0.05);
-        new_table_td.eq(2).width(_width*0.05);
-        new_table_th.eq(3).width(_width*0.08);
-        new_table_td.eq(3).width(_width*0.08);
-        new_table_th.eq(4).width(_width*0.1);
-        new_table_td.eq(4).width(_width*0.1);
-        new_table_th.eq(5).width(_width*0.25);
-        new_table_td.eq(5).width(_width*0.25);
-        new_table_th.eq(6).width(_width*0.12);
-        new_table_td.eq(6).width(_width*0.12);
-        new_table_th.eq(7).width(_width*0.05);
-        new_table_td.eq(7).width(_width*0.05);
+    $(document).ready(function() {
+        $("#follow_people").height=0;
 
-        var acc_table_th=$("#acc_table th");
-        var acc_table_td=$("#acc_table td");
-        acc_table_td.eq(0).width(_width*0.15);
-        acc_table_th.eq(0).width(_width*0.15);
-        acc_table_td.eq(1).width(_width*0.15);
-        acc_table_th.eq(1).width(_width*0.15);
-        acc_table_td.eq(2).width(_width*0.1);
-        acc_table_th.eq(2).width(_width*0.1);
-        acc_table_td.eq(3).width(_width*0.08);
-        acc_table_th.eq(3).width(_width*0.08);
-        acc_table_td.eq(4).width(_width*0.1);
-        acc_table_th.eq(4).width(_width*0.1);
-        acc_table_td.eq(5).width(_width*0.2);
-        acc_table_th.eq(5).width(_width*0.2);
-        acc_table_td.eq(6).width(_width*0.12);
-        acc_table_th.eq(6).width(_width*0.12);
+        var _width = $('#new_table').width();
+        var new_table_th = $("#new_table th");
+        var new_table_td = $("#new_table td");
+        new_table_th.eq(0).width(_width * 0.15);
+        new_table_td.eq(0).width(_width * 0.15);
+        new_table_th.eq(1).width(_width * 0.15);
+        new_table_td.eq(1).width(_width * 0.15);
+        new_table_th.eq(2).width(_width * 0.05);
+        new_table_td.eq(2).width(_width * 0.05);
+        new_table_th.eq(3).width(_width * 0.08);
+        new_table_td.eq(3).width(_width * 0.08);
+        new_table_th.eq(4).width(_width * 0.1);
+        new_table_td.eq(4).width(_width * 0.1);
+        new_table_th.eq(5).width(_width * 0.25);
+        new_table_td.eq(5).width(_width * 0.25);
+        new_table_th.eq(6).width(_width * 0.12);
+        new_table_td.eq(6).width(_width * 0.12);
+        new_table_th.eq(7).width(_width * 0.05);
+        new_table_td.eq(7).width(_width * 0.05);
+
+        var acc_table_th = $("#acc_table th");
+        var acc_table_td = $("#acc_table td");
+        acc_table_td.eq(0).width(_width * 0.15);
+        acc_table_th.eq(0).width(_width * 0.15);
+        acc_table_td.eq(1).width(_width * 0.15);
+        acc_table_th.eq(1).width(_width * 0.15);
+        acc_table_td.eq(2).width(_width * 0.1);
+        acc_table_th.eq(2).width(_width * 0.1);
+        acc_table_td.eq(3).width(_width * 0.08);
+        acc_table_th.eq(3).width(_width * 0.08);
+        acc_table_td.eq(4).width(_width * 0.1);
+        acc_table_th.eq(4).width(_width * 0.1);
+        acc_table_td.eq(5).width(_width * 0.2);
+        acc_table_th.eq(5).width(_width * 0.2);
+        acc_table_td.eq(6).width(_width * 0.12);
+        acc_table_th.eq(6).width(_width * 0.12);
 
 
-        var pub_table_th=$("#published_table th");
-        var pub_table_td=$("#published_table td");
-        pub_table_td.eq(0).width(_width*0.2);
-        pub_table_th.eq(0).width(_width*0.2);
-        pub_table_td.eq(1).width(_width*0.2);
-        pub_table_th.eq(1).width(_width*0.2);
-        pub_table_td.eq(2).width(_width*0.3);
-        pub_table_th.eq(2).width(_width*0.3);
-        pub_table_td.eq(3).width(_width*0.3);
-        pub_table_th.eq(3).width(_width*0.3);
+        var pub_table_th = $("#published_table th");
+        var pub_table_td = $("#published_table td");
+        pub_table_td.eq(0).width(_width * 0.2);
+        pub_table_th.eq(0).width(_width * 0.2);
+        pub_table_td.eq(1).width(_width * 0.2);
+        pub_table_th.eq(1).width(_width * 0.2);
+        pub_table_td.eq(2).width(_width * 0.3);
+        pub_table_th.eq(2).width(_width * 0.3);
+        pub_table_td.eq(3).width(_width * 0.3);
+        pub_table_th.eq(3).width(_width * 0.3);
 
-        var fin_table_th=$("#finished_table th");
-        var fin_table_td=$("#finished_table td");
-        fin_table_td.eq(0).width(_width*0.15);
-        fin_table_th.eq(0).width(_width*0.15);
-        fin_table_td.eq(1).width(_width*0.15);
-        fin_table_th.eq(1).width(_width*0.15);
-        fin_table_td.eq(2).width(_width*0.08);
-        fin_table_th.eq(2).width(_width*0.08);
-        fin_table_td.eq(3).width(_width*0.1);
-        fin_table_th.eq(3).width(_width*0.1);
-        fin_table_td.eq(4).width(_width*0.2);
-        fin_table_th.eq(4).width(_width*0.2);
-        fin_table_td.eq(5).width(_width*0.27);
-        fin_table_th.eq(5).width(_width*0.27);
+        var fin_table_th = $("#finished_table th");
+        var fin_table_td = $("#finished_table td");
+        fin_table_td.eq(0).width(_width * 0.15);
+        fin_table_th.eq(0).width(_width * 0.15);
+        fin_table_td.eq(1).width(_width * 0.15);
+        fin_table_th.eq(1).width(_width * 0.15);
+        fin_table_td.eq(2).width(_width * 0.08);
+        fin_table_th.eq(2).width(_width * 0.08);
+        fin_table_td.eq(3).width(_width * 0.1);
+        fin_table_th.eq(3).width(_width * 0.1);
+        fin_table_td.eq(4).width(_width * 0.2);
+        fin_table_th.eq(4).width(_width * 0.2);
+        fin_table_td.eq(5).width(_width * 0.27);
+        fin_table_th.eq(5).width(_width * 0.27);
 
         $('.example').barrating({
             theme: 'fontawesome-stars',
-            showValues:true,
-            initialRating:4,
-            onSelect:function(value, text){
+            showValues: true,
+            initialRating: 4,
+            onSelect: function (value, text) {
                 torder = $(this).parents("td").eq(0).attr("id");
                 $.ajax({
-                    url:"ScoreAction",
-                    type:"POST",
-                    data:{"torder":torder,"score":value},
-                    success:function(){
-                        $("#"+torder).html("评分："+text);
+                    url: "ScoreAction",
+                    type: "POST",
+                    data: {"torder": torder, "score": value},
+                    success: function () {
+                        $("#" + torder).html("评分：" + text);
                         alert("评分完成");
                     }
                 })
             }
         });
 
-        $(".agree").each(function(){
-                var href=$(this).attr("href");
-                $(this).attr("href",href+"&id="+$("#id").html());
+        $(".agree").each(function () {
+                var href = $(this).attr("href");
+                $(this).attr("href", href + "&id=" + $("#id").html());
             }
         );
-        $(".cancel").each(function(){
-            var href=$(this).attr("href");
-            $(this).attr("href",href+"&id="+$("#id").html());
+        $(".cancel").each(function () {
+            var href = $(this).attr("href");
+            $(this).attr("href", href + "&id=" + $("#id").html());
         });
-        $(".visit").each(function(){
-            var href=$(this).attr("href");
-            $(this).attr("href",href+"&id="+$("#id").html());
+        $(".visit").each(function () {
+            var href = $(this).attr("href");
+            $(this).attr("href", href + "&id=" + $("#id").html());
         });
+        var show=0;
         $("#to_follow").click(function () {
-            $("#follow_people")
+            if(show==0){
+                $("#follow_people").animate({height:'100px'});
+                $.ajax({
+                    async:false,
+                    url: "ViewFollow",
+                    type: "POST",
+                    data: {},
+                    success: function (e) {
+                        follow = e.followList;
+                        for (i in follow) {
+                            $("#follow_people").append('<a style="color: black;" href="EnterDetail?visitId=' + follow[i].id + '" class="visit" target="_blank">' + follow[i].name + '</a>');
+                        }
+                    }
+                });
+                show=1;
+            }
+            else{
+                $("#follow_people").animate({height:'0'}).empty();
+                show=0;
+            }
         });
+    });
 </script>
 </body>
 </html>
