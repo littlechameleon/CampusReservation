@@ -48,9 +48,12 @@
         </action>
         <action name="AgreeRequest" class="Action.AgreeRequest">
         </action>
+        <action name="RequestHomepage" class="Action.RequestHomepage">
+        </action>
         <action name="EnterDetail" class="Action.EnterDetail">
             <result name="success">self_page.jsp</result>
         </action>
+
 
         <!--JumpAction-->
         <action name="LogoutAction" class="Action.LogoutAction">

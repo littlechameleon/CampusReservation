@@ -3,11 +3,14 @@ package DAO;
 import Entity.SreservationEntity;
 import Entity.TreservationEntity;
 import Entity.UsersEntity;
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import SessionHelper.SessionCon;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsersDAO {
@@ -153,5 +156,37 @@ public class UsersDAO {
         } finally {
             SessionCon.closeSession();
         }
+    }
+
+    public ArrayList getNewTeacher(int maxNum) {                //最新消息maxNum条   老师信息
+        TreservationDAO treservationDAO = new TreservationDAO();
+        UsersDAO usersDAO = new UsersDAO();
+        ArrayList<UsersEntity> arrayList = new ArrayList<>();
+        for(Object o : treservationDAO.getNewOrder(10)){
+            TreservationEntity treservationEntity = (TreservationEntity)o;
+            arrayList.add(usersDAO.get(treservationEntity.getTeacherId()));
+        }
+        return arrayList;
+    }
+
+    public ArrayList getNewStudent(int maxNum) {                //最新消息maxNum条   学生信息
+        TreservationDAO treservationDAO = new TreservationDAO();
+        SreservationDAO sreservationDAO = new SreservationDAO();
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for(Object o : treservationDAO.getNewOrder(10)){
+            TreservationEntity treservationEntity = (TreservationEntity)o;
+            if(treservationEntity.getTstate() == 0) {
+                HttpSession session = ServletActionContext.getRequest().getSession();
+                UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
+                if(!sreservationDAO.IsAready(treservationEntity.getTorder(),usersEntity.getId())){
+                    arrayList.add(1);
+                }else {
+                    arrayList.add(0);
+                }
+            }else {
+                arrayList.add(0);
+            }
+        }
+        return arrayList;
     }
 }
