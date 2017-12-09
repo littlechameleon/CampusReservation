@@ -57,12 +57,14 @@
             <span><s:property value="usersEntity.college"/></span><br/>
             <span><s:property value="usersEntity.email"/></span><br/>
             <span><s:property value="usersEntity.contact"/> </span><br/>
+            <div id="isFollow">
             <s:if test="isFollow!=1">
             <p id="follow" class="follow_type">关注<i class="fa fa-star-o fa-lg"></i></p>
             </s:if>
             <s:else>
             <p id="followed" class="follow_type">取消关注<i class="fa fa-star fa-lg"></i></p>
             </s:else>
+            </div>
         </div>
 
         <div class="col-lg-11 modal-content col-lg-offset-2">
@@ -181,28 +183,30 @@
     });
     $(function () {
         var id=$("#teacherId").text();
-        alert(id);
         var follow_type;
+        if($(".follow_type").attr('id')=="follow"){
+            follow_type=1;
+        }
+        else{
+            follow_type=0;
+        }
         $(".follow_type").click(function () {
-            if($(this).id=="follow"){
-                follow_type=0;
-            }
-            else{
+            if(follow_type==0){
                 follow_type=1;
             }
-            alert(follow_type);
+            else{
+                follow_type=0;
+            }
             $.ajax({
                 url:"FollowAction",
                 type:"POST",
                 data:{"teacherId":id,"followType":follow_type},
                 success:function () {
                     if(follow_type==0){
-                        $(this).html("取消关注<i class='fa fa-star fa-lg'></i>");
-                        $(this).id="unfollow";
+                        $("#followed").html('<p id="follow" class="follow_type">关注<i class="fa fa-star-o fa-lg"></i></p>');
                         alert("取消关注成功！");
                     }else{
-                        $(this).html("关注<i class='fa fa-star-o fa-lg'></i>");
-                        $(this).id="follow";
+                        $("#follow").html('<p id="followed" class="follow_type">取消关注<i class="fa fa-star fa-lg"></i></p>');
                         alert("关注成功！");
                     }
                 },

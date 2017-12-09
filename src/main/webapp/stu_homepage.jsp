@@ -258,17 +258,7 @@
             <br/><br/>
 
             <div class="col-lg-9 col-lg-offset-1 modal-content" id="news">
-                <s:iterator value="newList">
-                    <s:if test="serservationEntity.Sstate==1">
-                        <p>你请求的预约已经被<s:iterator value="users.name"/>同意，详情点击<a class="md-trigger" data-modal="modal-<s:property value='sreservationEntity.Sorder'/>">查看</a> </p>
-                    </s:if>
-                    <s:if test="serservationEntity.Sstate==3">
-                        <p>你已完成的预约已经被<s:iterator value="users.name"/>评分为<s:property value='treservationEntity.Score'/>，详情点击<a class="md-trigger" data-modal="modal-<s:property value='sreservationEntity.Sorder'/>">查看</a> </p>
-                    </s:if>
-                    <s:if test="serservationEntity.Sstate==4">
-                        <p>你请求的<s:iterator value="users.name"/>老师在<s:property value='treservationEntity.date'/><s:property value='treservationEntity.time'/> 的预约已经被拒绝，请继续努力！</p>
-                    </s:if>
-                </s:iterator>
+
             </div>
             <div id="requested">
                 <table class="table table-striped table-hover">
@@ -287,7 +277,7 @@
                     <tbody style="display:block; max-height:200px;overflow-y: scroll;">
                     <s:iterator value="confirmedList">
                         <tr>
-                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.date"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit"
                                    target="_blank"><s:property value="usersEntity.name"/></a></td>
@@ -305,7 +295,7 @@
                     </s:iterator>
                     <s:iterator value="unconfirmedList">
                         <tr>
-                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.date"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit"
                                    target="_blank"><s:property value="usersEntity.name"/></a></td>
@@ -323,7 +313,7 @@
                     </s:iterator>
                     <s:iterator value="refusedList">
                         <tr>
-                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.date"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit"
                                    target="_blank"><s:property value="usersEntity.name"/></a></td>
@@ -390,24 +380,18 @@
                     <tbody style="display:block; max-height:200px;overflow-y: scroll;">
                     <s:iterator value="judgedList">
                         <tr>
-                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.date"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit"
                                    target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/></td>
                             <td><s:property value="sreservationEntity.theme"/></td>
-                            <td>
-                                <div class="br-wrapper br-theme-fontawesome-stars">
-                                    <select class="example">
-                                        <option value="1" data-html="未到">1</option>
-                                    </select>
-                                </div>
-                            </td>
+                            <td><s:property value="treservationEntity.score"/></td>
                         </tr>
                     </s:iterator>
                     <s:iterator value="unjudgedList">
                         <tr>
-                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.date"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit"
                                    target="_blank"><s:property value="usersEntity.name"/></a></td>
@@ -430,46 +414,6 @@
 <script src="static/js/modal.js"></script>
 <!--自己的js-->
 <script>
-
-//    $(function(){
-//        var names=[];
-//        $("#search_name").keyup(function(){
-//            if($(this).val()!=''){
-//                $("#load_img").removeClass("hidden");
-//                $.post("SearchAction",{
-//                    name:$("#search_name").val()
-//                },function(data,textStatus){
-//                    for(var i in data.usersEntity){
-//                        names.push(name);
-//                    }
-//                    $("#load_img").addClass("hidden");
-//                })
-//            }
-//            else{
-//                $("#load_img").addClass("hidden")
-//            }
-//        });
-//
-//        $("#segitarch_name").autocomplete(names,{
-//            max:12,
-//            minChars:0,
-//            width:400,
-//            scrollHeight:300,
-//            matchContains:true,
-//            autoFill:false,
-//            formateItem:function(row,i,max){
-//                return row.name+":"+row.college;
-//            },
-//            formateMatch:function(row,i,max){
-//                return row.name;
-//            },
-//            formateResult:function(row,i,max){
-//                return row;
-//            }
-//        }).result(function(row,i,n){
-//            location.href = "RequestAction?id="+row.id;
-//        });
-//    });
     $(document).ready(function () {
         var _width = $('#requested').width();
         var req_table_th = $("#requested th");
@@ -557,7 +501,30 @@
                 .append( "<div style='font-size: 20px;'><span>" + item.value + "</span><br/><span>学院：" + item.desc + "</span><div>" )
                 .appendTo( ul );
         };
-    })
+        get_New_Order();
+    });
+    function get_New_Order() {
+        $.ajax({
+            url:"NewOrder",
+            type:"POST",
+            data:{},
+            success:function (e) {
+                NewOrder=e.newOrders;
+                for(i in NewOrder){
+                    order=NewOrder[i];
+                    if(order.tstate==1){
+                        $("#news").append('<p>你请求的预约已经被'+order.name+'同意，详情点击<a class="md-trigger" data-modal="modal-'+order.sorder+'">查看</a></p>')
+                    }
+                    else if(order.tstate==3){
+                        $("#news").append('<p>你已完成的预约已经被'+order.name+'评分为'+order.score+'，详情点击<a class="md-trigger" data-modal="modal-'+order.sorder+'">查看</a></p>')
+                    }
+                    else if(order.tstate==4){
+                        $("#news").append('<p>你请求的'+order.name+'老师在'+order.date+' '+order.time+'的预约已经被拒绝，请继续努力！</p>')
+                    }
+                }
+            }
+        })
+    }
 </script>
 </body>
 </html>

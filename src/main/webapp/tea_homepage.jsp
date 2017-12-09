@@ -179,7 +179,7 @@
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="unconfirmedList">
                     <tr>
-                        <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/> </td>
+                        <td><s:property value="treservationEntity.date"/></td>
                         <td><s:property value="treservationEntity.time"/></td>
                         <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                         <td>未接受</td>
@@ -209,7 +209,7 @@
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="confirmedList">
                     <tr>
-                        <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                        <td><s:property value="treservationEntity.date"/></td>
                         <td><s:property value="treservationEntity.time"/></td>
                         <td><s:property value="usersEntity.name"/></td>
                         <td>已接受</td>
@@ -235,7 +235,7 @@
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="nullList">
                     <tr>
-                        <td><s:date name="date" format="yyyy-MM-dd"/></td>
+                        <td><s:property value="treservationEntity.date"/></td>
                         <td><s:property value="time"/> </td>
                         <td><s:property value="place"/> </td>
                         <td><a class="btn btn-default cancel" href="CancelRelease?torder=<s:property value='torder'/>">取消预约</a></td>
@@ -260,7 +260,7 @@
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="unjudgedList">
                         <tr>
-                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.date"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
@@ -277,7 +277,7 @@
                     </s:iterator>
                     <s:iterator value="judgedList">
                         <tr>
-                            <td><s:date name="treservationEntity.date" format="yyyy-MM-dd"/></td>
+                            <td><s:property value="treservationEntity.date"/></td>
                             <td><s:property value="treservationEntity.time"/></td>
                             <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
@@ -381,8 +381,8 @@
                     type:"POST",
                     data:{"torder":torder,"score":value},
                     success:function(){
-                        $(this).parent().html(text);
-                        alert("完成评分");
+                        $(this).parents("td").html(text);
+                        alert(text);
                     }
                 })
             }
