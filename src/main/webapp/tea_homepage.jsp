@@ -282,11 +282,7 @@
                             <td><s:property value="usersEntity.name"/></td>
                             <td><s:property value="treservationEntity.place"/> </td>
                             <td><s:property value="sreservationEntity.theme"/> </td>
-                            <td>
-                                <select class="finish">
-                                    <option value="1" data-html="未到">1</option>
-                                </select>
-                            </td>
+                            <td>评分：<s:property value="treservationEntity.score"/> </td>
                         </tr>
                     </s:iterator>
                     </tbody>
@@ -381,8 +377,8 @@
                     type:"POST",
                     data:{"torder":torder,"score":value},
                     success:function(){
-                        $(this).parents("td").html(text);
-                        alert(text);
+                        $("#"+torder).html("评分："+text);
+                        alert("评分完成");
                     }
                 })
             }
