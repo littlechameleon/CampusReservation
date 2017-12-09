@@ -32,15 +32,22 @@ public class TimerTask extends java.util.TimerTask{
                 Session session = SessionCon.currentSession();
                 try {
                     tx = session.beginTransaction();
-                    String sql = "from TreservationEntity where tstate=1 and ((current_date = date and current_time > time) or current_date > date)";
+                    String sql = "from TreservationEntity where (tstate=1 or tstate=0 or tstate=4) and ((current_date = date and current_time > time) or current_date > date)";
                     for(Object o : session.createQuery(sql).list()){
                         TreservationEntity treservationEntity = (TreservationEntity)o;
-                        SreservationDAO sreservationDAO = new SreservationDAO();
-                        SreservationEntity sreservationEntity = sreservationDAO.get(treservationEntity.getSorder());
-                        sreservationEntity.setSstate(2);
                         treservationEntity.setTstate(2);
                         session.update(treservationEntity);
-                        session.update(sreservationEntity);
+
+                        sql = "from SreservationEntity where torder="+treservationEntity.getTorder();
+                        for(Object object:session.createQuery(sql).list()){
+                            SreservationEntity sreservationEntity = (SreservationEntity)object;
+                            if(sreservationEntity.getSstate()==1){
+                                sreservationEntity.setSstate(2);
+                            }else{
+                                sreservationEntity.setSstate(5);
+                            }
+                            session.update(sreservationEntity);
+                        }
                     }
                     tx.commit();
                 } catch (Exception e) {
