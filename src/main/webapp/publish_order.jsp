@@ -61,6 +61,7 @@
             <span>${user.contact}</span><br/>
             <p>个人简介:</p>
             <span>${user.detail}</span><br/><br/>
+            <span class="hidden" id="workplace">${user.workplace}</span>
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
@@ -125,7 +126,7 @@
                                 <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
                                 <td><s:property value="usersEneity.contact"/></td>
                                 <td><s:property value="sreservationEntity.theme"/></td>
-                                <td>评分为：3 </td>
+                                <td>评分为：<s:property value="treservationEntity.score"/></td>
                             </tr>
                         </s:elseif>
                     </s:iterator>
@@ -194,6 +195,7 @@
             time.push($(this).children().eq(0).text());
         });
         var flag;
+        var workplace=$("#workplace").text();
         for(var i=0;i<times.length;i++){
             flag=0;
             for(var j=0;j<time.length;j++){
@@ -203,7 +205,7 @@
                 }
             }
             if(flag==0){
-                $("#publish_table").append("<tr><td>"+times[i]+"</td><td><input type='text' class='form-control input'> </td><td><div class='checkbox'><label><input type='checkbox' name='publish_items' value='<s:property value='usersEntity.workplace'/>'></label></div></td></tr>")
+                $("#publish_table").append("<tr><td>"+times[i]+"</td><td><input type='text' class='form-control input' value='"+workplace+"'> </td><td><div class='checkbox'><label><input type='checkbox' name='publish_items'></label></div></td></tr>")
             }
 
         }

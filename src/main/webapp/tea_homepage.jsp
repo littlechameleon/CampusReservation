@@ -37,9 +37,7 @@
 
 <div class="md-modal md-effect-1" id="modal-edit">
     <div class="md-content">
-        <div class="text-center">
-            <h2>修改个人信息</h2>
-        </div><br/><br/>
+            <h3>修改个人信息</h3>
         <div class="center-block">
             <form action="ModifyAction" method="post" class="form-horizontal">
                 <div class="form-group">
@@ -64,6 +62,16 @@
                                name="college" maxlength="20">
                     </div>
                 </div>
+                <s:if test="#session.user.type==1">
+                    <div class="form-group">
+                        <label for="institute" class="control-label col-sm-2">常用工作地点：</label>
+                        <div class="col-sm-10">
+                            <input required class="form-control input col-sm-10" id="workplace" placeholder="请输入您的常用工作地点"
+                                   value="${user.workplace}" type="text"
+                                   name="workplace" maxlength="20">
+                        </div>
+                    </div>
+                </s:if>
                 <div class="form-group">
                     <label for="phone" class="control-label col-sm-2">联系方式：<span class="important">*</span></label>
                     <div class="col-sm-10">
@@ -159,7 +167,7 @@
             <span>学院；${user.college}</span><br/>
             <span>邮箱：${user.email}</span><br/>
             <span>联系方式：${user.contact}</span><br/>
-            <a class="btn btn-default" id="to_follow">关注人数：${user.followNum}</a><br/>
+            <a class="btn btn-default" id="to_follow">关注老师：${user.followNum}</a><br/>
             <div id="follow_people"></div>
             <a class="pull-left" href="LogoutAction">退出登录</a>
             <a class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</a>

@@ -44,6 +44,11 @@
             <tr>
                 <td><span class="col-lg-4 col-lg-offset-2">学院：</span><span class="col-lg-5"><s:property value="usersEntity.college"/></span></td>
             </tr>
+            <s:if test="usersEntity.type==1">
+                <tr>
+                    <td><span class="col-lg-4 col-lg-offset-2">常用工作地点：</span><span class="col-lg-5"><s:property value="usersEntity.workplace"/></span></td>
+                </tr>
+            </s:if>
             <tr>
                 <td><span class="col-lg-4 col-lg-offset-2">邮箱：</span><span class="col-lg-5"><s:property value="usersEntity.email"/></span>
                 </td>

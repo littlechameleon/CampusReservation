@@ -12,7 +12,7 @@
 
         <!-- <property name="connection.password"/> -->
 
-        <property name="connection.password">hbh828hbh</property>
+        <property name="connection.password">helloworld147</property>
 
         <!-- DB schema will be updated if needed -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
