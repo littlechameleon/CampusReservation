@@ -216,13 +216,8 @@ public class UsersDAO {
             UsersEntity usersEntity = (UsersEntity)o;
             for( Object object : treservationDAO.getAll(usersEntity.getId())){
                 TreservationEntity treservationEntity = (TreservationEntity)object;
-                if(treservationEntity.getTstate()!=4 && treservationEntity.getTstate()!=5) {
-                    SreservationEntity sreservationEntity = sreservationDAO.get(treservationEntity.getSorder());
-                    if (sreservationEntity.getStudentId().equals(studentId)) {
-                        arrayList.add(1);
-                    } else {
-                        arrayList.add(0);
-                    }
+                if(treservationEntity.getTstate()==0 && !sreservationDAO.IsAready(treservationEntity.getTorder(),studentId)) {
+                    arrayList.add(1);
                 }else{
                     arrayList.add(0);
                 }
