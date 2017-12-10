@@ -50,6 +50,13 @@
                     <input required class="form-control input" id="institute" placeholder="请输入您所属学院" type="text"
                            name="college" maxlength="20">
                 </div>
+                <s:if test="#session.user.type==1">
+                    <div class="form-group">
+                        <label for="institute" class="control-label">常用工作地点</label>
+                        <input required class="form-control input" id="workplace" placeholder="请输入您的常用工作地点" type="text"
+                               name="workplace" maxlength="50">
+                    </div>
+                </s:if>
                 <div class="form-group">
                     <label for="phone" class="control-label">联系方式<span class="important">*</span></label>
                     <input required class="form-control input" type="tel" id="phone" placeholder="请输入联系方式"

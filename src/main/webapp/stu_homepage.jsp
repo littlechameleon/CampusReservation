@@ -30,9 +30,7 @@
 <!--弹出框-->
 <div class="md-modal md-effect-1" id="modal-edit">
     <div class="md-content">
-        <div class="text-center">
-            <h2>修改个人信息</h2>
-        </div>
+        <h3>修改个人信息</h3>
         <br/><br/>
         <div class="center-block">
             <form action="ModifyAction" method="post" class="form-horizontal">
@@ -58,6 +56,16 @@
                            name="college" maxlength="20">
                     </div>
                 </div>
+                <s:if test="#session.user.type==1">
+                    <div class="form-group">
+                        <label for="institute" class="control-label col-sm-2">常用工作地点：</label>
+                        <div class="col-sm-10">
+                            <input required class="form-control input col-sm-10" id="workplace" placeholder="请输入您的常用工作地点"
+                                   value="${user.workplace}" type="text"
+                                   name="workplace" maxlength="20">
+                        </div>
+                    </div>
+                </s:if>
                 <div class="form-group">
                     <label for="phone" class="control-label col-sm-2">联系方式：<span class="important">*</span></label>
                     <div class="col-sm-10">
@@ -265,6 +273,8 @@
             <span>${user.college}</span><br/>
             <span>${user.email}</span><br/>
             <span>${user.contact}</span><br/>
+            <a class="btn btn-default" id="to_follow">关注人数：${user.followNum}</a><br/>
+            <div id="follow_people"></div>
             <a class="pull-left" href="LogoutAction">退出登录</a>
             <button class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</button>
         </div>
@@ -370,6 +380,15 @@
                         <td><s:property value="treservationEntity.place"/></td>
                         <td><a class="btn btn-default md-trigger" data-modal="modal-follow-<s:property value="treservationEntity.torder"/>">预约</a></td>
                     </tr>
+                    </s:iterator>
+                    <s:iterator value="followList">
+                        <tr>
+                            <td><s:property value="treservationEntity.date"/></td>
+                            <td><s:property value="treservationEntity.time"/></td>
+                            <td><s:property value="usersEntity.name"/></td>
+                            <td><s:property value="treservationEntity.place"/></td>
+                            <td><a class="btn btn-default md-trigger" data-modal="modal-follow-<s:property value="treservationEntity.torder"/>">预约</a></td>
+                        </tr>
                     </s:iterator>
                     </tbody>
                 </table>
@@ -511,6 +530,29 @@
                 .append( "<div style='font-size: 20px;'><span>" + item.value + "</span><br/><span>学院：" + item.desc + "</span><div>" )
                 .appendTo( ul );
         };
+        var show=0;
+        $("#to_follow").click(function () {
+            if(show==0){
+                $("#follow_people").animate({height:'100px'});
+                $.ajax({
+                    async:false,
+                    url: "ViewFollow",
+                    type: "POST",
+                    data: {},
+                    success: function (e) {
+                        follow = e.followList;
+                        for (i in follow) {
+                            $("#follow_people").append('<a style="color: black;" href="EnterDetail?visitId=' + follow[i].id + '" class="visit" target="_blank">' + follow[i].name + '</a>');
+                        }
+                    }
+                });
+                show=1;
+            }
+            else{
+                $("#follow_people").animate({height:'0'}).empty();
+                show=0;
+            }
+        });
         get_New_Order();
         setInterval(get_New_Order,60000);
     });
