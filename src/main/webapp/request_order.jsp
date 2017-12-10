@@ -69,10 +69,10 @@
 
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
-            <form action="RequestAction" method="post">
+            <form action="EnterRequest" method="post">
                 <div class="col-lg-4 col-lg-offset-3 input-group">
                     <input type="date" class="form-control input-lg" value="<s:date format='yyyy-MM-dd' name='date'/>" id="date" name="date"/>
-                    <input type="text" class="hidden" value="<s:property value='usersEntity.id'/>" name="teacherId" id="teacherId">
+                    <input type="text" class="hidden" value="<s:property value='usersEntity.id'/>" name="teacherId">
                     <span class="input-group-btn">
                         <button class="btn btn-default" id="date_button" type="submit">确认</button>
                     </span>
