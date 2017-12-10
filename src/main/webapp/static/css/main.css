@@ -115,8 +115,23 @@ body {
     overflow-y: scroll;
     border: 1px solid #000;
     margin-bottom: 30px;
+    margin-left: 40px;
+    font-size: 18px;
 }
-
+.one_news{
+    margin-top:10px;
+    border-radius: 5px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-transition: background-color 0.3s,font-size 0.3s,color 0.3s,box-shadowo 0.3s;
+    transition: background-color 0.3s,font-size 0.3s,color 0.3s,box-shadowo 0.3s;
+}
+.one_news:hover{
+    background-color: #3e68ff;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 0 2px 2px #3e68ff;
+}
 /*密码强度插件*/
 .pw-strength {
     clear: both;

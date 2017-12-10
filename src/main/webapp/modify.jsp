@@ -57,17 +57,17 @@
                 </div>
                 <div class="form-group">
                     <label for="confirm_email" class="control-label">邮箱<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="confirm_email" value="<s:property value='usersEntity.email'/>"
+                    <input required class="form-control input" type="email" id="confirm_email" value="<s:property value='usersEntity.email'/>"
                            name="email" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="pass_ques" class="control-label">密保问题<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="pass_ques"
+                    <input required class="form-control input" type="text" id="pass_ques" name="question"
                            maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="ans_pass_ques" class="control-label">密保问题答案<span class="important">*</span></label>
-                    <input required class="form-control input" type="tel" id="ans_pass_ques"
+                    <input required class="form-control input" type="text" id="ans_pass_ques" name="answer"
                            maxlength="20">
                 </div>
                 <div class="form-group">

@@ -184,19 +184,14 @@
     $(function () {
         var id=$("#teacherId").text();
         var follow_type;
-        if($(".follow_type").attr('id')=="follow"){
-            follow_type=1;
-        }
-        else{
-            follow_type=0;
-        }
         $(".follow_type").click(function () {
-            if(follow_type==0){
+            if($(".follow_type").attr('id')=="follow"){
                 follow_type=1;
             }
             else{
                 follow_type=0;
             }
+            alert(follow_type);
             $.ajax({
                 url:"FollowAction",
                 type:"POST",

@@ -99,16 +99,18 @@
         <div class="md-content">
             <h3>请求详情</h3>
             <div>
-                <ul>
-                    <li><strong>日期:</strong> <s:property value="treservationEntity.date"/> </li>
-                    <li><strong>时间:</strong> <s:property value="treservationEntity.time"/></li>
-                    <li><strong>地点:</strong> <s:property value="treservationEntity.place"/></li>
-                    <li><strong>主题:</strong> <s:property value="sreservationEntity.theme"/></li>
-                    <li><strong>学生:</strong> <s:property value="usersEntity.name"/></li>
-                    <li><strong>学生联系方式:</strong> <s:property value="usersEntity.contact"/></li>
-                    <li><strong>学生学院:</strong> <s:property value="usersEntity.college"/></li>
-                    <li><strong>学生邮箱:</strong> <s:property value="usersEntity.email"/></li>
-                </ul>
+                <table class="table table-hover table-condensed">
+                    <tbody>
+                    <tr><td><strong>日期:</strong></td><td><s:property value="treservationEntity.date"/></td></tr>
+                    <tr><td><strong>时间:</strong></td><td><s:property value="treservationEntity.time"/></td></tr>
+                    <tr><td><strong>地点:</strong></td><td><s:property value="treservationEntity.place"/></td></tr>
+                    <tr><td><strong>主题:</strong></td><td><s:property value="sreservationEntity.theme"/></td></tr>
+                    <tr><td><strong>学生:</strong></td><td><s:property value="usersEntity.name"/></td></tr>
+                    <tr><td><strong>学生联系方式:</strong></td><td><s:property value="usersEntity.contact"/></td></tr>
+                    <tr><td><strong>学生学院:</strong></td><td><s:property value="usersEntity.college"/></td></tr>
+                    <tr><td><strong>学生邮箱:</strong></td><td><s:property value="usersEntity.email"/></td></tr>
+                    </tbody>
+                </table>
                 <div class="text-center">
                     <a class="md-close btn btn-default">确认</a>
                 </div>
@@ -121,16 +123,18 @@
         <div class="md-content">
             <h3>已接受请求详情</h3>
             <div>
-                <ul>
-                    <li><strong>日期:</strong> <s:property value="treservationEntity.date"/> </li>
-                    <li><strong>时间:</strong> <s:property value="treservationEntity.time"/></li>
-                    <li><strong>地点:</strong> <s:property value="treservationEntity.place"/></li>
-                    <li><strong>主题:</strong> <s:property value="sreservationEntity.theme"/></li>
-                    <li><strong>学生:</strong> <s:property value="usersEntity.name"/></li>
-                    <li><strong>学生联系方式:</strong> <s:property value="usersEntity.contact"/></li>
-                    <li><strong>学生学院:</strong> <s:property value="usersEntity.college"/></li>
-                    <li><strong>学生邮箱:</strong> <s:property value="usersEntity.email"/></li>
-                </ul>
+                <table class="table table-hover table-condensed">
+                    <tbody>
+                    <tr><td><strong>日期:</strong></td><td><s:property value="treservationEntity.date"/></td></tr>
+                    <tr><td><strong>时间:</strong></td><td><s:property value="treservationEntity.time"/></td></tr>
+                    <tr><td><strong>地点:</strong></td><td><s:property value="treservationEntity.place"/></td></tr>
+                    <tr><td><strong>主题:</strong></td><td><s:property value="sreservationEntity.theme"/></td></tr>
+                    <tr><td><strong>学生:</strong></td><td><s:property value="usersEntity.name"/></td></tr>
+                    <tr><td><strong>学生联系方式:</strong></td><td><s:property value="usersEntity.contact"/></td></tr>
+                    <tr><td><strong>学生学院:</strong></td><td><s:property value="usersEntity.college"/></td></tr>
+                    <tr><td><strong>学生邮箱:</strong></td><td><s:property value="usersEntity.email"/></td></tr>
+                    </tbody>
+                </table>
                 <div class="text-center">
                     <a class="md-close btn btn-default">确认</a>
                 </div>
@@ -381,7 +385,7 @@
                     type: "POST",
                     data: {"torder": torder, "score": value},
                     success: function () {
-                        $("#" + torder).html("评分：" + text);
+                        $("#" + torder).html("评分：" + value);
                         alert("评分完成");
                     }
                 })
