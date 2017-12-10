@@ -190,4 +190,44 @@ public class UsersDAO {
         }
         return arrayList;
     }
+
+    public ArrayList getfollowTeacher(String studentId){
+        FollowDAO followDAO = new FollowDAO();
+        UsersDAO usersDAO = new UsersDAO();
+        TreservationDAO treservationDAO = new TreservationDAO();
+        ArrayList<UsersEntity> arrayList = new ArrayList<>();
+        for(Object o:followDAO.getfollow(studentId)){
+            UsersEntity usersEntity = (UsersEntity)o;
+            for( Object object : treservationDAO.getAll(usersEntity.getId())){
+                TreservationEntity treservationEntity = (TreservationEntity)object;
+                arrayList.add(usersDAO.get(treservationEntity.getTeacherId()));
+            }
+        }
+        return arrayList;
+    }
+
+    public ArrayList getfollowStudent(String studentId){
+        FollowDAO followDAO = new FollowDAO();
+        UsersDAO usersDAO = new UsersDAO();
+        TreservationDAO treservationDAO = new TreservationDAO();
+        SreservationDAO sreservationDAO = new SreservationDAO();
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for(Object o:followDAO.getfollow(studentId)){
+            UsersEntity usersEntity = (UsersEntity)o;
+            for( Object object : treservationDAO.getAll(usersEntity.getId())){
+                TreservationEntity treservationEntity = (TreservationEntity)object;
+                if(treservationEntity.getTstate()!=4 && treservationEntity.getTstate()!=5) {
+                    SreservationEntity sreservationEntity = sreservationDAO.get(treservationEntity.getSorder());
+                    if (sreservationEntity.getStudentId().equals(studentId)) {
+                        arrayList.add(1);
+                    } else {
+                        arrayList.add(0);
+                    }
+                }else{
+                    arrayList.add(0);
+                }
+            }
+        }
+        return arrayList;
+    }
 }

@@ -2,11 +2,13 @@ package DAO;
 
 import Entity.SreservationEntity;
 import Entity.TreservationEntity;
+import Entity.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import SessionHelper.SessionCon;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -141,5 +143,28 @@ public class TreservationDAO {
             SessionCon.closeSession();
         }
         return null;
+    }
+
+    public List getAll(String teacherId){               //某老师全部未过时预约信息
+        Session session = SessionCon.currentSession();
+        try {
+            String hql = "from TreservationEntity where teacherId='" + teacherId + "' and tstate!=2 and tstate!=3 and tstate!=5";
+            return session.createQuery(hql).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            SessionCon.closeSession();
+        }
+        return null;
+    }
+
+    public ArrayList getfollowTreservation(String studentId) {                //关注老师预约
+        FollowDAO followDAO = new FollowDAO();
+        ArrayList<TreservationEntity> arrayList = new ArrayList<>();
+        for(Object o:followDAO.getfollow(studentId)){
+            UsersEntity usersEntity = (UsersEntity)o;
+            arrayList.addAll(getAll(usersEntity.getId()));
+        }
+        return arrayList;
     }
 }
