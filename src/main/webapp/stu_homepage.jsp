@@ -271,9 +271,7 @@
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
             <div class="col-lg-4 col-lg-offset-3 input-group">
-                <form action="EnterRequest" method="post">
-                    <input type="text" class="form-control input-lg" id="search_name" name="teacherId"/>
-                </form>
+                <input type="text" class="form-control input-lg" id="search_name" name="teacherId"/>
             </div>
             <br/><br/>
 
@@ -430,8 +428,8 @@
         var _width = $('#requested').width();
         var req_table_th = $("#requested th");
         var req_table_td = $("#requested td");
-        req_table_th.eq(0).width(_width * 0.1);
-        req_table_td.eq(0).width(_width * 0.1);
+        req_table_th.eq(0).width(_width * 0.15);
+        req_table_td.eq(0).width(_width * 0.15);
         req_table_th.eq(1).width(_width * 0.1);
         req_table_td.eq(1).width(_width * 0.1);
         req_table_th.eq(2).width(_width * 0.08);
@@ -514,8 +512,10 @@
                 .appendTo( ul );
         };
         get_New_Order();
+        setInterval(get_New_Order,60000);
     });
     function get_New_Order() {
+        $("#news").empty();
         $.ajax({
             url:"NewOrder",
             type:"POST",
