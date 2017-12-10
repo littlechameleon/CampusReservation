@@ -1,9 +1,6 @@
 package Action;
 
-import DAO.ReservationDA0;
-import DAO.SreservationDAO;
-import DAO.TreservationDAO;
-import DAO.UsersDAO;
+import DAO.*;
 import Entity.SreservationEntity;
 import Entity.TreservationEntity;
 import Entity.UsersEntity;
@@ -16,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RequestAction extends ActionSupport {
-    private String teacherId;           //学生所查询老师的id
     private Date date;
 
     private String theme;               //单向传入
@@ -25,6 +21,7 @@ public class RequestAction extends ActionSupport {
     private List list;                  //单向传出
     private ArrayList arrayList;
     private UsersEntity usersEntity;    //教师信息
+    private int isFollow;               //是否关注
 
     public String execute() throws Exception {
         UsersDAO usersDAO = new UsersDAO();
@@ -36,13 +33,15 @@ public class RequestAction extends ActionSupport {
             SreservationEntity sreservationEntity = new SreservationEntity();
             HttpSession session = ServletActionContext.getRequest().getSession();
             UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
-            sreservationEntity.setTeacherId(teacherId);
+            sreservationEntity.setTeacherId(treservationEntity.getTeacherId());
             sreservationEntity.setTorder(torder);
             sreservationEntity.setTheme(theme);
             sreservationEntity.setStudentId(usersEntity.getId());
             sreservationDAO.create(sreservationEntity, treservationEntity);
         }
-        usersEntity = usersDAO.get(teacherId);
+        FollowDAO followDAO = new FollowDAO();
+        isFollow = followDAO.isfollow(usersEntity.getId(),treservationEntity.getTeacherId());
+        usersEntity = usersDAO.get(treservationEntity.getTeacherId());
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;
@@ -68,19 +67,15 @@ public class RequestAction extends ActionSupport {
         return usersEntity;
     }
 
-    public String getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
-
     public void setTheme(String theme) {
         this.theme = theme;
     }
 
     public void setTorder(int torder) {
         this.torder = torder;
+    }
+
+    public int getIsFollow() {
+        return isFollow;
     }
 }

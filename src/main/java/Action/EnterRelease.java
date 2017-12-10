@@ -25,7 +25,9 @@ public class EnterRelease extends ActionSupport {
         UsersDAO usersDAO = new UsersDAO();
         ReservationDA0 reservationDA0 = new ReservationDA0();
         TreservationDAO treservationDAO = new TreservationDAO();
-        date = new java.sql.Date(new Date().getTime());
+        if(date == null) {
+            date = new java.sql.Date(new Date().getTime());
+        }
         HttpSession session = ServletActionContext.getRequest().getSession();
         usersEntity = (UsersEntity) session.getAttribute("user");
         if (teacherId != null) {
@@ -64,5 +66,9 @@ public class EnterRelease extends ActionSupport {
 
     public int getIsFollow() {
         return isFollow;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
