@@ -140,13 +140,13 @@
                             </tr>
                             </s:if>
                             <s:elseif test="tstate==0">
-                                <tr>
+                                <tr class="requesting">
                                     <td><s:property value="time"/></td>
-                                    <td>正在预约</td>
+                                    <td>未预约</td>
                                     <td><s:property value="place"/></td>
+                                    <td><input type="text" value="无主题" name="theme" class="input_request"></td>
                                     <td></td>
-                                    <td></td>
-                                    <td class="you_request" id="<s:property value='torder'/>">
+                                    <td id="<s:property value='torder'/>">
                                         <a class="btn btn-default md-trigger request" data-modal="modal-<s:property value='torder'/>">请求预约</a>
                                     </td>
                                 </tr>
@@ -247,9 +247,11 @@
         })
     });
     $(function () {
-        $(".you_request").each(function () {
-            id = $(this).attr("id");
-            the = $(this).children("a");
+        $(".requesting").each(function () {
+            id = $(this).children().eq(5).attr("id");
+            the_button = $(this).children().eq(5).children("a");
+            the_theme=$(this).children().eq(3).children("input");
+            the_operate=$(this).children().eq(1);
             $.ajax({
                 async:false,
                 url:"IsReservation",
@@ -257,7 +259,9 @@
                 data:{"torder":id},
                 success:function (e) {
                     if(e.reservation==false){
-                        the.addClass("hidden");
+                        the_button.addClass("hidden");
+                        the_theme.addClass("hidden");
+                        the_operate.text("你已预约");
                     }
                 }
             })

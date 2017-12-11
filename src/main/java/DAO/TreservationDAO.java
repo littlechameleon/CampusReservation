@@ -133,7 +133,7 @@ public class TreservationDAO {
     public List getNewOrder(int maxNum) {                //最新消息maxNum条   订单老师部分
         Session session = SessionCon.currentSession();
         try {
-            String hql = "from TreservationEntity order by torder desc";
+            String hql = "from TreservationEntity where (tstate=4 or tstate=0) order by torder desc";
             Query query = session.createQuery(hql);
             query.setMaxResults(maxNum);
             return query.list();

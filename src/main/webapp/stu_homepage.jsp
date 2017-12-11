@@ -584,7 +584,7 @@
                 for (i in followOrders) {
                     if (followStudent[i] == 0)
                         $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>还未预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
-                    else (followStudent[i] == 1)
+                    else if(followStudent[i] == 1)
                         $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>您已预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
                 }
             },
@@ -604,8 +604,8 @@
         req_table_td.eq(3).width(_width * 0.2);
         req_table_th.eq(4).width(_width * 0.25);
         req_table_td.eq(4).width(_width * 0.25);
-        req_table_th.eq(5).width(_width * 0.1);
-        req_table_td.eq(5).width(_width * 0.1);
+        req_table_th.eq(5).width(_width * 0.13);
+        req_table_td.eq(5).width(_width * 0.13);
         req_table_th.eq(6).width(_width * 0.12);
         req_table_td.eq(6).width(_width * 0.12);
 

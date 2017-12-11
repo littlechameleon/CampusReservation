@@ -425,7 +425,7 @@
                     success: function (e) {
                         follow = e.followList;
                         for (i in follow) {
-                            $("#follow_people").append('<a style="color: black;" href="EnterDetail?visitId=' + follow[i].id + '" class="visit" target="_blank">' + follow[i].name + '</a>');
+                            $("#follow_people").append('<a style="color: black;" href="EnterDetail?visitId=' + follow[i].id + '" class="visit" target="_blank">' + follow[i].name + ' </a>');
                         }
                     }
                 });
