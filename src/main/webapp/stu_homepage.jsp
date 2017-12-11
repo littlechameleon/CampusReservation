@@ -35,32 +35,35 @@
         <div class="center-block">
             <form action="ModifyAction" method="post" class="form-horizontal">
                 <div class="form-group">
-                    <label for="confirm_username" class="control-label col-sm-2">姓名：<span class="important">*</span></label>
+                    <label for="confirm_username" class="control-label col-sm-2">姓名：<span
+                            class="important">*</span></label>
                     <div class="col-sm-10">
-                    <input required class="form-control input col-sm-10" id="confirm_username" value="${user.name}" type="text"
-                           name="name" maxlength="20">
+                        <input required class="form-control input col-sm-10" id="confirm_username" value="${user.name}"
+                               type="text"
+                               name="name" maxlength="20">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="number" class="control-label col-sm-2">学号/教工号：</label>
                     <div class="col-sm-10">
-                    <input class="form-control input col-sm-10" id="number" value="${user.id}" type="text"
-                           name="id" readonly="readonly">
+                        <input class="form-control input col-sm-10" id="number" value="${user.id}" type="text"
+                               name="id" readonly="readonly">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="institute" class="control-label col-sm-2">学院：<span class="important">*</span></label>
                     <div class="col-sm-10">
-                    <input required class="form-control input col-sm-10" id="institute" placeholder="请输入您所属学院"
-                           value="${user.college}" type="text"
-                           name="college" maxlength="20">
+                        <input required class="form-control input col-sm-10" id="institute" placeholder="请输入您所属学院"
+                               value="${user.college}" type="text"
+                               name="college" maxlength="20">
                     </div>
                 </div>
                 <s:if test="#session.user.type==1">
                     <div class="form-group">
                         <label for="institute" class="control-label col-sm-2">常用工作地点：</label>
                         <div class="col-sm-10">
-                            <input required class="form-control input col-sm-10" id="workplace" placeholder="请输入您的常用工作地点"
+                            <input required class="form-control input col-sm-10" id="workplace"
+                                   placeholder="请输入您的常用工作地点"
                                    value="${user.workplace}" type="text"
                                    name="workplace" maxlength="20">
                         </div>
@@ -69,16 +72,18 @@
                 <div class="form-group">
                     <label for="phone" class="control-label col-sm-2">联系方式：<span class="important">*</span></label>
                     <div class="col-sm-10">
-                    <input required class="form-control input col-sm-10" type="tel" id="phone" placeholder="请输入联系方式"
-                           value="${user.contact}"
-                           name="contact" maxlength="20">
+                        <input required class="form-control input col-sm-10" type="tel" id="phone" placeholder="请输入联系方式"
+                               value="${user.contact}"
+                               name="contact" maxlength="20">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="confirm_email" class="control-label col-sm-2">邮箱：<span class="important">*</span></label>
+                    <label for="confirm_email" class="control-label col-sm-2">邮箱：<span
+                            class="important">*</span></label>
                     <div class="col-sm-10">
-                    <input required class="form-control input col-sm-10" type="tel" id="confirm_email" value="${user.email}"
-                           name="email" maxlength="20">
+                        <input required class="form-control input col-sm-10" type="tel" id="confirm_email"
+                               value="${user.email}"
+                               name="email" maxlength="20">
                     </div>
                 </div>
                 <div class="form-group">
@@ -104,15 +109,37 @@
                 <table class="table table-hover table-condensed">
                     <tbody>
                     <tr>
-                    <td><strong>日期:</strong></td><td><s:property value="treservationEntity.date"/></td>
+                        <td><strong>日期:</strong></td>
+                        <td><s:property value="treservationEntity.date"/></td>
                     </tr>
-                    <tr><td><strong>时间:</strong></td><td><s:property value="treservationEntity.time"/></td></tr>
-                    <tr><td><strong>地点:</strong></td><td><s:property value="treservationEntity.place"/></td></tr>
-                    <tr><td><strong>主题:</strong></td><td><s:property value="sreservationEntity.theme"/></td></tr>
-                    <tr><td><strong>教师:</strong></td><td><s:property value="usersEntity.name"/></td></tr>
-                    <tr><td><strong>教师联系方式:</strong></td><td><s:property value="usersEntity.contact"/></td></tr>
-                    <tr><td><strong>教师学院:</strong></td><td><s:property value="usersEntity.college"/></td></tr>
-                    <tr><td><strong>教师邮箱:</strong></td><td><s:property value="usersEntity.email"/></td></tr>
+                    <tr>
+                        <td><strong>时间:</strong></td>
+                        <td><s:property value="treservationEntity.time"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>地点:</strong></td>
+                        <td><s:property value="treservationEntity.place"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>主题:</strong></td>
+                        <td><s:property value="sreservationEntity.theme"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师:</strong></td>
+                        <td><s:property value="usersEntity.name"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师联系方式:</strong></td>
+                        <td><s:property value="usersEntity.contact"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师学院:</strong></td>
+                        <td><s:property value="usersEntity.college"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师邮箱:</strong></td>
+                        <td><s:property value="usersEntity.email"/></td>
+                    </tr>
                     </tbody>
                 </table>
                 <div class="text-center">
@@ -130,15 +157,37 @@
                 <table class="table table-hover table-condensed">
                     <tbody>
                     <tr>
-                        <td><strong>日期:</strong></td><td><s:property value="treservationEntity.date"/></td>
+                        <td><strong>日期:</strong></td>
+                        <td><s:property value="treservationEntity.date"/></td>
                     </tr>
-                    <tr><td><strong>时间:</strong></td><td><s:property value="treservationEntity.time"/></td></tr>
-                    <tr><td><strong>地点:</strong></td><td><s:property value="treservationEntity.place"/></td></tr>
-                    <tr><td><strong>主题:</strong></td><td><s:property value="sreservationEntity.theme"/></td></tr>
-                    <tr><td><strong>教师:</strong></td><td><s:property value="usersEntity.name"/></td></tr>
-                    <tr><td><strong>教师联系方式:</strong></td><td><s:property value="usersEntity.contact"/></td></tr>
-                    <tr><td><strong>教师学院:</strong></td><td><s:property value="usersEntity.college"/></td></tr>
-                    <tr><td><strong>教师邮箱:</strong></td><td><s:property value="usersEntity.email"/></td></tr>
+                    <tr>
+                        <td><strong>时间:</strong></td>
+                        <td><s:property value="treservationEntity.time"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>地点:</strong></td>
+                        <td><s:property value="treservationEntity.place"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>主题:</strong></td>
+                        <td><s:property value="sreservationEntity.theme"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师:</strong></td>
+                        <td><s:property value="usersEntity.name"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师联系方式:</strong></td>
+                        <td><s:property value="usersEntity.contact"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师学院:</strong></td>
+                        <td><s:property value="usersEntity.college"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师邮箱:</strong></td>
+                        <td><s:property value="usersEntity.email"/></td>
+                    </tr>
                     </tbody>
                 </table>
                 <div class="text-center">
@@ -156,15 +205,37 @@
                 <table class="table table-hover table-condensed">
                     <tbody>
                     <tr>
-                        <td><strong>日期:</strong></td><td><s:property value="treservationEntity.date"/></td>
+                        <td><strong>日期:</strong></td>
+                        <td><s:property value="treservationEntity.date"/></td>
                     </tr>
-                    <tr><td><strong>时间:</strong></td><td><s:property value="treservationEntity.time"/></td></tr>
-                    <tr><td><strong>地点:</strong></td><td><s:property value="treservationEntity.place"/></td></tr>
-                    <tr><td><strong>主题:</strong></td><td><s:property value="sreservationEntity.theme"/></td></tr>
-                    <tr><td><strong>教师:</strong></td><td><s:property value="usersEntity.name"/></td></tr>
-                    <tr><td><strong>教师联系方式:</strong></td><td><s:property value="usersEntity.contact"/></td></tr>
-                    <tr><td><strong>教师学院:</strong></td><td><s:property value="usersEntity.college"/></td></tr>
-                    <tr><td><strong>教师邮箱:</strong></td><td><s:property value="usersEntity.email"/></td></tr>
+                    <tr>
+                        <td><strong>时间:</strong></td>
+                        <td><s:property value="treservationEntity.time"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>地点:</strong></td>
+                        <td><s:property value="treservationEntity.place"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>主题:</strong></td>
+                        <td><s:property value="sreservationEntity.theme"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师:</strong></td>
+                        <td><s:property value="usersEntity.name"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师联系方式:</strong></td>
+                        <td><s:property value="usersEntity.contact"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师学院:</strong></td>
+                        <td><s:property value="usersEntity.college"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师邮箱:</strong></td>
+                        <td><s:property value="usersEntity.email"/></td>
+                    </tr>
                     </tbody>
                 </table>
                 <div class="text-center">
@@ -182,16 +253,41 @@
                 <table class="table table-hover table-condensed">
                     <tbody>
                     <tr>
-                        <td><strong>日期:</strong></td><td><s:property value="treservationEntity.date"/></td>
+                        <td><strong>日期:</strong></td>
+                        <td><s:property value="treservationEntity.date"/></td>
                     </tr>
-                    <tr><td><strong>时间:</strong></td><td><s:property value="treservationEntity.time"/></td></tr>
-                    <tr><td><strong>地点:</strong></td><td><s:property value="treservationEntity.place"/></td></tr>
-                    <tr><td><strong>主题:</strong></td><td><s:property value="sreservationEntity.theme"/></td></tr>
-                    <tr><td><strong>教师:</strong></td><td><s:property value="usersEntity.name"/></td></tr>
-                    <tr><td><strong>教师联系方式:</strong></td><td><s:property value="usersEntity.contact"/></td></tr>
-                    <tr><td><strong>教师学院:</strong></td><td><s:property value="usersEntity.college"/></td></tr>
-                    <tr><td><strong>教师邮箱:</strong></td><td><s:property value="usersEntity.email"/></td></tr>
-                    <tr><td><strong>评分:</strong></td><td><s:property value="treservationEntity.Score"/></td></tr>
+                    <tr>
+                        <td><strong>时间:</strong></td>
+                        <td><s:property value="treservationEntity.time"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>地点:</strong></td>
+                        <td><s:property value="treservationEntity.place"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>主题:</strong></td>
+                        <td><s:property value="sreservationEntity.theme"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师:</strong></td>
+                        <td><s:property value="usersEntity.name"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师联系方式:</strong></td>
+                        <td><s:property value="usersEntity.contact"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师学院:</strong></td>
+                        <td><s:property value="usersEntity.college"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师邮箱:</strong></td>
+                        <td><s:property value="usersEntity.email"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>评分:</strong></td>
+                        <td><s:property value="treservationEntity.Score"/></td>
+                    </tr>
                     </tbody>
                 </table>
                 <div class="text-center">
@@ -208,14 +304,38 @@
             <div>
                 <table class="table table-hover table-condensed">
                     <tbody>
-                    <tr><td><strong>日期:</strong></td><td><s:property value="treservationEntity.date"/></td></tr>
-                    <tr><td><strong>时间:</strong></td><td><s:property value="treservationEntity.time"/></td></tr>
-                    <tr><td><strong>地点:</strong></td><td><s:property value="treservationEntity.place"/></td></tr>
-                    <tr><td><strong>主题:</strong></td><td><s:property value="sreservationEntity.theme"/></td></tr>
-                    <tr><td><strong>教师:</strong></td><td><s:property value="usersEntity.name"/></td></tr>
-                    <tr><td><strong>教师联系方式:</strong></td><td><s:property value="usersEntity.contact"/></td></tr>
-                    <tr><td><strong>教师学院:</strong></td><td><s:property value="usersEntity.college"/></td></tr>
-                    <tr><td><strong>教师邮箱:</strong></td><td><s:property value="usersEntity.email"/></td></tr>
+                    <tr>
+                        <td><strong>日期:</strong></td>
+                        <td><s:property value="treservationEntity.date"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>时间:</strong></td>
+                        <td><s:property value="treservationEntity.time"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>地点:</strong></td>
+                        <td><s:property value="treservationEntity.place"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>主题:</strong></td>
+                        <td><s:property value="sreservationEntity.theme"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师:</strong></td>
+                        <td><s:property value="usersEntity.name"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师联系方式:</strong></td>
+                        <td><s:property value="usersEntity.contact"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师学院:</strong></td>
+                        <td><s:property value="usersEntity.college"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>教师邮箱:</strong></td>
+                        <td><s:property value="usersEntity.email"/></td>
+                    </tr>
                     </tbody>
                 </table>
                 <div class="text-center">
@@ -231,14 +351,38 @@
             <h3>请求预约</h3>
             <table class="table table-hover table-condensed">
                 <tbody>
-                <tr><td><strong>日期:</strong></td><td><s:property value="treservationEntity.date"/></td></tr>
-                <tr><td><strong>时间:</strong></td><td><s:property value="treservationEntity.time"/></td></tr>
-                <tr><td><strong>地点:</strong></td><td><s:property value="treservationEntity.place"/></td></tr>
-                <tr><td><strong>主题:</strong></td><td><s:property value="sreservationEntity.theme"/></td></tr>
-                <tr><td><strong>教师:</strong></td><td><s:property value="usersEntity.name"/></td></tr>
-                <tr><td><strong>教师联系方式:</strong></td><td><s:property value="usersEntity.contact"/></td></tr>
-                <tr><td><strong>教师学院:</strong></td><td><s:property value="usersEntity.college"/></td></tr>
-                <tr><td><strong>教师邮箱:</strong></td><td><s:property value="usersEntity.email"/></td></tr>
+                <tr>
+                    <td><strong>日期:</strong></td>
+                    <td><s:property value="treservationEntity.date"/></td>
+                </tr>
+                <tr>
+                    <td><strong>时间:</strong></td>
+                    <td><s:property value="treservationEntity.time"/></td>
+                </tr>
+                <tr>
+                    <td><strong>地点:</strong></td>
+                    <td><s:property value="treservationEntity.place"/></td>
+                </tr>
+                <tr>
+                    <td><strong>主题:</strong></td>
+                    <td><s:property value="sreservationEntity.theme"/></td>
+                </tr>
+                <tr>
+                    <td><strong>教师:</strong></td>
+                    <td><s:property value="usersEntity.name"/></td>
+                </tr>
+                <tr>
+                    <td><strong>教师联系方式:</strong></td>
+                    <td><s:property value="usersEntity.contact"/></td>
+                </tr>
+                <tr>
+                    <td><strong>教师学院:</strong></td>
+                    <td><s:property value="usersEntity.college"/></td>
+                </tr>
+                <tr>
+                    <td><strong>教师邮箱:</strong></td>
+                    <td><s:property value="usersEntity.email"/></td>
+                </tr>
                 </tbody>
             </table>
             <form action="requestAction" method="post">
@@ -311,7 +455,7 @@
                             <td><s:property value="treservationEntity.place"/></td>
                             <td><s:property value="sreservationEntity.theme"/></td>
                             <td>
-                                <%--<button class="btn btn-default">请求取消预约</button>--%>
+                                    <%--<button class="btn btn-default">请求取消预约</button>--%>
                             </td>
                             <td>
                                 <button class="md-trigger btn btn-default"
@@ -371,25 +515,8 @@
                         <th>操作</th>
                     </tr>
                     </thead>
-                    <tbody style="display:block; max-height:200px;overflow-y: scroll;">
-                    <s:iterator value="followList">
-                    <tr>
-                        <td><s:property value="treservationEntity.date"/></td>
-                        <td><s:property value="treservationEntity.time"/></td>
-                        <td><s:property value="usersEntity.name"/></td>
-                        <td><s:property value="treservationEntity.place"/></td>
-                        <td><a class="btn btn-default md-trigger" data-modal="modal-follow-<s:property value="treservationEntity.torder"/>">预约</a></td>
-                    </tr>
-                    </s:iterator>
-                    <s:iterator value="followList">
-                        <tr>
-                            <td><s:property value="treservationEntity.date"/></td>
-                            <td><s:property value="treservationEntity.time"/></td>
-                            <td><s:property value="usersEntity.name"/></td>
-                            <td><s:property value="treservationEntity.place"/></td>
-                            <td><a class="btn btn-default md-trigger" data-modal="modal-follow-<s:property value="treservationEntity.torder"/>">预约</a></td>
-                        </tr>
-                    </s:iterator>
+                    <tbody style="display:block; max-height:200px;overflow-y: scroll;" id="follow_list">
+
                     </tbody>
                 </table>
             </div>
@@ -443,6 +570,25 @@
 <script src="static/js/modal.js"></script>
 <!--自己的js-->
 <script>
+    $(function () {
+        $.ajax({
+            async: false,
+            url: "followReservation",
+            type: "POST",
+            data: {},
+            success: function (e) {
+                followOrders = e.followOrders;
+                followStudent = e.followStudent;
+                followTeacher = e.followTeacher;
+                for (i in followOrders) {
+                    if (followStudent[i] == 0)
+                        $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>还未预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
+                    else (followStudent[i] == 1)
+                        $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>您已预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
+                }
+            },
+        })
+    });
     $(document).ready(function () {
         var _width = $('#requested').width();
         var req_table_th = $("#requested th");
@@ -494,48 +640,49 @@
             $(this).attr("href", href + "&id=" + $("#id").html());
         });
     });
+
     $(function () {
-        var data=[];
+        var data = [];
         $.ajax({
-            async:false,
+            async: false,
             type: "POST", //post请求
             url: "SearchAction", //请求action的URL
-            dataType:"json",//返回类型
-            success: function(result){ //回调函数
-                datas=result.teacherList;
-                for(i in datas){
-                    var d=Object();
-                    d.label=datas[i].name;
-                    d.id=datas[i].id;
-                    d.value=datas[i].name;
-                    d.desc=datas[i].college;
+            dataType: "json",//返回类型
+            success: function (result) { //回调函数
+                datas = result.teacherList;
+                for (i in datas) {
+                    var d = Object();
+                    d.label = datas[i].name;
+                    d.id = datas[i].id;
+                    d.value = datas[i].name;
+                    d.desc = datas[i].college;
                     data.push(d);
                 }
             },
-            error:function(){
+            error: function () {
                 alert("无法连接到服务器")
             }
         });
         $("#search_name").autocomplete({
-            source:data,
-            minLength:0,
-            focus:function (event,ui) {
+            source: data,
+            minLength: 0,
+            focus: function (event, ui) {
                 $("#search_name").val(ui.item.name)
             },
-            select:function(event,ui){
-                window.location.href="EnterRequest?teacherId="+ui.item.id;
+            select: function (event, ui) {
+                window.location.href = "EnterRequest?teacherId=" + ui.item.id;
             }
-        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-            return $( "<li>" )
-                .append( "<div style='font-size: 20px;'><span>" + item.value + "</span><br/><span>学院：" + item.desc + "</span><div>" )
-                .appendTo( ul );
+        }).data("ui-autocomplete")._renderItem = function (ul, item) {
+            return $("<li>")
+                .append("<div style='font-size: 20px;'><span>" + item.value + "</span><br/><span>学院：" + item.desc + "</span><div>")
+                .appendTo(ul);
         };
-        var show=0;
+        var show = 0;
         $("#to_follow").click(function () {
-            if(show==0){
-                $("#follow_people").animate({height:'100px'});
+            if (show == 0) {
+                $("#follow_people").animate({height: '100px'});
                 $.ajax({
-                    async:false,
+                    async: false,
                     url: "ViewFollow",
                     type: "POST",
                     data: {},
@@ -546,29 +693,30 @@
                         }
                     }
                 });
-                show=1;
+                show = 1;
             }
-            else{
-                $("#follow_people").animate({height:'0'}).empty();
-                show=0;
+            else {
+                $("#follow_people").animate({height: '0'}).empty();
+                show = 0;
             }
         });
         get_New_Order();
-        setInterval(get_New_Order,60000);
+        setInterval(get_New_Order, 60000);
     });
+
     function get_New_Order() {
         $("#news").empty();
         $.ajax({
-            url:"NewOrder",
-            type:"POST",
-            data:{},
-            success:function (e) {
-                NewOrder=e.newOrders;
+            url: "NewOrder",
+            type: "POST",
+            data: {},
+            success: function (e) {
+                NewOrder = e.newOrders;
                 newStudent = e.newStudent;
                 newTeacher = e.newTeacher;
-                for(i in NewOrder) {
+                for (i in NewOrder) {
                     order = NewOrder[i];
-                    $("#news").append('<div class="one_news"><p>学院：' + newTeacher[i].college + ' 教师：' + newTeacher[i].name + '</p>已经发布预约，预约时间为：' + order.date + ' ' + order.time + ' <a class="btn btn-default" href="EnterRequest?teacherId='+order.teacherId+'&date='+order.date+'">点击</a>查看详情</div>');
+                    $("#news").append('<div class="one_news"><p>学院：' + newTeacher[i].college + ' 教师：' + newTeacher[i].name + '</p>已经发布预约，预约时间为：' + order.date + ' ' + order.time + ' <a class="btn btn-default" href="EnterRequest?teacherId=' + order.teacherId + '&date=' + order.date + '">点击</a>查看详情</div>');
                 }
             }
         })

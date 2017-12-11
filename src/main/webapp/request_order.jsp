@@ -69,6 +69,7 @@
 
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
+            <p id="Msg"></p>
             <form action="EnterRequest" method="post">
                 <div class="col-lg-4 col-lg-offset-3 input-group">
                     <input type="date" class="form-control input-lg" value="<s:date format='yyyy-MM-dd' name='date'/>" id="date" name="date"/>
@@ -100,7 +101,30 @@
                                 <td><s:property value="treservationEntity.place"/></td>
                                 <td><s:property value="sreservationEntity.theme"/></td>
                                 <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
-                                <td><s:if test="#session.user.id==usersEntity.id"><a class="btn btn-default md-trigger" data-modal="modal-<s:property value='treservation.torder'/>">取消预约</a></s:if></td>
+                                <td><s:if test="#session.user.id==usersEntity.id">
+                                    <%--<a class="btn btn-default md-trigger" data-modal="modal-<s:property value='treservation.torder'/>">取消预约</a>--%>
+                                    你已预约
+                                </s:if></td>
+                            </tr>
+                        </s:if>
+                        <s:if test="treservationEntity.tstate==2">
+                            <tr>
+                                <td><s:property value="treservationEntity.time"/></td>
+                                <td>已完成</td>
+                                <td><s:property value="treservationEntity.place"/></td>
+                                <td><s:property value="sreservationEntity.theme"/></td>
+                                <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                                <td>评分：<s:property value="treservationEntity.score"/></td>
+                            </tr>
+                        </s:if>
+                        <s:if test="treservationEntity.tstate==3">
+                            <tr>
+                                <td><s:property value="treservationEntity.time"/></td>
+                                <td>已完成</td>
+                                <td><s:property value="treservationEntity.place"/></td>
+                                <td><s:property value="sreservationEntity.theme"/></td>
+                                <td><a href="EnterDetail?visitId=<s:property value='usersEntity.id'/>" class="visit" target="_blank"><s:property value="usersEntity.name"/></a></td>
+                                <td>教师未评分</td>
                             </tr>
                         </s:if>
                     </s:iterator>
@@ -110,7 +134,7 @@
                                 <td><s:property value="time"/></td>
                                 <td>未预约</td>
                                 <td><s:property value="place"/></td>
-                                <td><input type="text" value="无主题" name="theme"></td>
+                                <td><input type="text" value="无主题" name="theme" class="input_request"></td>
                                 <td></td>
                                 <td><a class="btn btn-default md-trigger request" data-modal="modal-<s:property value='torder'/>">请求预约</a></td>
                             </tr>
@@ -118,11 +142,13 @@
                             <s:elseif test="tstate==0">
                                 <tr>
                                     <td><s:property value="time"/></td>
-                                    <td>预约中</td>
+                                    <td>正在预约</td>
                                     <td><s:property value="place"/></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                    <td class="you_request" id="<s:property value='torder'/>">
+                                        <a class="btn btn-default md-trigger request" data-modal="modal-<s:property value='torder'/>">请求预约</a>
+                                    </td>
                                 </tr>
                             </s:elseif>
                         </s:iterator>
@@ -144,11 +170,8 @@
 
 <!--自己的js-->
 <script>
-    $(document).ready(function () {
-//        var follow = true;
-//        $("#follow").toggleClass("hidden");
-//        $("#followed").toggleClass("hidden");
 
+    $(document).ready(function () {
         var _width = $('#2').width();
         var table_th = $("#2 th");
         var table_td = $("#2 td");
@@ -166,6 +189,17 @@
         table_td.eq(5).width(_width * 0.1);
     });
     $(function(){
+        o_date = new Date($("#date").val().replace(/-/,"/"));
+        date=new Date();
+        date.setHours(0);
+        date.setMinutes(0);
+        date.setSeconds(0);
+        if(o_date<date){
+            $(".input_request").addClass("hidden");
+            $(".request").addClass("hidden");
+            $("#Msg").text("请提前一天进行预约")
+        }
+
         $(".request").click(function(){
             var order=$(this).attr('data-modal');
             var time=$(this).parent().parent().children().eq(0).html();
@@ -207,6 +241,23 @@
                 },
                 error:function () {
                     alert("无法连接到服务器！");
+                }
+            })
+        })
+    });
+    $(function () {
+        $(".you_request").each(function () {
+            id = $(this).attr("id");
+            the = $(this).children("a");
+            $.ajax({
+                async:false,
+                url:"IsReservation",
+                type:"POST",
+                data:{"torder":id},
+                success:function (e) {
+                    if(e.reservation==false){
+                        the.addClass("hidden");
+                    }
                 }
             })
         })

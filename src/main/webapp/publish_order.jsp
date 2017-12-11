@@ -66,6 +66,7 @@
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
             <form action="ReleaseAction" method="post">
+                <p id="Msg" class="text-center"></p>
                 <div class="col-lg-4 col-lg-offset-3 input-group">
                     <input type="date" class="form-control input-lg" value="<s:date format='yyyy-MM-dd' name='date'/>" id="date" name="date"/>
                     <span class="input-group-btn">
@@ -139,7 +140,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><a class="btn btn-default">取消预约</a></td>
+                            <td></td>
                         </tr>
                         </s:if>
                         <s:elseif test="tstate==0">
@@ -186,30 +187,46 @@
 
 <!--自己的js-->
 <script>
-    $(function(){
-        var times=["8:00:00","8:30:00","9:00:00","9:30:00","10:00:00","10:30:00","11:00:00","11:30:00","12:00:00",
-            "12:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00","15:30:00","16:00:00","16:30:00","17:00:00",
-            "17:30:00","18:00:00","18:30:00","19:00:00","19:30:00","20:00:00"];
-        var time=[];
-        $("#published table tbody tr").each(function(){
-            time.push($(this).children().eq(0).text());
-        });
-        var flag;
-        var workplace=$("#workplace").text();
-        for(var i=0;i<times.length;i++){
-            flag=0;
-            for(var j=0;j<time.length;j++){
-                if(times[i]==time[j]){
-                    flag=1;
-                    break;
-                }
-            }
-            if(flag==0){
-                $("#publish_table").append("<tr><td>"+times[i]+"</td><td><input type='text' class='form-control input' value='"+workplace+"'> </td><td><div class='checkbox'><label><input type='checkbox' name='publish_items'></label></div></td></tr>")
-            }
 
+
+
+    $(function(){
+        o_date = new Date($("#date").val().replace(/-/,"/"));
+        date=new Date();
+        date.setHours(0);
+        date.setMinutes(0);
+        date.setSeconds(0);
+        if(o_date>date){
+            show_time();
+        }else{
+            $("#Msg").text("请提前一天发布预约")
+        }
+        function show_time(){
+            var times=["8:00:00","8:30:00","9:00:00","9:30:00","10:00:00","10:30:00","11:00:00","11:30:00","12:00:00",
+                "12:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00","15:30:00","16:00:00","16:30:00","17:00:00",
+                "17:30:00","18:00:00","18:30:00","19:00:00","19:30:00","20:00:00"];
+            var time=[];
+            $("#published table tbody tr").each(function(){
+                time.push($(this).children().eq(0).text());
+            });
+            var flag;
+            var workplace=$("#workplace").text();
+            for(var i=0;i<times.length;i++){
+                flag=0;
+                for(var j=0;j<time.length;j++){
+                    if(times[i]==time[j]){
+                        flag=1;
+                        break;
+                    }
+                }
+                if(flag==0){
+                    $("#publish_table").append("<tr><td>"+times[i]+"</td><td><input type='text' class='form-control input' value='"+workplace+"'> </td><td><div class='checkbox'><label><input type='checkbox' name='publish_items'></label></div></td></tr>")
+                }
+
+            }
         }
     });
+
     $(document).ready(function(){
         $("#request_table").css("max-height",$(window).height()*0.6);
 

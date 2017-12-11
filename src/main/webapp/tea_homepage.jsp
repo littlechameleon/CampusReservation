@@ -249,7 +249,7 @@
                     <tbody style="display:block; max-height:400px;overflow-y: scroll;min-height: 100px;">
                     <s:iterator value="nullList">
                     <tr>
-                        <td><s:property value="treservationEntity.date"/></td>
+                        <td><s:property value="date"/></td>
                         <td><s:property value="time"/> </td>
                         <td><s:property value="place"/> </td>
                         <td><a class="btn btn-default cancel" href="CancelRelease?torder=<s:property value='torder'/>">取消预约</a></td>

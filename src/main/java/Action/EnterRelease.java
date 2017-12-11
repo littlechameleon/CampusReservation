@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +28,9 @@ public class EnterRelease extends ActionSupport {
         TreservationDAO treservationDAO = new TreservationDAO();
         if(date == null) {
             date = new java.sql.Date(new Date().getTime());
+        }
+        else{
+            date = new java.sql.Date(date.getTime());
         }
         HttpSession session = ServletActionContext.getRequest().getSession();
         usersEntity = (UsersEntity) session.getAttribute("user");

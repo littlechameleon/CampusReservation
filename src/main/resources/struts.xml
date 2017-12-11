@@ -94,5 +94,8 @@
         <action name="followReservation" class="Ajax.followReservation">
             <result name="success" type="json"> </result>
         </action>
+        <action name="IsReservation" class="Ajax.IsReservation">
+            <result name="success" type="json"> </result>
+        </action>
     </package>
 </struts>
