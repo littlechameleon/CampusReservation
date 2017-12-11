@@ -34,6 +34,9 @@
         <br/><br/>
         <div class="center-block">
             <form action="ModifyAction" method="post" class="form-horizontal">
+                <input type="text" value="${user.workplace}" name="workplace" class="hidden">
+                <input type="text" value="${user.question}" name="question" class="hidden">
+                <input type="text" value="${user.answer}" name="answer" class="hidden">
                 <div class="form-group">
                     <label for="confirm_username" class="control-label col-sm-2">姓名：<span
                             class="important">*</span></label>
@@ -417,7 +420,7 @@
             <span>${user.college}</span><br/>
             <span>${user.email}</span><br/>
             <span>${user.contact}</span><br/>
-            <a class="btn btn-default" id="to_follow">关注人数：${user.followNum}</a><br/>
+            <a class="btn btn-default" id="to_follow">关注老师人数：${user.followNum}</a><br/>
             <div id="follow_people"></div>
             <a class="pull-left" href="LogoutAction">退出登录</a>
             <button class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</button>
@@ -454,9 +457,7 @@
                                    target="_blank"><s:property value="usersEntity.name"/></a></td>
                             <td><s:property value="treservationEntity.place"/></td>
                             <td><s:property value="sreservationEntity.theme"/></td>
-                            <td>
-                                    <%--<button class="btn btn-default">请求取消预约</button>--%>
-                            </td>
+                            <td>教师已同意</td>
                             <td>
                                 <button class="md-trigger btn btn-default"
                                         data-modal="modal-<s:property value='sreservationEntity.sorder'/>">详情
@@ -689,7 +690,7 @@
                     success: function (e) {
                         follow = e.followList;
                         for (i in follow) {
-                            $("#follow_people").append('<a style="color: black;" href="EnterDetail?visitId=' + follow[i].id + '" class="visit" target="_blank">' + follow[i].name + '</a>');
+                            $("#follow_people").append('<a style="color: black;" href="EnterDetail?visitId=' + follow[i].id + '" class="visit" target="_blank">' + follow[i].name + '</a>, ');
                         }
                     }
                 });

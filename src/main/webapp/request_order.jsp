@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-lg-2 modal-content" id="left">
             <img src="static/image/yellow_people.jpg" class="img-responsive"><br/>
-            <span>你好，<s:property value="usersEntity.name"/></span><br/>
+            <span><s:property value="usersEntity.name"/></span><br/>
             <span id="teacherId"><s:property value="usersEntity.id"/></span><br/>
             <s:if test="sex==0">
                 <span>女</span>
@@ -207,8 +207,13 @@
             var date=$("#date").val();
             var teacherId=$("#teacherId").text();
             var href=$("#"+order+" .confirm_submit").attr("href");
-            $("#"+order+" p").html("日期："+date+"时间："+time+"主题："+theme);
-            $("#"+order+" .confirm_submit").attr("href",href+"&theme="+theme+"&date="+date+"&teacherId="+teacherId);
+            if(theme!=''){
+                $("#"+order+" p").html("日期："+date+"时间："+time+"主题："+theme);
+                $("#"+order+" .confirm_submit").attr("href",href+"&theme="+theme+"&date="+date+"&teacherId="+teacherId);
+            }else{
+                $("#"+order+" p").html("主题不能为空！");
+                $("#"+order+" .confirm_submit").attr("href","");
+            }
         });
         $(".visit").each(function(){
             var href=$(this).attr("href");
@@ -218,14 +223,8 @@
     $(function () {
         var id=$("#teacherId").text();
         var follow_type;
+        follow_type = $(".follow_type").attr('id')=="follow"?1:0;
         $(".follow_type").click(function () {
-            if($(".follow_type").attr('id')=="follow"){
-                follow_type=1;
-            }
-            else{
-                follow_type=0;
-            }
-            alert(follow_type);
             $.ajax({
                 url:"FollowAction",
                 type:"POST",
@@ -233,9 +232,11 @@
                 success:function () {
                     if(follow_type==0){
                         $("#followed").html('<p id="follow" class="follow_type">关注<i class="fa fa-star-o fa-lg"></i></p>');
+                        follow_type=1;
                         alert("取消关注成功！");
                     }else{
                         $("#follow").html('<p id="followed" class="follow_type">取消关注<i class="fa fa-star fa-lg"></i></p>');
+                        follow_type=0;
                         alert("关注成功！");
                     }
                 },

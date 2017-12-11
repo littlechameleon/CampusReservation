@@ -167,7 +167,7 @@
             <span>学院；${user.college}</span><br/>
             <span>邮箱：${user.email}</span><br/>
             <span>联系方式：${user.contact}</span><br/>
-            <a class="btn btn-default" id="to_follow">关注老师：${user.followNum}</a><br/>
+            <a class="btn btn-default" id="to_follow">学生关注人数：${user.followNum}</a><br/>
             <div id="follow_people"></div>
             <a class="pull-left" href="LogoutAction">退出登录</a>
             <a class="pull-right btn btn-default md-trigger" data-modal="modal-edit">编辑</a>
@@ -199,7 +199,7 @@
                         <td>未接受</td>
                         <td><s:property value="treservationEntity.place"/></td>
                         <td><s:property value="sreservationEntity.theme"/></td>
-                        <td><a class="btn btn-default agree" href="AgreeRequest?sorder=<s:property value='sreservationEntity.sorder'/>">接受</a><button class="btn btn-default">拒绝</button></td>
+                        <td><a class="btn btn-default agree" href="AgreeRequest?sorder=<s:property value='sreservationEntity.sorder'/>">接受</a></td>
                         <td><button class="md-trigger btn btn-default" data-modal="modal-<s:property value='sreservationEntity.sorder'/>">详情</button></td>
                     </tr>
                     </s:iterator>
@@ -321,20 +321,20 @@
         var _width = $('#new_table').width();
         var new_table_th = $("#new_table th");
         var new_table_td = $("#new_table td");
-        new_table_th.eq(0).width(_width * 0.15);
-        new_table_td.eq(0).width(_width * 0.15);
-        new_table_th.eq(1).width(_width * 0.15);
-        new_table_td.eq(1).width(_width * 0.15);
-        new_table_th.eq(2).width(_width * 0.05);
-        new_table_td.eq(2).width(_width * 0.05);
+        new_table_th.eq(0).width(_width * 0.12);
+        new_table_td.eq(0).width(_width * 0.12);
+        new_table_th.eq(1).width(_width * 0.1);
+        new_table_td.eq(1).width(_width * 0.1);
+        new_table_th.eq(2).width(_width * 0.08);
+        new_table_td.eq(2).width(_width * 0.08);
         new_table_th.eq(3).width(_width * 0.08);
         new_table_td.eq(3).width(_width * 0.08);
-        new_table_th.eq(4).width(_width * 0.1);
-        new_table_td.eq(4).width(_width * 0.1);
-        new_table_th.eq(5).width(_width * 0.25);
-        new_table_td.eq(5).width(_width * 0.25);
-        new_table_th.eq(6).width(_width * 0.12);
-        new_table_td.eq(6).width(_width * 0.12);
+        new_table_th.eq(4).width(_width * 0.15);
+        new_table_td.eq(4).width(_width * 0.15);
+        new_table_th.eq(5).width(_width * 0.2);
+        new_table_td.eq(5).width(_width * 0.2);
+        new_table_th.eq(6).width(_width * 0.05);
+        new_table_td.eq(6).width(_width * 0.05);
         new_table_th.eq(7).width(_width * 0.05);
         new_table_td.eq(7).width(_width * 0.05);
 
