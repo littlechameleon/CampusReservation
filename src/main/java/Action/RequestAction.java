@@ -39,9 +39,9 @@ public class RequestAction extends ActionSupport {
             sreservationEntity.setStudentId(usersEntity.getId());
             sreservationDAO.create(sreservationEntity, treservationEntity);
         }
+        usersEntity = usersDAO.get(treservationEntity.getTeacherId());
         FollowDAO followDAO = new FollowDAO();
         isFollow = followDAO.isfollow(usersEntity.getId(),treservationEntity.getTeacherId());
-        usersEntity = usersDAO.get(treservationEntity.getTeacherId());
         list = treservationDAO.getOnedayNull(date, usersEntity.getId());
         arrayList = reservationDA0.getOnedayNotnull(date, usersEntity.getId());
         return SUCCESS;

@@ -1,6 +1,7 @@
 package Ajax;
 
 import DAO.FollowDAO;
+import DAO.UsersDAO;
 import Entity.UsersEntity;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
@@ -15,6 +16,9 @@ public class FollowAction extends ActionSupport{
         UsersEntity usersEntity = (UsersEntity) session.getAttribute("user");
         FollowDAO followDAO = new FollowDAO();
         followDAO.add(usersEntity.getId(),teacherId,followType);
+        UsersDAO usersDAO = new UsersDAO();
+        usersEntity = usersDAO.get(usersEntity.getId());
+        session.setAttribute("user",usersEntity);
         return SUCCESS;
     }
 

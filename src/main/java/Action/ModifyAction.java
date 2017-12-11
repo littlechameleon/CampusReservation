@@ -21,6 +21,7 @@ public class ModifyAction extends ActionSupport {
     private String detail;
     private String question;
     private String answer;
+    private String workplace;
     private UsersEntity usersEntity;
     private ArrayList unjudgedList;
     private ArrayList judgedList;
@@ -43,6 +44,7 @@ public class ModifyAction extends ActionSupport {
         usersEntity.setDetail(detail);
         usersEntity.setAnswer(answer);
         usersEntity.setQuestion(question);
+        usersEntity.setWorkplace(workplace);
         usersDAO.update(usersEntity);
         HttpSession session = ServletActionContext.getRequest().getSession();
         session.setAttribute("user", usersEntity);
@@ -122,5 +124,9 @@ public class ModifyAction extends ActionSupport {
 
     public List getNullList() {
         return nullList;
+    }
+
+    public void setWorkplace(String workplace) {
+        this.workplace = workplace;
     }
 }
