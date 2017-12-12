@@ -107,7 +107,7 @@
                                 </s:if></td>
                             </tr>
                         </s:if>
-                        <s:if test="treservationEntity.tstate==2">
+                        <s:if test="treservationEntity.tstate==3">
                             <tr>
                                 <td><s:property value="treservationEntity.time"/></td>
                                 <td>已完成</td>
@@ -117,7 +117,7 @@
                                 <td>评分：<s:property value="treservationEntity.score"/></td>
                             </tr>
                         </s:if>
-                        <s:if test="treservationEntity.tstate==3">
+                        <s:if test="treservationEntity.tstate==2">
                             <tr>
                                 <td><s:property value="treservationEntity.time"/></td>
                                 <td>已完成</td>

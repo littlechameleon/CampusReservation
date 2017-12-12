@@ -427,7 +427,8 @@
         </div>
         <div class="col-lg-11 modal-content col-lg-offset-2">
             <br/><br/>
-            <div class="col-lg-4 col-lg-offset-3 input-group">
+            <label for="search_name" class="col-lg-2 col-lg-offset-3">输入教师名称：</label>
+            <div class="col-lg-4 input-group">
                 <input type="text" class="form-control input-lg" id="search_name" name="teacherId"/>
             </div>
             <br/><br/>
@@ -582,10 +583,25 @@
                 followStudent = e.followStudent;
                 followTeacher = e.followTeacher;
                 for (i in followOrders) {
-                    if (followStudent[i] == 0)
-                        $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>还未预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
-                    else if(followStudent[i] == 1)
-                        $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>您已预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
+                    o_date = new Date(followOrders[i].date.replace(/-/,"/"));
+                    date=new Date();
+                    date.setHours(0);
+                    date.setMinutes(0);
+                    date.setSeconds(0);
+                    if(o_date.getDate()!=date.getDate()) {
+                        if(followOrders[i].tstate==0){
+                            if (followStudent[i] == 0)
+                                $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>未预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
+                            else if(followStudent[i] == 1)
+                                $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>您已预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
+
+                        }
+                        else if(followOrders[i].tstate==4)
+                            $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>未预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
+                        else if(followOrders[i].tstate==1)
+                            $("#follow_list").append('<tr><td>' + followOrders[i].date + '</td><td>' + followOrders[i].time + '</td><td>' + followTeacher[i].name + '</td><td>' + followOrders[i].place + '</td> <td>已开始预约<a class="btn btn-default" href="EnterRequest?teacherId=' + followTeacher[i].id + '&date=' + followOrders[i].date + '">查看详情</a></td> </tr>');
+
+                    }
                 }
             },
         })

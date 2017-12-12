@@ -39,7 +39,14 @@
                 <td><span class="col-lg-4 col-lg-offset-2">学号/教工号：</span><span class="col-lg-5"><s:property value="usersEntity.id"/></span></td>
             </tr>
             <tr>
-                <td><span class="col-lg-4 col-lg-offset-2">性别：</span><span class="col-lg-5"><s:property value="usersEntity.sex"/></span></td>
+                <td><span class="col-lg-4 col-lg-offset-2">性别：</span>
+                    <s:if test="usersEntity.sex==0">
+                        <span>女</span>
+                    </s:if>
+                    <s:else>
+                        <span>男</span>
+                    </s:else>
+                </td>
             </tr>
             <tr>
                 <td><span class="col-lg-4 col-lg-offset-2">学院：</span><span class="col-lg-5"><s:property value="usersEntity.college"/></span></td>
